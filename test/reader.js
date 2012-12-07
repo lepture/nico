@@ -43,3 +43,22 @@ describe('MarkdownParser meta', function() {
     meta.link.should.equal('http://lepture.com')
   })
 })
+
+describe('MarkdownParser toc', function() {
+  it('should have nothing', function() {
+    var parser = new reader.MarkdownParser()
+    var toc = parser.toc('')
+    toc.should.eql([])
+  })
+  it('should have toc', function() {
+    var parser = new reader.MarkdownParser()
+    var html = [
+      '# title 1',
+      '',
+      '## title 2',
+      ''
+    ].join('\n')
+    var toc = parser.toc(html)
+    toc.should.includeEql({id: 'title-1', text: 'title 1', level: 1})
+  })
+})
