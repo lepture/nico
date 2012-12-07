@@ -1,0 +1,23 @@
+{
+  "name": "nico",
+  "version": "1.0.0-dev",
+  "preferGlobal": "true",
+  "description": "Nico is a static site generation",
+  "dependencies": {
+    "colorful": ">=1.0.0",
+    "highlight.js": "*",
+    "moment": "*",
+    "robotskirt": ">=2.7.1",
+    "commander": ">=1.1.1"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "bin": {
+    "nico": "bin/nico"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  }
+}
