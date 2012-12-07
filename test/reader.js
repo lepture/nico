@@ -81,7 +81,7 @@ describe('MarkdownParser html', function() {
 })
 
 describe('Post', function() {
-  var post = new reader.Post(path.join(__dirname, 'data', 'design.md'))
+  var post = new reader.Post(path.join(__dirname, 'data', 'design.md'), __dirname)
 
   it('should have header and body', function() {
     should.exist(post.header)
@@ -107,5 +107,9 @@ describe('Post', function() {
 
   it('should have pubdate', function() {
     post.pubdate.format('YYYY-MM-DD').should.equal('2012-12-12')
+  })
+
+  it('should have relative path', function() {
+    post.relative_filepath.should.equal(path.join('data', 'design.md'))
   })
 })
