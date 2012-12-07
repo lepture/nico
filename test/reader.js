@@ -62,3 +62,19 @@ describe('MarkdownParser toc', function() {
     toc.should.includeEql({id: 'title-1', text: 'title 1', level: 1})
   })
 })
+
+describe('MarkdownParser html', function() {
+  it('should inject code', function() {
+    var parser = new reader.MarkdownParser()
+    var html = [
+      '# title',
+      '',
+      '````js',
+      'var a = "b"',
+      '````',
+      ''
+    ].join('\n')
+    var code = parser.html(html)
+    code.should.include('<script>')
+  })
+})
