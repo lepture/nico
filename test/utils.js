@@ -1,6 +1,7 @@
 var utils = require('../lib/utils')
 var path = require('path')
 var should = require('should')
+var underscore = require('underscore')
 
 describe('utils destination', function() {
   var post = {
@@ -17,5 +18,13 @@ describe('utils destination', function() {
   it('should format to blog/01/hello', function() {
     var value = utils.destination(post, 'blog/{{month}}/{{filename}}')
     value.should.equal('blog/01/hello')
+  })
+})
+
+describe('Pagination', function() {
+  it('should be a pagination', function() {
+    var items = underscore.range(100)
+    var p = new utils.Pagination(items, 2, 30)
+    p.items.should.eql(underscore.range(30, 60))
   })
 })
