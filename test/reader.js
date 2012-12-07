@@ -90,5 +90,22 @@ describe('Post', function() {
 
   it('should have toc', function() {
     should.exist(post.toc)
+    post.toc.should.includeEql({id: 'the-core', text: 'The core', level: 2})
+  })
+
+  it('should have script in html', function() {
+    post.html.should.include('<script>')
+  })
+
+  it('should have title', function() {
+    post.title.should.equal('Design Pattern')
+  })
+
+  it('should have tags', function() {
+    post.tags.should.eql(['js', 'node', 'spm'])
+  })
+
+  it('should have pubdate', function() {
+    post.pubdate.format('YYYY-MM-DD').should.equal('2012-12-12')
   })
 })
