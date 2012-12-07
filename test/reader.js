@@ -1,4 +1,5 @@
 var reader = require('../lib/reader')
+var path = require('path')
 var should = require('should')
 
 describe('MarkdownParser meta', function() {
@@ -76,5 +77,18 @@ describe('MarkdownParser html', function() {
     ].join('\n')
     var code = parser.html(html)
     code.should.include('<script>')
+  })
+})
+
+describe('Post', function() {
+  var post = new reader.Post(path.join(__dirname, 'data', 'design.md'))
+
+  it('should have header and body', function() {
+    should.exist(post.header)
+    should.exist(post.body)
+  })
+
+  it('should have toc', function() {
+    should.exist(post.toc)
   })
 })
