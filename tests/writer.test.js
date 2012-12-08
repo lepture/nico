@@ -14,21 +14,35 @@ var storage = {
   config: {
     permalink: '{{filename}}.html',
     output: path.join(__dirname, '_site')
-  }
+  },
+  resource: {}
 };
 
 describe('PostWriter', function() {
   it('should write post design', function() {
-    var post = new reader.Post(
+    storage.resource.publicPosts = [];
+    storage.resource.publicPosts.push(new reader.Post(
       path.join(__dirname, 'data', 'design.md'), __dirname
-    );
-    storage.sourcePublicPosts = [post];
+    ));
     var p = new writer.PostWriter(storage);
     console.log();
     p.start();
     p.end();
     var text = fs.readFileSync(path.join(__dirname, '_site', 'design.html'), 'utf8');
     text.should.equal('Design Pattern');
+  });
+
+  it('can render unicode post', function() {
+    storage.resource.publicPosts = [];
+    storage.resource.publicPosts.push(new reader.Post(
+      path.join(__dirname, 'data', 'china-dream.md'), __dirname
+    ));
+    var p = new writer.PostWriter(storage);
+    console.log();
+    p.start();
+    p.end();
+    var text = fs.readFileSync(path.join(__dirname, '_site', 'china-dream.html'), 'utf8');
+    text.should.equal('龍應台：我們的「中國夢」（8月1日北京大學演講講辭）');
   });
 });
 
