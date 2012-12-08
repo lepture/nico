@@ -1,4 +1,4 @@
-# Extends fenced code
+# Fenced Code
 
 - pubdate: 2012-12-08
 
