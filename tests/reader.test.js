@@ -111,6 +111,25 @@ describe('Post', function() {
     post.pubdate.format('YYYY-MM-DD').should.equal('2012-12-12');
   });
 
+  it('can set a pubdate', function() {
+    post.pubdate = '2012-12-13';
+    post.pubdate.format('YYYY-MM-DD').should.equal('2012-12-13');
+  });
+
+  it('should have updated', function() {
+    should.exist(post.updated._d);
+  });
+
+  it('should have status', function() {
+    post.status.should.equal('public');
+    post._meta.status = 'secret';
+    post.status.should.equal('secret');
+  });
+
+  it('should have directory', function() {
+    post.directory.should.equal('data');
+  });
+
   it('should have relative path', function() {
     post.relative_filepath.should.equal(path.join('data', 'design.md'));
   });

@@ -20,7 +20,6 @@ coverage:
 	# NOTE: You must have node-jscoverage installed:
 	# https://github.com/visionmedia/node-jscoverage
 	# The jscoverage npm module and original JSCoverage packages will not work
-	@rm -f ${out}
 	@rm -fr lib-cov
 	@jscoverage lib lib-cov
 	@NICO_COVERAGE=1 $(MAKE) test reporter=html-cov > ${out}
