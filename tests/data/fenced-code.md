@@ -59,3 +59,11 @@ var nico = 'hello';
 `````html
 <a href="javascript:;">hello nico</a>
 `````
+
+## Iframe
+
+Sometimes you want to your code run in an iframe.
+
+````iframe:400
+<div id="iframe"></div>
+````

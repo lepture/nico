@@ -140,4 +140,11 @@ describe('Post', function() {
     post.html.should.include('</style>');
     post.html.should.include('<div class="nico-insert-code">');
   });
+
+  it('should have iframes', function() {
+    post = new reader.Post(path.join(__dirname, 'data', 'fenced-code.md'), __dirname);
+    post.iframes.should.have.ownProperty('iframe-data-fenced-code-1');
+    post.html.should.not.include('<div id="iframe">');
+    post.html.should.include('</iframe>');
+  });
 });
