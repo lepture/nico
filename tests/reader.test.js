@@ -133,4 +133,11 @@ describe('Post', function() {
   it('should have relative path', function() {
     post.relative_filepath.should.equal(path.join('data', 'design.md'));
   });
+
+  it('can render fenced code well', function() {
+    post = new reader.Post(path.join(__dirname, 'data', 'fenced-code.md'), __dirname);
+    post.html.should.include('<script>');
+    post.html.should.include('<style>');
+    post.html.should.include('<div class="nico-insert-code">');
+  });
 });
