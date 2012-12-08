@@ -7,11 +7,11 @@ all:
 specs := $(shell find ./tests -name '*.test.js' ! -path "*node_modules/*")
 reporter = dot
 opts =
-test:
+test: clean
 	@node_modules/.bin/mocha --reporter ${reporter} ${opts} ${specs}
 
 
-jsfiles := $(shell find . -name '*.js' ! -path "*node_modules/*" ! -path "*_themes/*")
+jsfiles := $(shell find . -name '*.js' ! -path "*node_modules/*" ! -path "*_themes/*" ! -path "*arale/*")
 lint:
 	@node_modules/.bin/jshint ${jsfiles} --config=scripts/config-lint.js
 
@@ -35,5 +35,7 @@ doc:
 publish: doc coverage
 	@ghp-import _site
 
+clean:
+	rm -fr tests/_site
 
 .PHONY: all build test lint coverage
