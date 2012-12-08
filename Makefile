@@ -15,7 +15,7 @@ jsfiles := $(shell find . -name '*.js' ! -path "*node_modules/*" ! -path "*_them
 lint:
 	@node_modules/.bin/jshint ${jsfiles} --config=scripts/config-lint.js
 
-out= tests/coverage.html
+out = _site/coverage.html
 coverage:
 	# NOTE: You must have node-jscoverage installed:
 	# https://github.com/visionmedia/node-jscoverage
@@ -28,5 +28,13 @@ coverage:
 	@rm -fr lib-cov
 	@echo "Built Report to ${out}"
 	@echo
+
+doc:
+	@bin/nico -I docs -O _site
+	@$(MAKE) coverage
+
+publish: doc coverage
+	@ghp-import _site
+
 
 .PHONY: all build test lint coverage
