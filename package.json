@@ -2,7 +2,11 @@
   "name": "nico",
   "version": "1.0.0-dev",
   "preferGlobal": "true",
-  "description": "Nico is a static site generation",
+  "description": "Nico is a front-end friendly static site generator",
+  "author": "Hsiaoming Yang <lepture@me.com>",
+  "keywords": [
+    "static", "site", "jekyll", "generator"
+  ],
   "dependencies": {
     "arale": "*",
     "colorful": ">=1.0.0",
@@ -13,13 +17,20 @@
     "robotskirt": ">=2.7.1",
     "commander": ">=1.1.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lepture/nico.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lepture/nico/issues"
+  },
   "devDependencies": {
     "jshint": "*",
     "mocha": "*",
     "should": "*"
   },
   "bin": {
-    "nico": "bin/nico"
+    "nico": "bin/nico.js"
   },
   "scripts": {
     "test": "make test"
