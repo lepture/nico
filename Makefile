@@ -36,6 +36,6 @@ publish: doc coverage
 	@ghp-import _site
 
 clean:
-	rm -fr tests/_site
+	@rm -fr tests/_site
 
 .PHONY: all build test lint coverage

@@ -121,9 +121,9 @@ describe('Post', function() {
   });
 
   it('should have status', function() {
-    post.status.should.equal('public');
-    post._meta.status = 'secret';
     post.status.should.equal('secret');
+    post._meta.status = 'draft';
+    post.status.should.equal('draft');
   });
 
   it('should have directory', function() {

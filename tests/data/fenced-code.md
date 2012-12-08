@@ -1,7 +1,5 @@
 # Fenced Code
 
-- pubdate: 2012-12-08
-
 -------------
 
 Nico is designed friendly for Front-End developer.
