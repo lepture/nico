@@ -1,3 +1,4 @@
+var require = require('./testutils').require;
 var utils = require('../lib/utils');
 var path = require('path');
 var should = require('should');
