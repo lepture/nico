@@ -8,7 +8,7 @@
     "highlight.js": ">=7.3.0",
     "moment": ">=1.7.2",
     "swig": ">=0.13.3",
-    "underscore": "*",
+    "underscore": ">=1.4.3",
     "robotskirt": ">=2.7.1",
     "commander": ">=1.1.1"
   },
