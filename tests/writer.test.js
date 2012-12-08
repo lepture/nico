@@ -9,9 +9,9 @@ var storage = {
     root: [path.join(__dirname, 'themes', 'theme1'), path.join(__dirname, 'themes', 'theme2')]
   },
   config: {
-    permalink: '{{filename}}.html'
-  },
-  outputDirectory: path.join(__dirname, '_site')
+    permalink: '{{filename}}.html',
+    output: path.join(__dirname, '_site')
+  }
 };
 
 describe('PostWriter', function() {
