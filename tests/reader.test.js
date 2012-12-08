@@ -136,8 +136,8 @@ describe('Post', function() {
 
   it('can render fenced code well', function() {
     post = new reader.Post(path.join(__dirname, 'data', 'fenced-code.md'), __dirname);
-    post.html.should.include('<script>');
-    post.html.should.include('<style>');
+    post.html.should.include('</script>');
+    post.html.should.include('</style>');
     post.html.should.include('<div class="nico-insert-code">');
   });
 });
