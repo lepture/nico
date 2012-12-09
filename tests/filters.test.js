@@ -18,7 +18,7 @@ describe('static_url', function() {
     writer: {filepath: '2012/hello-word.html'}
   });
 
-  it('should be ../../static/css/a.css', function() {
-    static_url('css/a.css').should.equal('../../static/css/a.css');
+  it('should be ../static/css/a.css', function() {
+    static_url('css/a.css').should.equal('../static/css/a.css');
   });
 });
