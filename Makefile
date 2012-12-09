@@ -17,9 +17,7 @@ lint:
 
 out = _site/coverage.html
 coverage:
-	# NOTE: You must have node-jscoverage installed:
-	# https://github.com/visionmedia/node-jscoverage
-	# The jscoverage npm module and original JSCoverage packages will not work
+	@scripts/detect-jscoverage.sh
 	@rm -fr lib-cov
 	@jscoverage lib lib-cov
 	@NICO_COVERAGE=1 $(MAKE) test reporter=html-cov > ${out}
@@ -28,8 +26,8 @@ coverage:
 	@echo "Built Report to ${out}"
 	@echo
 
-doc:
-	@bin/nico -I docs -O _site
+documentation:
+	@bin/nico.js build
 	@$(MAKE) coverage
 
 publish: doc coverage
