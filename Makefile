@@ -27,7 +27,7 @@ coverage:
 	@echo
 
 documentation:
-	@bin/nico.js build
+	@bin/nico.js build -C compose.json
 	@$(MAKE) coverage
 
 publish: doc coverage
