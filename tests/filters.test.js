@@ -11,3 +11,14 @@ describe('content_url', function() {
   it('should be ./desgin', function() {
   });
 });
+
+
+describe('static_url', function() {
+  var static_url = filters.contextfunctions.static_url({
+    writer: {filepath: '2012/hello-word.html'}
+  });
+
+  it('should be ../../static/css/a.css', function() {
+    static_url('css/a.css').should.equal('../../static/css/a.css');
+  });
+});
