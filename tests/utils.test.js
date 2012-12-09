@@ -1,5 +1,6 @@
 var require = require('./testutils').require;
 var utils = require('../lib/utils');
+var fs = require('fs');
 var path = require('path');
 var should = require('should');
 var underscore = require('underscore');
@@ -19,6 +20,16 @@ describe('utils destination', function() {
   it('should format to blog/01/hello', function() {
     var value = utils.destination(post, 'blog/{{month}}/{{filename}}');
     value.should.equal('blog/01/hello');
+  });
+});
+
+describe('utils copy', function() {
+  it('should copy docs to _site', function() {
+    var src = path.join(__dirname, '..', 'docs');
+    var dest = path.join(__dirname, '_site');
+    utils.copy(src, dest);
+    var isExist = fs.existsSync(path.join(dest, 'index.md'));
+    isExist.should.equal(true);
   });
 });
 

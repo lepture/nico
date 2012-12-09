@@ -11,7 +11,7 @@ test: clean
 	@node_modules/.bin/mocha --reporter ${reporter} ${opts} ${specs}
 
 
-jsfiles := $(shell find . -name '*.js' ! -path "*node_modules/*" ! -path "*_themes/*" ! -path "*docs/*")
+jsfiles := $(shell find . -name '*.js' ! -path "*node_modules/*" ! -path "*_themes/*" ! -path "*docs/*" ! -path "*_site/*")
 lint:
 	@node_modules/.bin/jshint ${jsfiles} --config=scripts/config-lint.js
 

@@ -2,6 +2,7 @@ var require = require('./testutils').require;
 var fs = require('fs');
 var path = require('path');
 var should = require('should');
+var swig = require('swig');
 var utils = require('../lib/utils');
 utils.logging.config('error');
 var reader = require('../lib/reader');
@@ -83,5 +84,17 @@ describe('PostWriter', function() {
       path.join(__dirname, '_site', 'design/index.html'), 'utf8'
     );
     text.should.equal('Design Pattern');
+  });
+});
+
+describe('StaticWriter', function() {
+  it('should copy static files', function() {
+    storage.config.theme = path.join(__dirname, 'themes', 'theme2');
+    var p = new writer.StaticWriter(storage);
+    p.start();
+    p.end();
+    fs.existsSync(
+      path.join(__dirname, '_site', 'static', 'a.css')
+    ).should.equal(true);
   });
 });
