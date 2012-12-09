@@ -1,0 +1,9 @@
+{
+  "source": "docs",
+  "output": "_site",
+  "theme": "./_themes/one",
+  "permalink": "{{directory}}/{{filename}}",
+  "writers": [
+    "./lib/writer.PostWriter"
+  ]
+}
