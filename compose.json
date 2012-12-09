@@ -3,7 +3,9 @@
   "output": "_site",
   "theme": "./_themes/one",
   "permalink": "{{directory}}/{{filename}}",
+  "github": "https://github.com/lepture/nico",
   "writers": [
-    "./lib/writer.PostWriter"
+    "./lib/writer.PostWriter",
+    "./lib/writer.StaticWriter"
   ]
 }

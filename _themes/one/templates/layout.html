@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="generator" content="nico">
+    <title>{{config.site.name}}</title>
+    <link rel="stylesheet" href="{{static_url('one.css')}}" />
+    {%- block afterstyle %}{% endblock %}
+  </head>
+  <body>
+    <div class="document">
+      {%- block document %}
+      {%- endblock %}
+    </div>
+    <div class="footer">
+    </div>
+    <a class="github" href="{{config.github}}"><img src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+  </body>
+</html>
