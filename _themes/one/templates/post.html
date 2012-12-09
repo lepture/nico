@@ -2,9 +2,8 @@
 
 {%- block document %}
 <div class="hentry">
-  <h1 class="entry-title">{{post.title}}</h1>
-  <time datetime="{{post.pubdate|xmldatetime}}">{{post.pubdate|date('Y-m-d')}}</time>
-  <div class="entry-description">{{post.description}}</div>
+  <h1 class="entry-title" datetime="{{post.pubdate|xmldatetime}}">{{post.title}}</h1>
+  <blockquote class="entry-description">{{post.meta.description}}</blockquote>
   <div class="entry-content">{{post.html}}</div>
 </div>
 {% endblock -%}

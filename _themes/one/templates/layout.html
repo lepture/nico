@@ -14,6 +14,10 @@
       {%- endblock %}
     </div>
     <div class="footer">
+      {%- if config.footer %}
+      <p>{{config.footer}}</p>
+      {%- endif %}
+      <p class="copyright">This site is build by <a href="http://lab.lepture.com/nico/">Nico</a>.</p>
     </div>
     <a class="github" href="{{config.github}}"><img src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
   </body>
