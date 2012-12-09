@@ -12,7 +12,9 @@ var storage = {
     root: [path.join(__dirname, 'themes', 'theme1'), path.join(__dirname, 'themes', 'theme2')]
   },
   config: {
+    PostRender: reader.Post,
     permalink: '{{filename}}.html',
+    source: path.join(__dirname, 'data'),
     output: path.join(__dirname, '_site')
   },
   resource: {}
@@ -21,9 +23,9 @@ var storage = {
 describe('PostWriter', function() {
   it('should write post design', function() {
     storage.resource.publicPosts = [];
-    storage.resource.publicPosts.push(new reader.Post(
-      path.join(__dirname, 'data', 'design.md'), __dirname
-    ));
+    storage.resource.publicPosts.push({
+      filepath: path.join(__dirname, 'data', 'design.md')
+    });
     var p = new writer.PostWriter(storage);
     p.start();
     p.end();
@@ -33,9 +35,9 @@ describe('PostWriter', function() {
 
   it('can render unicode post', function() {
     storage.resource.publicPosts = [];
-    storage.resource.publicPosts.push(new reader.Post(
-      path.join(__dirname, 'data', 'china-dream.md'), __dirname
-    ));
+    storage.resource.publicPosts.push({
+      filepath: path.join(__dirname, 'data', 'china-dream.md')
+    });
     var p = new writer.PostWriter(storage);
     p.start();
     p.end();
@@ -45,9 +47,9 @@ describe('PostWriter', function() {
 
   it('can create iframes', function() {
     storage.resource.publicPosts = [];
-    storage.resource.publicPosts.push(new reader.Post(
-      path.join(__dirname, 'data', 'fenced-code.md'), __dirname
-    ));
+    storage.resource.publicPosts.push({
+      filepath: path.join(__dirname, 'data', 'fenced-code.md')
+    });
     var p = new writer.PostWriter(storage);
     p.start();
     p.end();
@@ -55,7 +57,7 @@ describe('PostWriter', function() {
     text.should.equal('Fenced Code');
 
     text = fs.readFileSync(
-      path.join(__dirname, '_site', 'iframe-data-fenced-code-1.html'),
+      path.join(__dirname, '_site', 'iframe-fenced-code-1.html'),
       'utf8'
     );
     text.should.include('id="iframe"');
@@ -64,9 +66,9 @@ describe('PostWriter', function() {
   it('can reset permalink', function() {
     storage.config.permalink = '{{filename}}';
     storage.resource.publicPosts = [];
-    storage.resource.publicPosts.push(new reader.Post(
-      path.join(__dirname, 'data', 'design.md'), __dirname
-    ));
+    storage.resource.publicPosts.push({
+      filepath: path.join(__dirname, 'data', 'design.md')
+    });
     var p = new writer.PostWriter(storage);
     p.start();
     p.end();

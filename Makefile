@@ -5,7 +5,7 @@ all:
 
 
 specs := $(shell find ./tests -name '*.test.js' ! -path "*node_modules/*")
-reporter = dot
+reporter = spec
 opts =
 test: clean
 	@node_modules/.bin/mocha --reporter ${reporter} ${opts} ${specs}
