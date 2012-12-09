@@ -98,3 +98,15 @@ describe('StaticWriter', function() {
     ).should.equal(true);
   });
 });
+
+
+describe('FileWriter', function() {
+  it('should copy static files', function() {
+    var p = new writer.FileWriter(storage);
+    p.start();
+    p.end();
+    fs.existsSync(
+      path.join(__dirname, '_site', 'file.txt')
+    ).should.equal(true);
+  });
+});
