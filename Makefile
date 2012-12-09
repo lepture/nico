@@ -31,7 +31,8 @@ documentation:
 	@$(MAKE) coverage
 
 publish: doc coverage
-	@ghp-import _site
+	@scripts/ghp-import.py _site
+	@git push origin gh-pages
 
 clean:
 	@rm -fr tests/_site
