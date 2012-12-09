@@ -17,7 +17,11 @@ var cliConfig = {
 
 describe('callReader', function() {
   it('should have 1 public post, 1 secret post and 1 page', function() {
-    var storage = cli.callReader(path.join(__dirname, 'data'));
+    var storage = cli.callReader({
+      config: {
+        source: path.join(__dirname, 'data')
+      }
+    });
     var resource = storage.resource;
     resource.publicPosts.length.should.equal(1);
     resource.secretPosts.length.should.equal(1);
