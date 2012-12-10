@@ -30,7 +30,7 @@ coverage:
 documentation:
 	@bin/nico.js build -C nico.json -q
 
-publish: doc coverage
+publish: documentation coverage
 	@scripts/ghp-import.py _site
 	@git push origin gh-pages
 
