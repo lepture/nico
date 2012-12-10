@@ -53,7 +53,7 @@ describe('MarkdownParser toc', function() {
   it('should have nothing', function() {
     var parser = new reader.MarkdownParser();
     var toc = parser.toc('');
-    toc.should.eql([]);
+    toc.should.eql('');
   });
   it('should have toc', function() {
     var parser = new reader.MarkdownParser();
@@ -64,7 +64,11 @@ describe('MarkdownParser toc', function() {
       ''
     ].join('\n');
     var toc = parser.toc(html);
-    toc.should.includeEql({id: 'title-1', text: 'title 1', level: 1});
+    var htmlToc = [
+      '<ul><li><a href="#title-1">title 1</a>',
+      '<ul><li><a href="#title-2">title 2</a></li></ul></ul>'
+    ].join('');
+    toc.should.equal(htmlToc);
   });
 });
 
@@ -97,7 +101,6 @@ describe('Post', function() {
 
   it('should have toc', function() {
     should.exist(post.toc);
-    post.toc.should.includeEql({id: 'the-core', text: 'The core', level: 2});
   });
 
   it('should have script in html', function() {
