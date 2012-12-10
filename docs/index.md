@@ -45,6 +45,14 @@ This will download and install the latest version of nico, remember the ``-g`` o
 ## Theme
 
 
-## Concept
+## Quality
 
-The concept is borrowed from [liquidluck](http://lab.lepture.com/liquidluck/) with a little improvement.
+The concept is borrowed from [liquidluck](http://lab.lepture.com/liquidluck/) with a little improvement. It should works like liquidluck, and it really did.
+
+The code of nico is well tested, and you can add more test case for this project.
+Have a lookt at the [test coverage](./coverage.html') and find out the missing test case.
+
+
+## Contributing
+
+Contributing is really welcome, but before this you should read the [Contributing Guide](https://github.com/lepture/nico/blob/master/CONTRIBUTING.md)
