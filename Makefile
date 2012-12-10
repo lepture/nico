@@ -30,11 +30,12 @@ coverage:
 documentation:
 	@bin/nico.js build -C nico.json -q
 
-publish: documentation coverage
+publish: clean documentation coverage
 	@scripts/ghp-import.py _site
 	@git push origin gh-pages
 
 clean:
-	rm -fr _site
+	@rm -fr tests/_site
+	@rm -fr _site
 
 .PHONY: all build test lint coverage
