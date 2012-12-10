@@ -8,7 +8,7 @@ There are more than one way to contribute, and I will appreciate any way you cho
 
 English and Chinsese issuses are acceptable, but English is prefered.
 
-Pull request and git commit message only accept English, if you commit message is in other language, it will be rejected.
+Pull request and git commit message only accept English, if your commit message is in other language, it will be rejected.
 
 
 ## Codebase
