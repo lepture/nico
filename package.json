@@ -4,6 +4,7 @@
   "preferGlobal": "true",
   "description": "Nico is a front-end friendly static site generator",
   "author": "Hsiaoming Yang <lepture@me.com>",
+  "homepage": "http://lab.lepture.com/nico/",
   "keywords": [
     "static", "site", "jekyll", "generator"
   ],
