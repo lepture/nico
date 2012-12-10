@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta name="generator" content="nico">
-    <title>{{config.site.name}}</title>
+    <title>{% block title%}{% endblock %}</title>
     <link rel="stylesheet" href="{{static_url('one.css')}}" />
+    <link rel="stylesheet" href="{{static_url('syntax.css')}}" />
     {%- block afterstyle %}{% endblock %}
   </head>
   <body>
@@ -19,6 +20,7 @@
       {%- endif %}
       <p class="copyright">This site is built by <a href="http://lab.lepture.com/nico/">nico</a>.</p>
     </div>
+    <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="{{static_url('one.js')}}"></script>
     <a class="github" href="{{config.github}}"><img src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
   </body>
 </html>

@@ -94,8 +94,9 @@ pre,
 code,
 tt {
   font-size: 1em;
-  line-height: 1.714285em;
-  font-family: Inconsolata, 'Courier New', monospace;
+  line-height: 1.5em;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+  overflow-x: scroll;
 }
 
 pre {
@@ -182,6 +183,17 @@ hr {
 }
 .entry-description {
   color: #676867;
+}
+
+a.title-permalink {
+  margin-left: 4px;
+  padding: 0 4px;
+  text-decoration: none;
+  color: white;
+}
+a.title-permalink:hover {
+  color: #5784bf;
+  background-color: #eee;
 }
 
 .footer {

@@ -34,5 +34,7 @@ publish: doc coverage
 	@scripts/ghp-import.py _site
 	@git push origin gh-pages
 
+clean:
+	rm -fr _site
 
 .PHONY: all build test lint coverage
