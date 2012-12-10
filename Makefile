@@ -27,7 +27,7 @@ coverage:
 	@echo
 
 documentation:
-	@bin/nico.js build -C compose.json
+	@bin/nico.js build -C nico.json -v
 
 publish: doc coverage
 	@scripts/ghp-import.py _site

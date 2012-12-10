@@ -4,9 +4,10 @@
   "theme": "./_themes/one",
   "permalink": "{{directory}}/{{filename}}",
   "github": "https://github.com/lepture/nico",
-  "footer": "Nico was created by lepture, concept based on liquidluck. Brought to you under the BSD license.",
+  "footer": "nico was created by lepture, concept based on liquidluck. Brought to you under the BSD license.",
   "writers": [
     "./lib/writer.PageWriter",
+    "./lib/writer.FileWriter",
     "./lib/writer.StaticWriter"
   ]
 }
