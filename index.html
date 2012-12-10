@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="generator" content="nico">
+    <title>nico</title>
+    <link rel="stylesheet" href="./static/one.css" />
+    <link rel="stylesheet" href="./static/syntax.css" />
+  </head>
+  <body>
+    <div class="document">
+<div class="hentry">
+  <h1 class="entry-title">nico</h1>
+  <blockquote class="entry-description"><p>nico is a front-end friendly static site generator, best for web developers like you and me.</p></blockquote>
+  <div class="entry-content"><p>Ever want to build a static site? Don&#39;t fancy Python, Ruby or any other languages? Just like you, I do like javascript, and node made it so fun.</p>
+
+<p>nico is written in javascript, using what you are familiar with makes you happy. You are able to change things, you are able to make a difference.</p>
+<h2 id="how-it-looks">How it Looks</h2>
+<p><img src="./nico-look.png" alt="nico"/></p>
+<h2 id="documentation">Documentation</h2>
+<p>Documentation is available in these languages:</p>
+
+<ul>
+<li><a href="./en/">English</a></li>
+<li><a href="./zh/">简体中文</a></li>
+</ul>
+
+<p>Too long, don&#39;t read. But if you want to dive into it deeper, it will help you.</p>
+<h2 id="installation">Installation</h2>
+<p>nico is written in node which means you can easily install it with npm:</p>
+
+<pre>$ npm install nico -g
+</pre>
+
+<p>This will download and install the latest version of nico, remember the <code>-g</code> option.</p>
+<h2 id="quick-start">Quick Start</h2>
+<p>An example explains everything, since this site is built by nico, it&#39;s an example too.
+Head over to <a href="https://github.com/lepture/nico">nico&#39;s github repo</a> and find out the mistery.</p>
+<h3 id="configuration">Configuration</h3>
+<p>The config file is <a href="https://github.com/lepture/nico/blob/master/nico.json">nico.json</a> or nico.js. But you can use any name you want.</p>
+
+<p>The only required part of configuration:</p>
+<pre><code class="javascript">{
+    <span class="string">"source"</span>: <span class="string">"source directory, default is content"</span>,
+    <span class="string">"output"</span>: <span class="string">"output directory, default is _site"</span>,
+    <span class="string">"theme"</span>: <span class="string">"your theme path"</span>,
+    <span class="string">"permalink"</span>: <span class="string">"permalink style"</span>,
+    <span class="string">"writers"</span>: []
+}
+</code></pre><pre><code class="javascript">define(<span class="keyword">function</span>(require, exports, module) {
+  <span class="keyword">var</span> key = require(<span class="string">'value'</span>);
+  <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> key) {
+    <span class="keyword">if</span>(i) <span class="keyword">return</span> <span class="literal">true</span>;
+    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">2</span>;
+  }
+});
+</code></pre>
+<p>Actually the only required part is <code>writers</code>, you can assign other information with command line:</p>
+
+<pre>$ nico build -I docs -O _site --theme=.&#47;_themes&#47;one --permalink={{directory}}&#47;{{filename}}.html
+</pre>
+<h3 id="writing">Writing</h3>
+<p>There is a little difference between liquidluck and nico.</p>
+
+<ul>
+<li>nico only support markdown, and in the foreseen future, markdown will be the only choice.</li>
+<li>nico add more features for front-end developers.</li>
+<li>nico use meta status instead of meta public.</li>
+</ul>
+
+<p>The overview of a post syntax:</p>
+
+<pre># This is title
+
+- pubdate: 2012-12-12
+- tags: javascript, python
+- meta-key: meta value
+
+This is the description, description is the part above ----
+
+------------------
+
+Content is below the ----. We do support fenced code, but more than that.
+
+1. three ` (```) for the normal usage.
+2. four ` (````) will insert code to your page.
+3. five ` (````) will insert code to your page, but don&#39;t show the highlighted code.
+
+For example, with ````
+
+````javascript
+var nico = true
+````
+
+The result will be
+
+&lt;script&gt;
+var nico = true
+&lt;&#47;script&gt;
+&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;
+&lt;span class=&quot;keyword&quot;&gt;var&lt;&#47;span&gt; &lt;span class=&quot;variable&quot;&gt;nico ....
+&lt;&#47;code&gt;&lt;&#47;pre&gt;
+</pre>
+<h2 id="quality">Quality</h2>
+<p>The concept is borrowed from <a href="http://lab.lepture.com/liquidluck/">liquidluck</a> with a little improvement. It should works like liquidluck, and it really did. I eat my own dog food, this site is built by nico.</p>
+
+<p>The code of nico is well tested, and you can add more test case for this project.
+Have a lookt at the <a href="./coverage.html">test coverage</a> and find out the missing test case.</p>
+<h2 id="who-are-using-nico">Who are using nico</h2>
+<p>Me, of course. But besides that, the nice folks of our team are using nico too.</p>
+
+<ul>
+<li>The great project <a href="http://aralejs.com">arale</a> is using nico heavily.</li>
+</ul>
+<h2 id="contributing">Contributing</h2>
+<p>Contributing is really welcome, but before this you should read the <a href="https://github.com/lepture/nico/blob/master/CONTRIBUTING.md">Contributing Guide</a>.</p>
+</div>
+</div>
+</div>
+    <div class="footer">
+      <p>nico was created by lepture, concept based on liquidluck. brought to you under the BSD license.</p>
+      <p class="copyright">This site is built by <a href="http://lab.lepture.com/nico/">nico</a>.</p>
+    </div>
+    <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="./static/one.js"></script>
+    <a class="github" href="https://github.com/lepture/nico"><img src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+  </body>
+</html>
