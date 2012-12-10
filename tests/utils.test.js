@@ -5,6 +5,18 @@ var path = require('path');
 var should = require('should');
 var underscore = require('underscore');
 
+describe('utils encodeURIComponent', function() {
+  it('should be hello-world', function() {
+    utils.encodeURIComponent('Hello World').should.equal('hello-world');
+    utils.encodeURIComponent('H!el?lo-Wo$%rld').should.equal('h-el-lo-wo-rld');
+    utils.encodeURIComponent('`%he()llo<world>').should.equal('he-llo-world');
+  });
+  it('can encode unicode', function() {
+    var text = '¡å hello 中文';
+    utils.encodeURIComponent(text).should.equal('%C2%A1%C3%A5-hello-%E4%B8%AD%E6%96%87');
+  });
+});
+
 describe('utils destination', function() {
   var post = {
     year: function() { return 2012; },
