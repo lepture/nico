@@ -171,6 +171,11 @@ hr {
 .github img {
   margin: 0;
 }
+@media (max-width: 650px) {
+  .github {
+    display: none;
+  }
+}
 .document {
   max-width: 640px;
   *width: 650px;
@@ -203,7 +208,7 @@ a.title-permalink:hover {
   color: #555;
   font-size: 15px;
   line-height: 1.3;
-  padding: 60px 0;
+  padding: 60px 20px 30px;
 }
 .copyright {
   padding-top: 30px;
@@ -211,6 +216,14 @@ a.title-permalink:hover {
   font-size: 13px;
   text-shadow: 0 1px 0 #eee;
   color: #999;
+}
+@media (max-width: 650px) {
+  .footer {
+    padding-bottom: 10px;
+  }
+  .copyright {
+    text-align: center;
+  }
 }
 .copyright a {
   color: #888;
