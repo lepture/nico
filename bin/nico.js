@@ -20,10 +20,10 @@ var builder = new program.Command();
 builder._name = 'nico build';
 builder.usage('[options]');
 builder.
-  option('-C --config <config>', 'the config file [compose.json]').
+  option('-C --config <config>', 'the config file [nico.json]').
   option('-I --source <source>', 'the content directory [content]').
   option('-O --output <output>', 'the output directory [_site]').
-  option('--theme <theme>', 'the theme name').
+  option('--theme <theme>', 'the theme path').
   option('--permalink <permalink>', 'permalink style of your site').
   option('-v --verbose', 'show more logging').
   option('-q --quiet', 'show less logging');
