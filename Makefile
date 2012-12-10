@@ -7,7 +7,8 @@ all:
 specs := $(shell find ./tests -name '*.test.js' ! -path "*node_modules/*")
 reporter = spec
 opts =
-test: clean
+test:
+	@rm -fr tests/_site
 	@node_modules/.bin/mocha --reporter ${reporter} ${opts} ${specs}
 
 
@@ -33,7 +34,5 @@ publish: doc coverage
 	@scripts/ghp-import.py _site
 	@git push origin gh-pages
 
-clean:
-	@rm -fr tests/_site
 
 .PHONY: all build test lint coverage

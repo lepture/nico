@@ -16,7 +16,7 @@ var helperConfig = {
 
 
 describe('callReader', function() {
-  it('should have 1 public post, 1 secret post and 1 page', function() {
+  it('should have 1 public post, 1 secret post and 2 pages', function() {
     var storage = helper.callReader({
       config: {
         source: path.join(__dirname, 'data')
@@ -25,7 +25,7 @@ describe('callReader', function() {
     var resource = storage.resource;
     resource.publicPosts.length.should.equal(1);
     resource.secretPosts.length.should.equal(1);
-    resource.pages.length.should.equal(1);
+    resource.pages.length.should.equal(2);
   });
 });
 

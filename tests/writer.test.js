@@ -10,7 +10,10 @@ var writer = require('../lib/writer');
 
 var storage = {
   swigConfig: {
-    root: [path.join(__dirname, 'themes', 'theme1'), path.join(__dirname, 'themes', 'theme2')]
+    root: [
+      path.join(__dirname, 'themes', 'theme1'),
+      path.join(__dirname, 'themes', 'theme2', 'templates')
+    ]
   },
   config: {
     PostRender: reader.Post,
@@ -84,8 +87,28 @@ describe('PostWriter', function() {
       path.join(__dirname, '_site', 'design/index.html'), 'utf8'
     );
     text.should.equal('Design Pattern');
+    // reset back
+    storage.config.permalink = '{{filename}}.html';
   });
 });
+
+
+describe('PageWriter', function() {
+  it('should render page well', function() {
+    storage.resource.pages = [];
+    storage.resource.pages.push({
+      filepath: path.join(__dirname, 'data', 'page.md')
+    });
+    var p = new writer.PageWriter(storage);
+    p.start();
+    p.end();
+    var text = fs.readFileSync(
+      path.join(__dirname, '_site', 'page.html'), 'utf8'
+    );
+    text.should.equal('Page');
+  });
+});
+
 
 describe('StaticWriter', function() {
   it('should copy static files', function() {
