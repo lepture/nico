@@ -2,7 +2,7 @@ var require = require('./testutils').require;
 var fs = require('fs');
 var path = require('path');
 var should = require('should');
-var swig = require('swig');
+var swig = require('jinja');
 var utils = require('../lib/utils');
 utils.logging.config('error');
 var reader = require('../lib/reader');
