@@ -1,14 +1,14 @@
 var require = require('./testutils').require;
-var helper = require('../lib/helper');
+var cli = require('../lib/cli');
 var utils = require('../lib/utils');
 var path = require('path');
 
-var helperConfig = {
+var cliConfig = {
   swigConfig: {
     root: [path.join(__dirname, 'themes', 'theme1'), path.join(__dirname, 'themes', 'theme2')]
   },
   config: {
-    permalink: 'helper/{{filename}}.html',
+    permalink: 'cli/{{filename}}.html',
     output: path.join(__dirname, '_site')
   },
   resource: {}
@@ -17,7 +17,7 @@ var helperConfig = {
 
 describe('callReader', function() {
   it('should have 1 public post, 1 secret post and 2 pages', function() {
-    var storage = helper.callReader({
+    var storage = cli.callReader({
       config: {
         source: path.join(__dirname, 'data')
       }
@@ -31,6 +31,6 @@ describe('callReader', function() {
 
 describe('config', function() {
   it('should config well', function() {
-    helper.config(helperConfig);
+    cli.parseConfig(cliConfig);
   });
 });

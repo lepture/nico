@@ -2,6 +2,8 @@
 
 require('colorful').colorful();
 var cli = require('../lib/cli');
+var utils = require('../lib/utils');
+var logging = utils.logging;
 
 var program = require('commander');
 program._name = 'nico';
@@ -36,7 +38,27 @@ program.parse(process.argv);
 var subcmd = program.args[0];
 if (subcmd === 'build') {
   builder.parse(args);
-  cli.build(builder);
+  logging.config(builder);
+  logging.start('building site');
+  var startTime = new Date();
+
+  logging.start('loading configuration');
+  var storage = cli.getConfig(builder);
+  storage.swigConfig = cli.getSwigConfig(storage.config);
+  logging.end('configuration done');
+
+  logging.start('loading posts');
+  logging.debug('source directory: %s', storage.config.source);
+  cli.callReader(storage);
+  logging.end('posts loaded');
+
+  logging.start('generating site');
+  logging.debug('output directory: %s', storage.config.output);
+  cli.callWriters(storage);
+  logging.end('site is updated');
+
+  var timeCost = (new Date() - startTime) / 1000;
+  logging.end('building finished in %d seconds', timeCost);
 } else {
   help();
 }
