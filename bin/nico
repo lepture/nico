@@ -1,0 +1,201 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+require('colorful').colorful();
+var cli = require('../lib/cli');
+var utils = require('../lib/utils');
+var logging = utils.logging;
+
+var program = require('commander');
+program._name = 'nico';
+program.usage('[command] [options]');
+
+program.
+  command('build').
+  description('build the site');
+
+program.
+  command('server').
+  description('create a http server');
+
+program.
+  command('help [<command>]').
+  description('show help information').
+  action(help);
+
+var builder = new program.Command();
+builder._name = 'nico build';
+builder.usage('[options]');
+builder.
+  option('-C --config <config>', 'the config file [nico.json]').
+  option('-I --source <source>', 'the content directory [content]').
+  option('-O --output <output>', 'the output directory [_site]').
+  option('--theme <theme>', 'the theme path').
+  option('--permalink <permalink>', 'permalink style of your site').
+  option('-v --verbose', 'show more logging').
+  option('-q --quiet', 'show less logging');
+
+var server = new program.Command();
+server._name = 'nico server';
+server.usage('[options]');
+server.
+  option('-C --config <config>', 'the config file [nico.json]').
+  option('-I --source <source>', 'the content directory [content]').
+  option('-O --output <output>', 'the output directory [_site]').
+  option('--theme <theme>', 'the theme path').
+  option('--permalink <permalink>', 'permalink style of your site').
+  option('--port <port>', 'the http server port [8000]').
+  option('-v --verbose', 'show more logging').
+  option('-q --quiet', 'show less logging');
+
+
+
+args = process.argv.slice(1);
+program.parse(process.argv);
+
+var subcmd = program.args[0];
+if (subcmd === 'build') {
+  builder.parse(args);
+  logging.config(builder);
+  build(builder);
+} else if (subcmd === 'server') {
+  server.parse(args);
+  logging.config(server);
+  watch(server);
+} else {
+  help();
+}
+
+function help() {
+  var subcmd = program.args[0];
+  if (subcmd === 'build') {
+    process.stdout.write(builder.helpInformation());
+    builder.emit('--help');
+  } else {
+    process.stdout.write(program.helpInformation());
+    program.emit('--help');
+  }
+  process.exit();
+}
+
+var storage;
+function build(builder) {
+  logging.start('building site');
+  var startTime = new Date();
+
+  logging.start('loading configuration');
+  storage = cli.getConfig(builder);
+  storage.swigConfig = cli.getSwigConfig(storage.config);
+  logging.end('configuration done');
+
+  logging.start('loading posts');
+  logging.debug('source directory: %s', storage.config.source);
+  cli.callReader(storage);
+  logging.end('posts loaded');
+
+  logging.start('generating site');
+  logging.debug('output directory: %s', storage.config.output);
+  cli.callWriters(storage);
+  logging.end('site is updated');
+
+  var timeCost = (new Date() - startTime) / 1000;
+  logging.end('building finished in %d seconds', timeCost);
+}
+
+var _lastChanged, _liveReload;
+function watch(server) {
+  storage = cli.getConfig(server);
+  var app = require('http').createServer(handler);
+  var io, port = server.port || 8000;
+  try {
+    io = require('socket.io').listen(app);
+    _liveReload = true;
+  } catch(e) {
+    logging.error('you need install socket.io to enable this feature');
+  }
+  var reload = function(socket) {
+    server.on('fileModified', function(message) {
+      socket.emit('reload', {message: message});
+    })
+  }
+
+  if (io) {
+    io.sockets.on('connection', function(socket) {
+      socket.emit('hello', {message: 'nico'});
+      reload(socket);
+    });
+  }
+
+  logging.start('start watching');
+  build(server);
+
+  _lastChanged = new Date();
+  setInterval(function() {
+    if (isChanged(storage.config.source, storage.config.ignore)) {
+      if ((new Date() - _lastChanged) > 1800) {
+        _lastChanged = new Date();
+        build(server);
+        server.emit('fileModified', {message: 'nico'});
+      }
+    }
+  }, 800);
+  logging.info('start http server: http://127.0.0.1:%s', port);
+  app.listen(port);
+}
+
+var _cache = {};
+function isChanged(source, ignore) {
+  var files = utils.walkdir(source, ignore).files;
+  var _changed = false;
+  files.forEach(function(item) {
+    var stat = fs.statSync(item);
+    if ((item in _cache) && (_cache[item] - stat.mtime)) {
+      logging.debug('changed: %s', item);
+      _changed = true;
+    }
+    _cache[item] = stat.mtime;
+  });
+  return _changed;
+}
+
+var path = require('path');
+function handler(req, res) {
+  var file = req.url.slice(1);
+  if (!file || file.slice(-1) == '/') {
+    file = path.join(file, 'index.html');
+  }
+  var ext = path.extname(file).slice(1);
+  var mimetypes = {
+    html: 'text/html',
+    css: 'text/css',
+    js: 'text/javascript',
+    png: 'image/png',
+    jpg: 'image/jpeg',
+    git: 'image/gif'
+  }
+  if (ext in mimetypes) {
+    res.setHeader("Content-Type", mimetypes[ext]);
+  }
+  var code = [
+    '<script src="/socket.io/socket.io.js"></script><script>',
+    'var socket = io.connect("http://127.0.0.1:' + (server.port || 8000),
+    '"); socket.on("reload", function() { location.reload() });',
+    '</script></head>'
+  ].join('');
+  fs.readFile(
+    path.join(storage.config.output, file), 'utf-8',
+    function(err, data) {
+      if (err) {
+        res.writeHead(500);
+        return res.end('No index.html');
+      }
+      res.writeHead(200);
+      data = data.replace('http://www.google-analytics.com/ga.js', '');
+      data = data.replace('https://ssl.google-analytics.com/ga.js', '');
+      if (_liveReload) {
+        data = data.replace('</head>', code);
+      }
+      res.end(data);
+    }
+  );
+}
