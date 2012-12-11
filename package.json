@@ -1,6 +1,6 @@
 {
   "name": "nico",
-  "version": "1.0.0-dev",
+  "version": "0.1.0-alpha",
   "preferGlobal": "true",
   "description": "Nico is a front-end friendly static site generator",
   "author": "Hsiaoming Yang <lepture@me.com>",
@@ -31,7 +31,7 @@
     "should": "*"
   },
   "bin": {
-    "nico": "bin/nico.js"
+    "nico": "bin/nico"
   },
   "scripts": {
     "test": "make test"
