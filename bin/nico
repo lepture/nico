@@ -172,6 +172,10 @@ function handler(req, res) {
     png: 'image/png',
     jpg: 'image/jpeg',
     git: 'image/gif'
+  };
+  var encode;
+  if (ext === 'html') {
+    encode = 'utf-8';
   }
   if (ext in mimetypes) {
     res.setHeader("Content-Type", mimetypes[ext]);
@@ -183,17 +187,19 @@ function handler(req, res) {
     '</script></head>'
   ].join('');
   fs.readFile(
-    path.join(storage.config.output, file), 'utf-8',
+    path.join(storage.config.output, file), encode,
     function(err, data) {
       if (err) {
         res.writeHead(500);
         return res.end('No index.html');
       }
       res.writeHead(200);
-      data = data.replace('http://www.google-analytics.com/ga.js', '');
-      data = data.replace('https://ssl.google-analytics.com/ga.js', '');
-      if (_liveReload) {
-        data = data.replace('</head>', code);
+      if (encode == 'utf-8') {
+        data = data.replace('http://www.google-analytics.com/ga.js', '');
+        data = data.replace('https://ssl.google-analytics.com/ga.js', '');
+        if (_liveReload) {
+          data = data.replace('</head>', code);
+        }
       }
       res.end(data);
     }
