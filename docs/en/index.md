@@ -1,4 +1,4 @@
-# Documentation
+# Documentation of nico
 
 Wow, you are surfing the documentation, good to hear that.
 

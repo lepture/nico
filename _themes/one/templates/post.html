@@ -4,7 +4,7 @@
 {%- block document %}
 <div class="hentry">
   <h1 class="entry-title" datetime="{{post.pubdate|xmldatetime}}">{{post.title}}</h1>
-  <blockquote class="entry-description">{{post.meta.description}}</blockquote>
+  <blockquote class="entry-description">{{post.description}}</blockquote>
   <div class="entry-content">{{post.html}}</div>
 </div>
 {% endblock -%}
