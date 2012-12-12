@@ -55,16 +55,6 @@ The only required part of configuration:
 }
 ```
 
-```javascript
-define(function(require, exports, module) {
-  var key = require('value');
-  for (var i in key) {
-    if(i) return true;
-    else return 2;
-  }
-});
-```
-
 Actually the only required part is ``writers``, you can assign other information with command line:
 
 ```
