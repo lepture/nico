@@ -79,12 +79,12 @@ function help() {
 }
 
 var storage;
-function build(builder) {
+function build(prog) {
   logging.start('building site');
   var startTime = new Date();
 
   logging.start('loading configuration');
-  storage = cli.getConfig(builder);
+  storage = cli.getConfig(prog);
   storage.swigConfig = cli.getSwigConfig(storage.config);
   logging.end('configuration done');
 
@@ -102,19 +102,18 @@ function build(builder) {
   logging.end('building finished in %d seconds', timeCost);
 }
 
-var _lastChanged, _liveReload;
-function watch(server) {
-  storage = cli.getConfig(server);
+var _lastChanged, io, port;
+function watch(prog) {
+  storage = cli.getConfig(prog);
+  port = prog.port || 8000;
   var app = require('http').createServer(handler);
-  var io, port = server.port || 8000;
   try {
     io = require('socket.io').listen(app);
-    _liveReload = true;
   } catch(e) {
     logging.error('you need install socket.io to enable this feature');
   }
   var reload = function(socket) {
-    server.on('fileModified', function(message) {
+    prog.on('fileModified', function(message) {
       socket.emit('reload', {message: message});
     })
   }
@@ -127,14 +126,14 @@ function watch(server) {
   }
 
   logging.start('start watching');
-  build(server);
+  build(prog);
 
   _lastChanged = new Date();
   setInterval(function() {
     if (isChanged(storage.config.source, storage.config.ignore)) {
       if ((new Date() - _lastChanged) > 1800) {
         _lastChanged = new Date();
-        build(server);
+        build(prog);
         server.emit('fileModified', {message: 'nico'});
       }
     }
@@ -197,7 +196,7 @@ function handler(req, res) {
       if (encode == 'utf-8') {
         data = data.replace('http://www.google-analytics.com/ga.js', '');
         data = data.replace('https://ssl.google-analytics.com/ga.js', '');
-        if (_liveReload) {
+        if (io) {
           data = data.replace('</head>', code);
         }
       }
