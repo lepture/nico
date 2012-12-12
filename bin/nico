@@ -105,11 +105,14 @@ function build(prog) {
 
 var _lastChanged, io, port;
 function watch(prog) {
+  build(prog);
+
+  logging.start('start watching');
   storage = cli.getConfig(prog);
   port = prog.port || 8000;
   var app = require('http').createServer(handler);
   try {
-    io = require('socket.io').listen(app);
+    io = require('socket.io').listen(app, {log: false});
   } catch(e) {
     logging.info('npm install socket.io to enable livereload');
   }
@@ -125,9 +128,6 @@ function watch(prog) {
       reload(socket);
     });
   }
-
-  logging.start('start watching');
-  build(prog);
 
   if (prog.watch) {
     _lastChanged = new Date();
