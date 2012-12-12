@@ -162,6 +162,7 @@ function isChanged(source, ignore) {
 
 var path = require('path');
 function handler(req, res) {
+  logging.info('request: %s %s', req.method, req.url);
   var file = req.url.slice(1);
   if (!file || file.slice(-1) == '/') {
     file = path.join(file, 'index.html');
