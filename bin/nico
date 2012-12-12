@@ -45,6 +45,7 @@ server.
   option('--theme <theme>', 'the theme path').
   option('--permalink <permalink>', 'permalink style of your site').
   option('--port <port>', 'the http server port [8000]').
+  option('--watch', 'if file changed, reload the site').
   option('-v --verbose', 'show more logging').
   option('-q --quiet', 'show less logging');
 
@@ -110,7 +111,7 @@ function watch(prog) {
   try {
     io = require('socket.io').listen(app);
   } catch(e) {
-    logging.error('you need install socket.io to enable this feature');
+    logging.info('npm install socket.io to enable livereload');
   }
   var reload = function(socket) {
     prog.on('fileModified', function(message) {
@@ -128,16 +129,18 @@ function watch(prog) {
   logging.start('start watching');
   build(prog);
 
-  _lastChanged = new Date();
-  setInterval(function() {
-    if (isChanged(storage.config.source, storage.config.ignore)) {
-      if ((new Date() - _lastChanged) > 1800) {
-        _lastChanged = new Date();
-        build(prog);
-        server.emit('fileModified', {message: 'nico'});
+  if (prog.watch) {
+    _lastChanged = new Date();
+    setInterval(function() {
+      if (isChanged(storage.config.source, storage.config.ignore)) {
+        if ((new Date() - _lastChanged) > 1800) {
+          _lastChanged = new Date();
+          build(prog);
+          server.emit('fileModified', {message: 'nico'});
+        }
       }
-    }
-  }, 800);
+    }, 800);
+  }
   logging.info('start http server: http://127.0.0.1:%s', port);
   app.listen(port);
 }
