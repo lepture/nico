@@ -173,7 +173,8 @@ function handler(req, res) {
     js: 'text/javascript',
     png: 'image/png',
     jpg: 'image/jpeg',
-    git: 'image/gif'
+    git: 'image/gif',
+    woff: 'application/x-font-woff'
   };
   var encode;
   if (ext === 'html') {
