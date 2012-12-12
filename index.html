@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 1.0.0-dev">
+    <meta name="generator" content="nico 0.1.0-beta">
     <meta name="theme" content="one 0.1">
     <title>nico</title>
     <link rel="stylesheet" href="./static/one.css" />
@@ -22,6 +22,11 @@
   </head>
   <body>
     <div class="document">
+      <nav class="navigation" role="navigation">
+      <a href="./">Home</a>
+      <a href="./en/">English</a>
+      <a href="./zh/">中文文档</a>
+      </nav>
 <div class="hentry">
   <h1 class="entry-title">nico</h1>
   <blockquote class="entry-description"><p>nico is a front-end friendly static site generator, best for web developers like you and me.</p></blockquote>
@@ -53,21 +58,21 @@ Head over to <a href="https://github.com/lepture/nico">nico&#39;s github repo</a
 <p>The config file is <a href="https://github.com/lepture/nico/blob/master/nico.json">nico.json</a> or nico.js. But you can use any name you want.</p>
 
 <p>The only required part of configuration:</p>
-<pre><code class="javascript">{
+<div class="highlight"><pre><code class="javascript">{
     <span class="string">"source"</span>: <span class="string">"source directory, default is content"</span>,
     <span class="string">"output"</span>: <span class="string">"output directory, default is _site"</span>,
     <span class="string">"theme"</span>: <span class="string">"your theme path"</span>,
     <span class="string">"permalink"</span>: <span class="string">"permalink style"</span>,
     <span class="string">"writers"</span>: []
 }
-</code></pre><pre><code class="javascript">define(<span class="keyword">function</span>(require, exports, module) {
+</code></pre></div><div class="highlight"><pre><code class="javascript">define(<span class="keyword">function</span>(require, exports, module) {
   <span class="keyword">var</span> key = require(<span class="string">'value'</span>);
   <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> key) {
     <span class="keyword">if</span>(i) <span class="keyword">return</span> <span class="literal">true</span>;
     <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">2</span>;
   }
 });
-</code></pre>
+</code></pre></div>
 <p>Actually the only required part is <code>writers</code>, you can assign other information with command line:</p>
 
 <pre>$ nico build -I docs -O _site --theme=.&#47;_themes&#47;one --permalink={{directory}}&#47;{{filename}}.html
@@ -135,6 +140,6 @@ Have a lookt at the <a href="./coverage.html">test coverage</a> and find out the
       <p class="copyright">This site is built by <a href="http://lab.lepture.com/nico/">nico</a>.</p>
     </div>
     <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="./static/one.js"></script>
-    <a class="github" href="https://github.com/lepture/nico"><img src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+    <div class="github"><a class="github-link" href="https://github.com/lepture/nico">Fork me on GitHub</a></div>
   </body>
 </html>
