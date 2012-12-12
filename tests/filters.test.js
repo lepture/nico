@@ -8,7 +8,8 @@ describe('content_url', function() {
     config: {permalink: '{{year}}/{{filename}}'}
   });
 
-  it('should be ./desgin', function() {
+  it('should be ../', function() {
+    content_url('index.html').should.equal('../');
   });
 });
 
