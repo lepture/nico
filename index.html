@@ -65,13 +65,6 @@ Head over to <a href="https://github.com/lepture/nico">nico&#39;s github repo</a
     <span class="string">"permalink"</span>: <span class="string">"permalink style"</span>,
     <span class="string">"writers"</span>: []
 }
-</code></pre></div><div class="highlight"><pre><code class="javascript">define(<span class="keyword">function</span>(require, exports, module) {
-  <span class="keyword">var</span> key = require(<span class="string">'value'</span>);
-  <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> key) {
-    <span class="keyword">if</span>(i) <span class="keyword">return</span> <span class="literal">true</span>;
-    <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">2</span>;
-  }
-});
 </code></pre></div>
 <p>Actually the only required part is <code>writers</code>, you can assign other information with command line:</p>
 
