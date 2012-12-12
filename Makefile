@@ -31,7 +31,7 @@ documentation:
 	@bin/nico build -C nico.json -q
 
 server:
-	@bin/nico server -C nico.json -v
+	@bin/nico server -C nico.json -v --watch
 
 publish: clean documentation coverage
 	@scripts/ghp-import.py _site

@@ -25,6 +25,13 @@
   </head>
   <body>
     <div class="document">
+      {%- if config.navigation %}
+      <nav class="navigation" role="navigation">
+      {%- for item in config.navigation %}
+      <a href="{{content_url(item.link)}}">{{item.title}}</a>
+      {%- endfor %}
+      </nav>
+      {%- endif %}
       {%- block document %}
       {%- endblock %}
     </div>
@@ -35,6 +42,8 @@
       <p class="copyright">This site is built by <a href="{{system.homepage}}">{{system.name}}</a>.</p>
     </div>
     <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="{{static_url('one.js')}}"></script>
-    <a class="github" href="{{config.github}}"><img src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+    {%- if config.github %}
+    <div class="github"><a class="github-link" href="{{config.github}}">Fork me on GitHub</a></div>
+    {%- endif %}
   </body>
 </html>
