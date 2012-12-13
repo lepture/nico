@@ -107,7 +107,7 @@ pre {
 
 blockquote {
   margin: 0.62em 2em 1em;
-  padding: 0.62em 2em 0.2em;
+  padding: 0.62em 2em 0.2em 0;
   color: #555;
 }
 blockquote:before {
@@ -184,6 +184,10 @@ hr {
   border: 2px solid #121622;
   box-shadow: 0 0 8px #555;
   -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 .github:hover {
   box-shadow: 0 0 12px #444;

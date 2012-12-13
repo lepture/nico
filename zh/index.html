@@ -54,6 +54,65 @@
 </ul>
 
 <p>参考 <a href="https://github.com/TooTallNate/node-gyp">https://github.com/TooTallNate/node-gyp</a></p>
+<h2 id="%E7%94%A8%E6%88%B7%E6%96%87%E6%A1%A3">用户文档</h2>
+<p>获取 nico 帮助信息，在终端里输入：</p>
+
+<pre>$ nico -h
+$ nico build -h
+$ nico server -h
+</pre>
+<h3 id="%E9%85%8D%E7%BD%AE">配置</h3>
+<p>默认的配置文件是当前目录下的 <code>nico.js</code> 或者 <code>nico.json</code>，你也可以在命令里指定：</p>
+
+<pre>$ nico build -C some-config.js
+</pre>
+
+<p>配置文件基本如下：</p>
+<div class="highlight"><pre><code class="javascript">{
+    <span class="string">"source"</span>: <span class="string">"source directory, default is content"</span>,
+    <span class="string">"output"</span>: <span class="string">"output directory, default is _site"</span>,
+    <span class="string">"theme"</span>: <span class="string">"your theme path"</span>,
+    <span class="string">"permalink"</span>: <span class="string">"permalink style"</span>,
+    <span class="string">"writers"</span>: []
+}
+</code></pre></div>
+<p>如果想要更强大的功能，可用 js 做配置文件：</p>
+<div class="highlight"><pre><code class="javascript"><span class="keyword">var</span> path = require(<span class="string">'path'</span>);
+
+exports.source = path.join(__dirname, <span class="string">'docs'</span>);
+exports.writers = [
+    <span class="string">'nico.PostWriter'</span>
+];
+</code></pre></div>
+<p>除了 <code>writers</code> 外，其它的必要的配置都可以在命令行里重设：</p>
+
+<pre>$ nico build -I docs -O _site --theme=_themes&#47;one --permalink={{directory}}&#47;{{filename}}.html
+</pre>
+<h3 id="%E5%86%99%E4%BD%9C">写作</h3>
+<p>一篇文章的基本格式：</p>
+
+<pre># This is title
+
+- pubdate: 2012-12-12
+- tags: javascript, python
+- meta-key: meta value
+
+This is the description, description is the part above ----
+
+------------------
+
+content is here.
+</pre>
+
+<p>nico 目前只支持 Markdown，在可见的未来也将只会支持 Markdown。更多内容请参考：</p>
+
+<ul>
+<li><a href="./syntax">Markdown 语法</a></li>
+</ul>
+<h2 id="%E5%BC%80%E5%8F%91%E8%80%85%E6%96%87%E6%A1%A3">开发者文档</h2><h2 id="bug-report">Bug Report</h2>
+<p>I keep an issue tracker at <a href="https://github.com/lepture/nico/issues">GitHub</a>,
+you can report bugs by <a href="https://github.com/lepture/nico/issues/new">openning a new issue</a>.
+If you want any help, please contact <a href="mailto:lepture@me.com">lepture@me.com</a>, English and Chinese are acceptable.</p>
 </div>
 </div>
 </div>
