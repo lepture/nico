@@ -17,6 +17,25 @@ describe('utils encodeURIComponent', function() {
   });
 });
 
+describe('utils isroot', function() {
+  it('should be root', function() {
+    utils.isroot('/hello').should.equal(true);
+  });
+  it('should not be root', function() {
+    utils.isroot('hello').should.equal(false);
+    utils.isroot('./hello').should.equal(false);
+  });
+});
+
+describe('utils require', function() {
+  it('should be should', function() {
+    utils.require(should).should.equal(should);
+  });
+  it('should require underscore', function() {
+    utils.require('underscore').VERSION.should.equal(underscore.VERSION);
+  });
+});
+
 describe('utils destination', function() {
   var post = {
     year: function() { return 2012; },
@@ -50,5 +69,11 @@ describe('Pagination', function() {
     var items = underscore.range(100);
     var p = new utils.Pagination(items, 2, 30);
     p.items.should.eql(underscore.range(30, 60));
+    p.total.should.equal(100);
+    p.has_prev.should.equal(true);
+    p.prev_num.should.equal(1);
+    p.has_next.should.equal(true);
+    p.next_num.should.equal(3);
+    p.pages.should.equal(4);
   });
 });
