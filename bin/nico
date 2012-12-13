@@ -164,7 +164,6 @@ function isChanged(source, ignore) {
 var path = require('path');
 var url = require('url');
 function handler(req, res) {
-  logging.info('request: %s %s', req.method, req.url);
   var file = url.parse(req.url).pathname.slice(1);
   if (!file || file.slice(-1) == '/') {
     file = path.join(file, 'index.html');
@@ -201,6 +200,7 @@ function handler(req, res) {
     function(err, data) {
       if (err) {
         res.writeHead(404);
+        logging.warn(': [404] %s', req.url);
         return res.end('Not Found');
       }
       res.writeHead(200);
@@ -212,6 +212,7 @@ function handler(req, res) {
           data = data.replace('</head>', code);
         }
       }
+      logging.info('request: [200] %s', req.url);
       res.end(data);
     }
   );
