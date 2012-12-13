@@ -21,10 +21,15 @@ For Windows User, please check <https://github.com/TooTallNate/node-gyp>, and in
 
 nico is a front-end friendly static site generator, but it doesn't mean that only front-end developers may use it. Please abuse it.
 
+Get help information in the terminal:
+
+    $ nico -h
+    $ nico build -h
+    $ nico server -h
+
+
 ### Configuration
 
-
-### Theming
 
 
 ### Writing
@@ -37,6 +42,6 @@ Actually the code of nico is easy to understand.
 
 ## Bug Report
 
-I keep a issue tracker at [GitHub](https://github.com/lepture/nico/issues),
+I keep an issue tracker at [GitHub](https://github.com/lepture/nico/issues),
 you can report bugs by [openning a new issue](https://github.com/lepture/nico/issues/new).
 If you want any help, please contact <lepture@me.com>, English and Chinese are acceptable.

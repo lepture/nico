@@ -25,3 +25,80 @@ Windows 8 需要安装：
 
 参考 <https://github.com/TooTallNate/node-gyp>
 
+
+## 用户文档
+
+获取 nico 帮助信息，在终端里输入：
+
+    $ nico -h
+    $ nico build -h
+    $ nico server -h
+
+
+### 配置
+
+默认的配置文件是当前目录下的 `nico.js` 或者 `nico.json`，你也可以在命令里指定：
+
+    $ nico build -C some-config.js
+
+配置文件基本如下：
+
+```json
+{
+    "source": "source directory, default is content",
+    "output": "output directory, default is _site",
+    "theme": "your theme path",
+    "permalink": "permalink style",
+    "writers": []
+}
+```
+
+如果想要更强大的功能，可用 js 做配置文件：
+
+```js
+var path = require('path');
+
+exports.source = path.join(__dirname, 'docs');
+exports.writers = [
+    'nico.PostWriter'
+];
+```
+
+除了 `writers` 外，其它的必要的配置都可以在命令行里重设：
+
+```
+$ nico build -I docs -O _site --theme=_themes/one --permalink={{directory}}/{{filename}}.html
+```
+
+
+
+### 写作
+
+一篇文章的基本格式：
+
+    # This is title
+
+    - pubdate: 2012-12-12
+    - tags: javascript, python
+    - meta-key: meta value
+
+    This is the description, description is the part above ----
+
+    ------------------
+
+    content is here.
+
+
+nico 目前只支持 Markdown，在可见的未来也将只会支持 Markdown。更多内容请参考：
+
+- [Markdown 语法](./syntax)
+
+
+## 开发者文档
+
+
+## Bug Report
+
+I keep an issue tracker at [GitHub](https://github.com/lepture/nico/issues),
+you can report bugs by [openning a new issue](https://github.com/lepture/nico/issues/new).
+If you want any help, please contact <lepture@me.com>, English and Chinese are acceptable.

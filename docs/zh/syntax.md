@@ -51,7 +51,7 @@ Reference-style links:
 ```
 ![alt text][id]
 
-[id]: http://path/to/img.jpg "title"
+    [id]: http://path/to/img.jpg "title"
 ```
 
 ### Headers
