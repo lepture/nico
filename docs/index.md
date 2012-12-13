@@ -109,7 +109,7 @@ The overview of a post syntax:
 The concept is borrowed from [liquidluck](http://lab.lepture.com/liquidluck/) with a little improvement. It should works like liquidluck, and it really did. I eat my own dog food, this site is built by nico.
 
 The code of nico is well tested, and you can add more test case for this project.
-Have a lookt at the [test coverage](./coverage.html) and find out the missing test case.
+Have a lookt at the [test coverage](./coverage) and find out the missing test case.
 
 
 ## Who are using nico
