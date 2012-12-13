@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="generator" content="nico 0.1.0-rc">
+    <meta name="theme" content="one 0.1">
+    <title>Markdown 语法</title>
+    <link rel="stylesheet" href="../static/one.css" />
+    <link rel="stylesheet" href="../static/syntax.css" />
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-21475122-1']);
+      _gaq.push(['_trackPageview']);
+      _gaq.push(['_trackPageLoadTime']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="document">
+      <nav class="navigation" role="navigation">
+      <a href="../">Home</a>
+      <a href="../en/">English</a>
+      <a href="../zh/">中文文档</a>
+      </nav>
+<div class="hentry">
+  <h1 class="entry-title">Markdown 语法</h1>
+  <blockquote class="entry-description"><p>如果你对 Markdown 还不太了解的话，你应该先花几分钟看看 <a href="http://daringfireball.net/projects/markdown/syntax">Markdown Syntax Guide</a>。也可以看下面的语法简介。</p></blockquote>
+  <div class="entry-content"><h2 id="markdown-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95">Markdown 基本语法</h2><h3 id="strong-and-emphasize">Strong and Emphasize</h3>
+<pre>*emphasize*    **strong**
+_emphasize_    __strong__
+</pre>
+<h3 id="links-and-email">Links and Email</h3>
+<p>Inline links:</p>
+
+<pre>[link text](http:&#47;&#47;url.com&#47; &quot;title&quot;)
+[link text](http:&#47;&#47;url.com&#47;)
+&lt;http:&#47;&#47;url.com&gt;
+</pre>
+
+<p>Reference-style links:</p>
+
+<pre>[link text][id]
+
+    [id]: http:&#47;&#47;url.com &quot;title&quot;
+</pre>
+
+<p>Email:</p>
+
+<pre>&lt;example@email.com&gt;
+</pre>
+<h3 id="images">Images</h3>
+<p>Inline images:</p>
+
+<pre>![alt text](http:&#47;&#47;path&#47;to&#47;img.jpg &quot;title&quot;)
+![alt text](http:&#47;&#47;path&#47;to&#47;img.jpg)
+</pre>
+
+<p>Reference-style links:</p>
+
+<pre>![alt text][id]
+
+
+</pre>
+<h3 id="headers">Headers</h3>
+<pre># h1
+## h2
+### h3
+…
+</pre>
+
+<pre># h1 #
+## h2 ##
+…
+</pre>
+<h3 id="lists">Lists</h3>
+<p>Ordered list:</p>
+
+<pre>1. foo
+2. bar
+</pre>
+
+<p>Unordered list:</p>
+
+<pre>* foo
+* bar
+</pre>
+
+<pre>- foo
+- bar
+</pre>
+<h3 id="blockquotes">Blockquotes</h3>
+<pre>&gt; blockquote
+&gt; &gt; nested blockquote
+&gt; ### h3 in blockquote
+</pre>
+<h3 id="inline-code">Inline Code</h3>
+<pre>`code` span
+</pre>
+<h3 id="block-code">Block Code</h3>
+<p>Indent at least 4 spaces or 1 tab.</p>
+
+<pre>This is a normal paragraph
+
+    this is code block
+</pre>
+<h2 id="markdown-%E6%89%A9%E5%B1%95%E8%AF%AD%E6%B3%95">Markdown 扩展语法</h2><h3 id="fenced-code">Fenced Code</h3>
+<pre>```
+this is a code block
+```
+</pre>
+<h3 id="fenced-code-with-highlight">Fenced Code with Highlight</h3>
+<pre>```javascript
+var foo = &quot;bar&quot;;
+```
+</pre>
+<h3 id="highlight-code-with-inserted-code">Highlight Code with Inserted Code</h3>
+<pre>````javascript
+var foo = &quot;bar&quot;;
+````
+</pre>
+<h3 id="just-insert-code">Just insert code</h3>
+<pre>`````javascript
+var foo = &quot;bar&quot;;
+`````
+</pre>
+<h3 id="iframe-support">Iframe support</h3>
+<p>Iframe will be render by the template <code>iframe.html</code></p>
+
+<pre>````iframe
+This will be an iframe
+````
+
+````iframe:400
+This iframe with 400px height
+````
+</pre>
+</div>
+</div>
+</div>
+    <div class="footer">
+      <p>nico was created by lepture, concept based on liquidluck. brought to you under the BSD license.</p>
+      <p class="copyright">This site is built by <a href="http://lab.lepture.com/nico/">nico</a>.</p>
+    </div>
+    <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="../static/one.js"></script>
+    <div class="github"><a class="github-link" href="https://github.com/lepture/nico">Fork me on GitHub</a></div>
+  </body>
+</html>
