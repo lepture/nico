@@ -2,14 +2,45 @@ var require = require('./testutils').require;
 var filters = require('../lib/filters');
 
 describe('content_url', function() {
-  var content_url = filters.contextfunctions.content_url;
-  content_url = content_url({
-    writer: {filepath: '2012/hello-word.html'},
-    config: {permalink: '{{year}}/{{filename}}'}
+  var content_url;
+
+  it('query permalink {{year}}/{{filename}}', function() {
+    content_url = filters.contextfunctions.content_url({
+      writer: {filepath: '2012/hello-word.html'},
+      config: {permalink: '{{year}}/{{filename}}'}
+    });
+
+    content_url('index.html').should.equal('../');
+    content_url('').should.equal('../');
+
+    content_url('./hello.html').should.equal('../hello');
+    content_url('./hello').should.equal('../hello');
+    content_url('hello').should.equal('../hello');
+    content_url('hello.html').should.equal('../hello');
   });
 
-  it('should be ../', function() {
-    content_url('index.html').should.equal('../');
+  it('query permalink {{year}}/{{filename}}.html', function() {
+    content_url = filters.contextfunctions.content_url({
+      writer: {filepath: '2012/hello-word.html'},
+      config: {permalink: '{{year}}/{{filename}}.html'}
+    });
+
+    content_url('./hello.html').should.equal('../hello.html');
+    content_url('./hello').should.equal('../hello.html');
+    content_url('hello').should.equal('../hello.html');
+    content_url('hello.html').should.equal('../hello.html');
+  });
+
+  it('query permalink {{year}}/{{filename}}/', function() {
+    content_url = filters.contextfunctions.content_url({
+      writer: {filepath: '2012/hello-word.html'},
+      config: {permalink: '{{year}}/{{filename}}/'}
+    });
+
+    content_url('./hello.html').should.equal('../hello/');
+    content_url('./hello').should.equal('../hello/');
+    content_url('hello').should.equal('../hello/');
+    content_url('hello.html').should.equal('../hello/');
   });
 });
 
