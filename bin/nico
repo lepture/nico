@@ -170,6 +170,10 @@ function handler(req, res) {
     file = path.join(file, 'index.html');
   }
   var ext = path.extname(file).slice(1);
+  if (!ext) {
+    ext = 'html';
+    file = file + '.html';
+  }
   var mimetypes = {
     html: 'text/html',
     css: 'text/css',
