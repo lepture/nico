@@ -2,6 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var should = require('should');
 var swig = require('jinja');
+var _ = require('underscore');
 var require = require('./testutils').require;
 var utils = require('../lib/utils');
 utils.logging.config('error');
@@ -110,6 +111,28 @@ describe('PageWriter', function() {
       path.join(__dirname, '_site', 'page.html'), 'utf8'
     );
     text.should.equal('Page');
+  });
+});
+
+
+describe('YearWriter', function() {
+  it('can render sorted year posts', function() {
+    var Post = reader.Post;
+    var dir = path.join(__dirname, 'data', 'year');
+    storage.resource.publicPosts = [
+      new Post({filepath: path.join(dir, '2011-1.md')}),
+      new Post({filepath: path.join(dir, '2011-2.md')}),
+      new Post({filepath: path.join(dir, '2011-3.md')}),
+      new Post({filepath: path.join(dir, '2012-1.md')})
+    ];
+    var p = new writer.YearWriter(storage);
+    p.start();
+    p.end();
+    var text = fs.readFileSync(
+      path.join(__dirname, '_site', '2011', 'index.html'), 'utf-8'
+    );
+    var years = _.filter(text.split('\n'), function(o) { return o; });
+    years.should.eql(['2011 1', '2011 3', '2011 2']);
   });
 });
 
