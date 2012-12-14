@@ -204,10 +204,47 @@ hr {
   text-decoration: none;
   text-align: center;
 }
-@media (max-width: 650px) {
+@media (max-width: 890px) {
   .github {
     display: none;
   }
+}
+.navigation {
+  font-size: 14px;
+  background-color: #333;
+  box-shadow: 0 0 10px #000 inset;
+  padding: 3px 10px;
+  opacity: 0.9;
+}
+.navigation .home {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #555;
+  color: rgba(222, 222, 222, 0.5);
+}
+.navigation .menu {
+  float: right;
+  text-align: right;
+}
+.menu a {
+  margin-left: 14px;
+  color: #dadada;
+}
+.navigation a:hover {
+  text-decoration: none;
+  color: #c2def6;
+}
+.container {
+  max-width: 640px;
+  *width: 650px;
+  margin: 0 auto;
+  zoom: 1;
+}
+.container:after {
+  content: " ";
+  display: block;
+  visibility: none;
+  clear: both;
 }
 .document {
   max-width: 640px;
@@ -215,14 +252,23 @@ hr {
   margin: 0 auto;
   padding: 30px 10px;
 }
-.navigation {
-  text-align: right;
-}
-.navigation a {
-  margin-left: 14px;
-}
 .entry-description {
   color: #676867;
+}
+.entry-title, .entry-content h2 {
+  margin: 40px -30px 30px;
+  padding: 14px 30px;
+  border-bottom: 1px solid #eee;
+  text-transform: uppercase;
+}
+@media (max-width: 680px) {
+  .entry-title, .entry-content h2 {
+    margin: 40px -10px 30px;
+    padding: 14px 10px;
+  }
+}
+.entry-content h2 {
+  border-top: 1px solid #eee;
 }
 
 a.title-permalink {
@@ -253,24 +299,8 @@ a.title-permalink:hover {
   line-height: 1.3;
   padding: 20px 20px 30px;
 }
-.copyright {
-  padding-top: 30px;
-  text-align: right;
-  font-size: 13px;
-  text-shadow: 0 1px 0 #eee;
-  color: #999;
-}
 @media (max-width: 650px) {
   .footer {
     padding-bottom: 10px;
   }
-  .copyright {
-    text-align: center;
-  }
-}
-.copyright a {
-  color: #888;
-}
-.copyright a:hover {
-  color: #222;
 }
