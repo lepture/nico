@@ -7,8 +7,8 @@ var utils = require('../lib/utils');
 var logging = utils.logging;
 
 var program = require('commander');
-program._name = 'nico';
 program.usage('[command] [options]');
+program.version(require('../package').version)
 
 program.
   command('build').
