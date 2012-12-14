@@ -4,6 +4,7 @@ var fs = require('fs');
 require('colorful').colorful();
 var cli = require('../lib/cli');
 var utils = require('../lib/utils');
+var pathlib = require('../lib/utils/path');
 var logging = utils.logging;
 
 var program = require('commander');
@@ -148,7 +149,7 @@ function watch(prog) {
 
 var _cache = {};
 function isChanged(source, ignore) {
-  var files = utils.walkdir(source, ignore).files;
+  var files = pathlib.walkdir(source, ignore).files;
   var _changed = false;
   files.forEach(function(item) {
     var stat = fs.statSync(item);
