@@ -1,8 +1,8 @@
-var require = require('./testutils').require;
 var fs = require('fs');
 var path = require('path');
 var should = require('should');
 var swig = require('jinja');
+var require = require('./testutils').require;
 var utils = require('../lib/utils');
 utils.logging.config('error');
 var reader = require('../lib/reader');
@@ -25,43 +25,46 @@ var storage = {
 };
 
 describe('PostWriter', function() {
-  it('should write post design', function() {
+  it('should write a post', function() {
     storage.resource.publicPosts = [];
     storage.resource.publicPosts.push({
-      filepath: path.join(__dirname, 'data', 'design.md')
+      filepath: path.join(__dirname, 'data', 'normal-post.md')
     });
     var p = new writer.PostWriter(storage);
     p.start();
     p.end();
-    var text = fs.readFileSync(path.join(__dirname, '_site', 'design.html'), 'utf8');
-    text.should.equal('Design Pattern');
+    var text = fs.readFileSync(
+      path.join(__dirname, '_site', 'normal-post.html'), 'utf8');
+    text.should.equal('Post');
   });
 
   it('can render unicode post', function() {
     storage.resource.publicPosts = [];
     storage.resource.publicPosts.push({
-      filepath: path.join(__dirname, 'data', 'china-dream.md')
+      filepath: path.join(__dirname, 'data', 'unicode-post.md')
     });
     var p = new writer.PostWriter(storage);
     p.start();
     p.end();
-    var text = fs.readFileSync(path.join(__dirname, '_site', 'china-dream.html'), 'utf8');
-    text.should.equal('龍應台：我們的「中國夢」（8月1日北京大學演講講辭）');
+    var text = fs.readFileSync(
+      path.join(__dirname, '_site', 'unicode-post.html'), 'utf8');
+    text.should.equal('文章');
   });
 
   it('can create iframes', function() {
     storage.resource.publicPosts = [];
     storage.resource.publicPosts.push({
-      filepath: path.join(__dirname, 'data', 'fenced-code.md')
+      filepath: path.join(__dirname, 'data', 'iframe.md')
     });
     var p = new writer.PostWriter(storage);
     p.start();
     p.end();
-    var text = fs.readFileSync(path.join(__dirname, '_site', 'fenced-code.html'), 'utf8');
-    text.should.equal('Fenced Code');
+    var text = fs.readFileSync(
+      path.join(__dirname, '_site', 'iframe.html'), 'utf8');
+    text.should.equal('Iframe');
 
     text = fs.readFileSync(
-      path.join(__dirname, '_site', 'iframe-fenced-code-1.html'),
+      path.join(__dirname, '_site', 'iframe-iframe-1.html'),
       'utf8'
     );
     text.should.include('id="iframe"');
@@ -71,22 +74,23 @@ describe('PostWriter', function() {
     storage.config.permalink = '{{filename}}';
     storage.resource.publicPosts = [];
     storage.resource.publicPosts.push({
-      filepath: path.join(__dirname, 'data', 'design.md')
+      filepath: path.join(__dirname, 'data', 'normal-post.md')
     });
     var p = new writer.PostWriter(storage);
     p.start();
     p.end();
-    var text = fs.readFileSync(path.join(__dirname, '_site', 'design.html'), 'utf8');
-    text.should.equal('Design Pattern');
+    var text = fs.readFileSync(
+      path.join(__dirname, '_site', 'normal-post.html'), 'utf8');
+    text.should.equal('Post');
 
     storage.config.permalink = '{{filename}}/';
     p = new writer.PostWriter(storage);
     p.start();
     p.end();
     text = fs.readFileSync(
-      path.join(__dirname, '_site', 'design/index.html'), 'utf8'
+      path.join(__dirname, '_site', 'normal-post/index.html'), 'utf8'
     );
-    text.should.equal('Design Pattern');
+    text.should.equal('Post');
     // reset back
     storage.config.permalink = '{{filename}}.html';
   });

@@ -90,7 +90,7 @@ describe('MarkdownParser html', function() {
 
 describe('Post', function() {
   var post = new reader.Post({
-    filepath: path.join(__dirname, 'data', 'design.md'),
+    filepath: path.join(__dirname, 'data', 'normal-post.md'),
     root: __dirname
   });
 
@@ -103,16 +103,12 @@ describe('Post', function() {
     should.exist(post.toc);
   });
 
-  it('should have script in html', function() {
-    post.html.should.include('<script>');
-  });
-
   it('should have title', function() {
-    post.title.should.equal('Design Pattern');
+    post.title.should.equal('Post');
   });
 
   it('should have tags', function() {
-    post.tags.should.eql(['js', 'node', 'spm']);
+    post.tags.should.eql(['js', 'node']);
   });
 
   it('should have pubdate', function() {
@@ -139,12 +135,12 @@ describe('Post', function() {
   });
 
   it('should have relative path', function() {
-    post.relative_filepath.should.equal(path.join('data', 'design.md'));
+    post.relative_filepath.should.equal(path.join('data', 'normal-post.md'));
   });
 
-  it('can render fenced code well', function() {
+  it('can render code well', function() {
     post = new reader.Post({
-      filepath: path.join(__dirname, 'data', 'fenced-code.md'),
+      filepath: path.join(__dirname, 'data', 'code.md'),
       root: __dirname
     });
     post.html.should.include('</script>');
@@ -152,12 +148,12 @@ describe('Post', function() {
     post.html.should.include('<div class="nico-insert-code">');
   });
 
-  it('should have iframes', function() {
+  it('can render iframe well', function() {
     post = new reader.Post({
-      filepath: path.join(__dirname, 'data', 'fenced-code.md'),
+      filepath: path.join(__dirname, 'data', 'iframe.md'),
       root: __dirname
     });
-    post.iframes.should.have.ownProperty('iframe-data-fenced-code-1');
+    post.iframes.should.have.ownProperty('iframe-data-iframe-1');
     post.html.should.not.include('<div id="iframe">');
     post.html.should.include('</iframe>');
   });
