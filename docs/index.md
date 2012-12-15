@@ -41,4 +41,6 @@ Me, of course. And the nice folks of our team are using nico too.
 
 ## Contributing
 
+[![building status](https://secure.travis-ci.org/lepture/nico.png?branch=master)](https://travis-ci.org/lepture/nico)
+
 Contributing is really welcome, but before this you should read the [Contributing Guide](https://github.com/lepture/nico/blob/master/CONTRIBUTING.md).
