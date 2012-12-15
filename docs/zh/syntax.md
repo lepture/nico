@@ -67,11 +67,11 @@ Inline links:
 
 Reference-style links:
 
-```
-[link text][id]
+
+    [link text][id]
 
     [id]: http://url.com "title"
-```
+
 
 Email:
 
@@ -90,11 +90,11 @@ Inline images:
 
 Reference-style links:
 
-```
-![alt text][id]
+
+    ![alt text][id]
 
     [id]: http://path/to/img.jpg "title"
-```
+
 
 ### Headers
 
