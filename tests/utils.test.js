@@ -19,6 +19,12 @@ describe('uri encode', function() {
     var text = '¡å hello 中文';
     urilab.encode(text).should.equal('%C2%A1%C3%A5-hello-%E4%B8%AD%E6%96%87');
   });
+  it('can encode html', function() {
+    var text = '<a>hello</a>';
+    urilab.encode(text).should.equal('hello');
+    text = '<a>hello</a><b>world</b>';
+    urilab.encode(text).should.equal('helloworld');
+  });
 });
 
 describe('pathlib', function() {
