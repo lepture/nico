@@ -173,6 +173,7 @@ function handler(req, res) {
   var mimetypes = {
     html: 'text/html',
     css: 'text/css',
+    xml: 'text/xml',
     js: 'text/javascript',
     png: 'image/png',
     jpg: 'image/jpeg',
@@ -181,16 +182,16 @@ function handler(req, res) {
   };
 
   if (!mimetypes.hasOwnProperty(ext)) {
-    ext = 'html';
-    file = file + '.html';
+    if (fs.existsSync(path.join(storage.config.output, file + '.html'))) {
+      ext = 'html';
+      file = file + '.html';
+    }
   }
+  res.setHeader("Content-Type", mimetypes[ext]);
 
   var encode;
   if (ext === 'html') {
     encode = 'utf-8';
-  }
-  if (ext in mimetypes) {
-    res.setHeader("Content-Type", mimetypes[ext]);
   }
   var code = [
     '<script src="/socket.io/socket.io.js"></script><script>',
