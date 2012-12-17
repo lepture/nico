@@ -72,7 +72,7 @@ tagcloud.html         - TagcloudWriter
 
 模板变量，有 PostWriter 与 PageWriter 渲染的模板有该变量。
 
-### posts
+### pagination
 
 模板变量，对文章有批量操作的 writer 会有该变量，比如 ArchiveWriter。
 
