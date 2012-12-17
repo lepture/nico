@@ -73,6 +73,9 @@ function help() {
   if (subcmd === 'build') {
     process.stdout.write(builder.helpInformation());
     builder.emit('--help');
+  } else if (subcmd === 'server') {
+    process.stdout.write(server.helpInformation());
+    server.emit('--help');
   } else {
     process.stdout.write(program.helpInformation());
     program.emit('--help');
