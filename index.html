@@ -23,10 +23,10 @@
   <body>
     <div class="navigation" role="navigation">
       <div class="container">
-        <a class="home" href="./">nico</a>
+        <a class="home" href="index">nico</a>
         <div class="menu">
-          <a href="./en/">English</a>
-          <a href="./zh/">中文文档</a>
+          <a href="en/">English</a>
+          <a href="zh/">中文文档</a>
         </div>
       </div>
     </div>
@@ -46,88 +46,22 @@
 <li><a href="./en/">English</a></li>
 <li><a href="./zh/">简体中文</a></li>
 </ul>
-
-<p>Too long, don&#39;t read. But if you want to dive into it deeper, it will help you.</p>
-<h2 id="installation">Installation</h2>
-<p>nico is written in node which means you can easily install it with npm:</p>
-
-<pre>$ npm install nico -g
-</pre>
-
-<p>This will download and install the latest version of nico, remember the <code>-g</code> option.</p>
-<h2 id="quick-start">Quick Start</h2>
-<p>An example explains everything, since this site is built by nico, it&#39;s an example too.
-Head over to <a href="https://github.com/lepture/nico">nico&#39;s github repo</a> and find out the mistery.</p>
-<h3 id="configuration">Configuration</h3>
-<p>The config file is <a href="https://github.com/lepture/nico/blob/master/nico.json">nico.json</a> or nico.js. But you can use any name you want.</p>
-
-<p>The only required part of configuration:</p>
-<div class="highlight"><pre><code class="javascript">{
-    <span class="string">"source"</span>: <span class="string">"source directory, default is content"</span>,
-    <span class="string">"output"</span>: <span class="string">"output directory, default is _site"</span>,
-    <span class="string">"theme"</span>: <span class="string">"your theme path"</span>,
-    <span class="string">"permalink"</span>: <span class="string">"permalink style"</span>,
-    <span class="string">"writers"</span>: []
-}
-</code></pre></div>
-<p>Actually the only required part is <code>writers</code>, you can assign other information with command line:</p>
-
-<pre>$ nico build -I docs -O _site --theme=.&#47;_themes&#47;one --permalink={{directory}}&#47;{{filename}}.html
-</pre>
-<h3 id="writing">Writing</h3>
-<p>There is a little difference between liquidluck and nico.</p>
-
-<ul>
-<li>nico only support markdown, and in the foreseen future, markdown will be the only choice.</li>
-<li>nico add more features for front-end developers.</li>
-<li>nico use meta status instead of meta public.</li>
-</ul>
-
-<p>The overview of a post syntax:</p>
-
-<pre># This is title
-
-- pubdate: 2012-12-12
-- tags: javascript, python
-- meta-key: meta value
-
-This is the description, description is the part above ----
-
-------------------
-
-Content is below the ----. We do support fenced code, but more than that.
-
-1. three ` (```) for the normal usage.
-2. four ` (````) will insert code to your page.
-3. five ` (````) will insert code to your page, but don&#39;t show the highlighted code.
-
-For example, with ````
-
-````javascript
-var nico = true
-````
-
-The result will be
-
-&lt;script&gt;
-var nico = true
-&lt;&#47;script&gt;
-&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;
-&lt;span class=&quot;keyword&quot;&gt;var&lt;&#47;span&gt; &lt;span class=&quot;variable&quot;&gt;nico ....
-&lt;&#47;code&gt;&lt;&#47;pre&gt;
-</pre>
 <h2 id="quality">Quality</h2>
 <p>The concept is borrowed from <a href="http://lab.lepture.com/liquidluck/">liquidluck</a> with a little improvement. It should works like liquidluck, and it really did. I eat my own dog food, this site is built by nico.</p>
 
 <p>The code of nico is well tested, and you can add more test case for this project.
 Have a lookt at the <a href="./coverage">test coverage</a> and find out the missing test case.</p>
-<h2 id="who-are-using-nico">Who are using nico</h2>
-<p>Me, of course. But besides that, the nice folks of our team are using nico too.</p>
+<h2 id="nico-users">Nico Users</h2>
+<p><strong>Who are using nico?</strong></p>
+
+<p>Me, of course. And the nice folks of our team are using nico too.</p>
 
 <ul>
-<li>The great project <a href="http://aralejs.com">arale</a> is using nico heavily.</li>
+<li><a href="http://aralejs.org">arale</a> project is abusing nico.</li>
 </ul>
 <h2 id="contributing">Contributing</h2>
+<p><a href="https://travis-ci.org/lepture/nico"><img src="https://secure.travis-ci.org/lepture/nico.png?branch=master" alt="building status"/></a></p>
+
 <p>Contributing is really welcome, but before this you should read the <a href="https://github.com/lepture/nico/blob/master/CONTRIBUTING.md">Contributing Guide</a>.</p>
 </div>
 </div>

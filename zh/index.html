@@ -33,16 +33,11 @@
     <div class="document">
 <div class="hentry">
   <h1 class="entry-title">nico 中文文档</h1>
-  <div class="entry-content"><p>也许你已经安装好了 nico，但是我还是得重复一下。使用 npm 安装 nico 很简单，只需要在终端里输入：</p>
+  <div class="entry-content"><p>nico 是基于 nodejs 的静态站点生成工具。所以在安装 nico 之前，你需要安装 node。通常来说，你应该已经安装好了 node，不过这里还是重复一下。</p>
 
-<pre>$ npm install nico -g
-</pre>
+<p>你可以在 <a href="http://nodejs.org/">nodejs.org</a> 下载安装包安装，也可以通过包管理器（比如在 Mac 上用 homebrew，同时推荐在 Mac 上用 homebrew）。</p>
 
-<p>注意，一定要有 <code>-g</code> 哦，这样才能够在终端里调用到 nico。</p>
-
-<p>Windows 用户请注意，安装可能不会一帆风顺，在安装 nico 之前，请确认你的环境：</p>
-
-<p>Windows XP/Vista/7 需要安装：</p>
+<p>Windows XP/Vista/7 还需要安装：</p>
 
 <ul>
 <li>Python <a href="http://www.python.org/download/releases/2.7.3#download">2.7.3</a></li>
@@ -50,7 +45,7 @@
 <li>如果你是 64 位的Windows 7，还需要安装 <a href="http://www.microsoft.com/en-us/download/details.aspx?id=8279">Windows 7 64-bit SDK</a></li>
 </ul>
 
-<p>Windows 8 需要安装：</p>
+<p>Windows 8 还需要安装：</p>
 
 <ul>
 <li>Python <a href="http://www.python.org/download/releases/2.7.3#download">2.7.3</a></li>
@@ -58,62 +53,105 @@
 </ul>
 
 <p>参考 <a href="https://github.com/TooTallNate/node-gyp">https://github.com/TooTallNate/node-gyp</a></p>
-<h2 id="%E7%94%A8%E6%88%B7%E6%96%87%E6%A1%A3">用户文档</h2>
-<p>获取 nico 帮助信息，在终端里输入：</p>
+
+<p>安装完成后也许还需要设置环境变量 NODE_PATH，Linux &amp; Mac 用户在自己的 shell 配置文件(.bash_profile | .bashrc | .zshrc)里设置，如</p>
+
+<pre>export NODE_PATH=&quot;&#47;usr&#47;local&#47;share&#47;npm&#47;lib&#47;node_modules&quot;
+</pre>
+
+<p>具体的地址可能不是如上所示，请根据实际情况自行处理。另外也许还需要设置 PATH：</p>
+
+<pre>export PATH=&quot;$PATH:&#47;usr&#47;local&#47;share&#47;npm&#47;bin&quot;
+</pre>
+
+<p>Windows 用户也需要设置环境变量 NODE_PATH（如不知道在哪里设置，请自行<a href="https://www.google.com/search?q=windows+%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">搜索</a>），一般来说设置为：</p>
+
+<pre>NODE_PATH = C:\Users\{{username}}\AppData\Roaming\npm\node_modules
+</pre>
+<h2 id="%E5%AE%89%E8%A3%85">安装</h2>
+<p>你已经安装好了 node，使用 node 提供的包管理工具 npm 来安装 nico 很简单，只需要在终端里输入：</p>
+
+<pre>$ npm install nico -g
+</pre>
+
+<p>注意，一定要有 <code>-g</code> 哦，这样才能够在终端里调用到 nico。</p>
+
+<p>另外，如果安装了 <code>socket.io</code> 的话，<code>nico server</code> 将会有 <code>live reload</code> 功能。</p>
+<h2 id="%E4%B8%BB%E9%A2%98">主题</h2>
+<p>nico 没有提供内置的主题，在可见的未来也不会内置主题，但是我已经为你写好了一个主题  <a href="https://github.com/lepture/nico-one">one</a>，在你还不会自己写主题时，你可以暂时使用 one 做为你的主题。另外说明一下，你所访问的这个站点就是用的 one。</p>
+
+<p>我们先下载这个主题：</p>
+
+<pre>$ git clone git:&#47;&#47;github.com&#47;lepture&#47;nico-one.git
+</pre>
+
+<p>关于如何制作自己的主题，请参考 <a href="./theme">主题篇</a>。</p>
+<h2 id="%E5%86%99%E4%BD%9C">写作</h2>
+<p>我们来试着写一篇文章，假设你的目录结构如下：</p>
+
+<pre>content&#47;
+  hello-world.md
+nico-one
+  templates&#47;
+  static&#47;
+  ...
+</pre>
+
+<p>我们来编写 <code>content/hello-world.md</code>：</p>
+
+<pre># Hello Nico
+
+- pubdate: 2012-12-12
+
+------
+
+Hello World, Hello Nico.
+</pre>
+
+<p>在终端里运行：</p>
+
+<pre>$ nico build --source=content --output=_site --theme=nico-one
+</pre>
+
+<p>这时可以看到在当前目录下生成了一个 <code>_site</code> 文件夹，里面有一篇 <code>hello-world.html</code> 的文章。</p>
+
+<p>了解终端里的命令：</p>
 
 <pre>$ nico -h
 $ nico build -h
 $ nico server -h
 </pre>
-<h3 id="%E9%85%8D%E7%BD%AE">配置</h3>
-<p>默认的配置文件是当前目录下的 <code>nico.js</code> 或者 <code>nico.json</code>，你也可以在命令里指定：</p>
 
-<pre>$ nico build -C some-config.js
-</pre>
+<p>了解更多文章格式的内容，请参考 <a href="./syntax">写作篇</a>。</p>
+<h2 id="%E9%85%8D%E7%BD%AE">配置</h2>
+<p>上面生成出的内容远远不够用，这个时候你需要一份配置文件来让 nico 正常工作。在当前目录下新建一个 <code>nico.json</code> 文件：</p>
 
-<p>配置文件基本如下：</p>
-<div class="highlight"><pre><code class="javascript">{
-    <span class="string">"source"</span>: <span class="string">"source directory, default is content"</span>,
-    <span class="string">"output"</span>: <span class="string">"output directory, default is _site"</span>,
-    <span class="string">"theme"</span>: <span class="string">"your theme path"</span>,
-    <span class="string">"permalink"</span>: <span class="string">"permalink style"</span>,
-    <span class="string">"writers"</span>: []
+<pre>{
+    &quot;source&quot;: &quot;content&quot;,
+    &quot;output&quot;: &quot;_site&quot;,
+    &quot;theme&quot;: &quot;nico-one&quot;,
+    &quot;permalink&quot;: &quot;{{directory}}&#47;{{filename}}.html&quot;,
+    &quot;writers&quot;: [
+        &quot;nico.PostWriter&quot;,
+        &quot;nico.FileWriter&quot;,
+        &quot;nico.StaticWriter&quot;
+    ]
 }
-</code></pre></div>
-<p>如果想要更强大的功能，可用 js 做配置文件：</p>
-<div class="highlight"><pre><code class="javascript"><span class="keyword">var</span> path = require(<span class="string">'path'</span>);
-
-exports.source = path.join(__dirname, <span class="string">'docs'</span>);
-exports.writers = [
-    <span class="string">'nico.PostWriter'</span>
-];
-</code></pre></div>
-<p>除了 <code>writers</code> 外，其它的必要的配置都可以在命令行里重设：</p>
-
-<pre>$ nico build -I docs -O _site --theme=_themes&#47;one --permalink={{directory}}&#47;{{filename}}.html
-</pre>
-<h3 id="%E5%86%99%E4%BD%9C">写作</h3>
-<p>一篇文章的基本格式：</p>
-
-<pre># This is title
-
-- pubdate: 2012-12-12
-- tags: javascript, python
-- meta-key: meta value
-
-This is the description, description is the part above ----
-
-------------------
-
-content is here.
 </pre>
 
-<p>nico 目前只支持 Markdown，在可见的未来也将只会支持 Markdown。更多内容请参考：</p>
+<p>这时我们再在终端里执行：</p>
 
-<ul>
-<li><a href="./syntax">Markdown 语法</a></li>
-</ul>
-<h2 id="%E5%BC%80%E5%8F%91%E8%80%85%E6%96%87%E6%A1%A3">开发者文档</h2><h2 id="bug-report">Bug Report</h2>
+<pre>$ nico build
+</pre>
+
+<p>你可以用浏览器打开生成出来的 <code>_site/hello-world.html</code> 看看生成后的效果。</p>
+
+<p>更多关于配置文件的信息，请参考 <a href="./config">配置篇</a>。</p>
+<h2 id="%E5%BC%80%E5%8F%91%E8%80%85%E6%96%87%E6%A1%A3">开发者文档</h2>
+<p>你是开发者，你对 nico 这个程序感兴趣，想要为 nico 做点贡献，请先阅读 <a href="https://github.com/lepture/nico/blob/master/CONTRIBUTING.md">Contributing Guide</a>。</p>
+
+<p>首先请试着阅读源码，如果觉得有困难，可参考 <a href="./contribute">开发篇</a> 获得指引。</p>
+<h2 id="bug-report">Bug Report</h2>
 <p>I keep an issue tracker at <a href="https://github.com/lepture/nico/issues">GitHub</a>,
 you can report bugs by <a href="https://github.com/lepture/nico/issues/new">openning a new issue</a>.
 If you want any help, please contact <a href="mailto:lepture@me.com">lepture@me.com</a>, English and Chinese are acceptable.</p>

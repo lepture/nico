@@ -33,9 +33,26 @@
     <div class="document">
 <div class="hentry">
   <h1 class="entry-title">Documentation of nico</h1>
-  <blockquote class="entry-description"><p>Wow, you are surfing the documentation, good to hear that.</p></blockquote>
-  <div class="entry-content"><p>I belive you have installed nico, but I would like to repeat this part.</p>
+  <blockquote class="entry-description"><p>Good to know you are here.</p></blockquote>
+  <div class="entry-content"><p>nico is built on nodejs, which means you have to install nodejs. I believe you have installed nodejs, but I&#39;d like to repeat this part.</p>
 
+<p>You can download the package on <a href="http://nodejs.org">nodejs.org</a> or through a package manager like apt-get and homebrew.</p>
+
+<p>We will need node-gyp to compile c module, and it will trouble Windows Users. If you are on a Windows, please check <a href="https://github.com/TooTallNate/node-gyp">https://github.com/TooTallNate/node-gyp</a>, and install the missing requirements.</p>
+
+<p>After the installation, maybe you have to deal with the environment variables. Linux &amp; Mac user just editor your shell rc file (.bashrc or .zshrc):</p>
+
+<pre>export NODE_PATH=&quot;&#47;usr&#47;local&#47;share&#47;npm&#47;lib&#47;node_modules&quot;
+export PATH=&quot;$PATH:&#47;usr&#47;local&#47;share&#47;npm&#47;bin&quot;
+</pre>
+
+<p>The path may be wrong, correct it according to your own environment.</p>
+
+<p>And Windows User should add <code>NODE_PATH</code> to your computer environment, maybe it&#39;s:</p>
+
+<pre>NODE_PATH = C:\Users\{{username}}\AppData\Roaming\npm\node_modules
+</pre>
+<h2 id="installation">Installation</h2>
 <p>Install nico is simple with npm:</p>
 
 <pre>$ npm install nico -g
@@ -43,17 +60,11 @@
 
 <p>Please install it with <code>-g</code> option, otherwise you can&#39;t use it in command line.</p>
 
-<p>For Windows User, please check <a href="https://github.com/TooTallNate/node-gyp">https://github.com/TooTallNate/node-gyp</a>, and install the missing requirements.</p>
-<h2 id="user-guide">User Guide</h2>
-<p>nico is a front-end friendly static site generator, but it doesn&#39;t mean that only front-end developers may use it. Please abuse it.</p>
+<p>If you want a live reload feature, you have to install socket.io by yourself:</p>
 
-<p>Get help information in the terminal:</p>
-
-<pre>$ nico -h
-$ nico build -h
-$ nico server -h
+<pre>$ npm install socket.io -g
 </pre>
-<h3 id="configuration">Configuration</h3><h3 id="writing">Writing</h3><h2 id="developer-guide">Developer Guide</h2>
+<h2 id="theme">Theme</h2><h2 id="writing">Writing</h2><h2 id="configure">Configure</h2><h2 id="developer-guide">Developer Guide</h2>
 <p>Actually the code of nico is easy to understand.</p>
 <h2 id="bug-report">Bug Report</h2>
 <p>I keep an issue tracker at <a href="https://github.com/lepture/nico/issues">GitHub</a>,

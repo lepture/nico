@@ -271,6 +271,47 @@ hr {
   border-top: 1px solid #eee;
 }
 
+ol.entry-list {
+  list-style: none;
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 60px;
+}
+.entry-list li {
+  zoom: 1;
+  border-bottom: 1px dotted #eee;
+}
+.entry-list li:after {
+  content: " ";
+  display: block;
+  visibility: none;
+  clear: both;
+}
+.entry-list a {
+  float: left;
+}
+.entry-list time {
+  color: #999;
+  font-size: 13px;
+  float: right;
+}
+.entry-meta {
+  width: 6em;
+  color: #999;
+  font-size: 13px;
+  float: left;
+  margin-right: 1em;
+  line-height: 26px;
+}
+.entry-meta .year {
+  display: block;
+  font-size: 26px;
+}
+.entry-meta .date {
+  font-size: 22px;
+}
+
 a.title-permalink {
   margin-left: 4px;
   padding: 0 4px;
