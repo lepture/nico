@@ -170,10 +170,6 @@ function handler(req, res) {
     file = path.join(file, 'index.html');
   }
   var ext = path.extname(file).slice(1);
-  if (!ext) {
-    ext = 'html';
-    file = file + '.html';
-  }
   var mimetypes = {
     html: 'text/html',
     css: 'text/css',
@@ -183,6 +179,12 @@ function handler(req, res) {
     git: 'image/gif',
     woff: 'application/x-font-woff'
   };
+
+  if (!mimetypes.hasOwnProperty(ext)) {
+    ext = 'html';
+    file = file + '.html';
+  }
+
   var encode;
   if (ext === 'html') {
     encode = 'utf-8';
