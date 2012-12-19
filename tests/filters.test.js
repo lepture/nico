@@ -42,6 +42,22 @@ describe('content_url', function() {
     content_url('hello').should.equal('../hello/');
     content_url('hello.html').should.equal('../hello/');
   });
+
+  it('create index.html url', function() {
+    content_url = filters.contextfunctions.content_url({
+      writer: {filepath: 'index.html'},
+      config: {permalink: '{{year}}/{{filename}}.html'}
+    });
+    content_url('index.html').should.equal('');
+    content_url('foo/index.html').should.equal('foo/');
+
+    content_url = filters.contextfunctions.content_url({
+      writer: {filepath: 'index.html'},
+      config: {permalink: '{{year}}/{{filename}}/'}
+    });
+    content_url('index.html').should.equal('');
+    content_url('foo/index.html').should.equal('foo/');
+  });
 });
 
 
