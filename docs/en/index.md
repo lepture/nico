@@ -44,8 +44,56 @@ $ npm install socket.io -g
 
 ## Theme
 
+nico didn't provide a default theme, and it will not provide a default theme in the foreseen future. But I wrote a theme for you, which is [one](https://github.com/lepture/nico-one). You can learn how to write your own theme with one.
+
+Let's grab the theme:
+
+    $ git clone git://github.com/lepture/nico-one.git
+
+You can learn more in the [Theme](./theme) section.
 
 ## Writing
+
+It's the time for us to write something:
+
+```
+content/
+  hello-world.md
+nico-one
+  templates/
+  static/
+  ...
+```
+
+And we will edit `content/hello-world.md`:
+
+```
+# Hello Nico
+
+- pubdate: 2012-12-12
+
+------
+
+Hello World, Hello Nico.
+```
+
+Run the command in the terminal:
+
+```
+$ nico build --source=content --output=_site --theme=nico-one
+```
+
+It will create a folder `_site` in the current working directory, and there will be an article `hello-world.html`.
+
+Learn more about `nico` in terminal:
+
+```
+$ nico -h
+$ nico build -h
+$ nico server -h
+```
+
+Learn more about syntax in the [Syntax](./syntax) section.
 
 
 ## Configure

@@ -1,10 +1,35 @@
-# Markdown Syntax
+# nico Syntax
 
-If you are not familiar with Markdown,  you should spend 15 minutes and go over the excellent [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) at Daring Fireball. Here is a brief.
+-----
 
---------
+
+## Article Syntax
+
+
+```
+# title
+
+- pubdate: 2012-12-12 12:00
+- tags: nico, javascript
+
+This is a simple description, it's not required.
+
+----------------
+
+entry content is below ----, it supports markdown syntax.
+```
+
+
+### Meta Data
+
+```
+- topic: nico
+```
+
 
 ## Markdown Basic Syntax
+
+If you are not familiar with Markdown,  you should spend 15 minutes and go over the excellent [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) at Daring Fireball. Here is a brief.
 
 ### Strong and Emphasize
 
