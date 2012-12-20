@@ -1,10 +1,10 @@
-# Documentation of nico
+# Documentation of Nico
 
 Good to know you are here.
 
 -----------------
 
-nico is built on nodejs, which means you have to install nodejs. I believe you have installed nodejs, but I'd like to repeat this part.
+Nico is built on nodejs, which means you have to install nodejs. I believe you have installed nodejs, but I'd like to repeat this part.
 
 You can download the package on [nodejs.org](http://nodejs.org) or through a package manager like apt-get and homebrew.
 
@@ -44,7 +44,7 @@ $ npm install socket.io -g
 
 ## Theme
 
-nico didn't provide a default theme, and it will not provide a default theme in the foreseen future. But I wrote a theme for you, which is [one](https://github.com/lepture/nico-one). You can learn how to write your own theme with one.
+Nico didn't provide a default theme, and it will not provide a default theme in the foreseen future. But I wrote a theme for you, which is [one](https://github.com/lepture/nico-one). You can learn how to write your own theme with one.
 
 Let's grab the theme:
 
@@ -97,6 +97,33 @@ Learn more about syntax in the [Syntax](./syntax) section.
 
 
 ## Configure
+
+Nico can't work well without a configuration. Let's create a `nico.json`:
+
+```
+{
+    "source": "content",
+    "output": "_site",
+    "theme": "nico-one",
+    "permalink": "{{directory}}/{{filename}}.html",
+    "writers": [
+        "nico.PostWriter",
+        "nico.FileWriter",
+        "nico.StaticWriter"
+    ]
+}
+```
+
+And now, we can run the command:
+
+```
+$ nico build
+```
+
+Open `_site/hello-world.html` with your browser, see what's happening.
+
+Learn more about configuration at the [Config](./config) section.
+
 
 
 ## Developer Guide

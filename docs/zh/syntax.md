@@ -1,9 +1,9 @@
-# nico 语法
+# Nico 语法
 
 
 --------
 
-nico 的语法简洁优雅，继承自 [liquidluck](https://github.com/lepture/liquidluck)。充分利用 Markdown 的语法，保证即使离开文档生成工具，该文章依然能优雅的渲染。
+Nico 的语法简洁优雅，继承自 [liquidluck](https://github.com/lepture/liquidluck)。充分利用 Markdown 的语法，保证即使离开文档生成工具，该文章依然能优雅的渲染。
 
 ## 文章格式
 

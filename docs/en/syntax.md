@@ -1,10 +1,13 @@
-# nico Syntax
+# Nico Syntax
 
 -----
+
+The nico markup is borrowed from [liquidluck](https://github.com/lepture/liquidluck), it's simple and elegant, even without nico, it can render pretty well.
 
 
 ## Article Syntax
 
+Here is a simple example:
 
 ```
 # title
@@ -19,12 +22,29 @@ This is a simple description, it's not required.
 entry content is below ----, it supports markdown syntax.
 ```
 
+An article contains four part, which are title, meta, description and content. Title and content are required, others are not.
+
 
 ### Meta Data
+
+Meta data is important, it makes article meaningful. Take `pubdate` as an example, an article with `pubdate` is **POST**, otherwise, it's **PAGE**. A post is rendered by PostWriter, and page is render by PageWriter.
+
+Built-in supported meta data:
+
+- pubdate: the time when the article is published
+- tags: just tags, it will turn into Array
+- status: status of an article, default is public, other choices are secret and draft
+- template: the template that will render the article, post use post.html as default, page use page.html
+
+You can access meta data in theme templates with something like `{{post.pubdate}}`.
+
+Want define more meta data? It's easy:
 
 ```
 - topic: nico
 ```
+
+But you need to get the meta data in theme templates with `{{post.meta.topic}}`.
 
 
 ## Markdown Basic Syntax

@@ -1,4 +1,4 @@
-# nico 主题
+# Nico 主题
 
 ------------
 
@@ -23,16 +23,15 @@ theme-name/
 
 ## 模板
 
-nico 使用 swig 做为模板引擎，所以你需要了解一下 swig 的语法。如果你有用过 Django 或者 Jinja，你已经大致了解语法了。更多内容请访问 [swig](http://paularmstrong.github.com/swig/)。
+Nico 使用 swig 做为模板引擎，所以你需要了解一下 swig 的语法。如果你有用过 Django 或者 Jinja，你已经大致了解语法了。更多内容请访问 [swig](http://paularmstrong.github.com/swig/)。
 
 不同的 writer 需要不用的模板，比如 PostWriter 需要 post.html，ArchiveWriter 需要 archive.html。一个完备的主题应该包含：
 
 ```
 post.html             - PostWriter
 page.html             - PageWriter
-archive.html          - ArchiveWriter, YearWriter ...
+archive.html          - ArchiveWriter, YearWriter, DirectoryWriter ...
 feed.html             - FeedWriter
-tagcloud.html         - TagcloudWriter
 ```
 
 当然，如果你的主题只供自己使用，只需要提供自己所需的模板就可以了。
