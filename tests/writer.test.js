@@ -6,7 +6,7 @@ var _ = require('underscore');
 var require = require('./testutils').require;
 var utils = require('../lib/utils');
 utils.logging.config('error');
-var reader = require('../lib/reader');
+var Post = require('../lib/reader').Post;
 var writer = require('../lib/writer');
 
 var storage = {
@@ -17,7 +17,6 @@ var storage = {
     ]
   },
   config: {
-    PostRender: reader.Post,
     permalink: '{{filename}}.html',
     source: path.join(__dirname, 'data'),
     output: path.join(__dirname, '_site')
@@ -27,10 +26,10 @@ var storage = {
 
 describe('PostWriter', function() {
   it('should write a post', function() {
-    storage.resource.publicPosts = [];
-    storage.resource.publicPosts.push({
-      filepath: path.join(__dirname, 'data', 'normal-post.md')
-    });
+    var dir = path.join(__dirname, 'data');
+    storage.resource.publicPosts = [
+      new Post({filepath: path.join(dir, 'normal-post.md'), root: dir})
+    ];
     var p = new writer.PostWriter(storage);
     p.start();
     p.end();
@@ -40,10 +39,10 @@ describe('PostWriter', function() {
   });
 
   it('can render unicode post', function() {
-    storage.resource.publicPosts = [];
-    storage.resource.publicPosts.push({
-      filepath: path.join(__dirname, 'data', 'unicode-post.md')
-    });
+    var dir = path.join(__dirname, 'data');
+    storage.resource.publicPosts = [
+      new Post({filepath: path.join(dir, 'unicode-post.md'), root: dir})
+    ];
     var p = new writer.PostWriter(storage);
     p.start();
     p.end();
@@ -53,10 +52,10 @@ describe('PostWriter', function() {
   });
 
   it('can create iframes', function() {
-    storage.resource.publicPosts = [];
-    storage.resource.publicPosts.push({
-      filepath: path.join(__dirname, 'data', 'iframe.md')
-    });
+    var dir = path.join(__dirname, 'data');
+    storage.resource.publicPosts = [
+      new Post({filepath: path.join(dir, 'iframe.md'), root: dir})
+    ];
     var p = new writer.PostWriter(storage);
     p.start();
     p.end();
@@ -73,10 +72,10 @@ describe('PostWriter', function() {
 
   it('can reset permalink', function() {
     storage.config.permalink = '{{filename}}';
-    storage.resource.publicPosts = [];
-    storage.resource.publicPosts.push({
-      filepath: path.join(__dirname, 'data', 'normal-post.md')
-    });
+    var dir = path.join(__dirname, 'data');
+    storage.resource.publicPosts = [
+      new Post({filepath: path.join(dir, 'normal-post.md'), root: dir})
+    ];
     var p = new writer.PostWriter(storage);
     p.start();
     p.end();
@@ -100,10 +99,10 @@ describe('PostWriter', function() {
 
 describe('PageWriter', function() {
   it('should render page well', function() {
-    storage.resource.pages = [];
-    storage.resource.pages.push({
-      filepath: path.join(__dirname, 'data', 'page.md')
-    });
+    var dir = path.join(__dirname, 'data');
+    storage.resource.pages = [
+      new Post({filepath: path.join(dir, 'page.md'), root: dir})
+    ];
     var p = new writer.PageWriter(storage);
     p.start();
     p.end();
@@ -117,7 +116,6 @@ describe('PageWriter', function() {
 
 describe('YearWriter', function() {
   it('can render sorted year posts', function() {
-    var Post = reader.Post;
     var dir = path.join(__dirname, 'data', 'year');
     storage.resource.publicPosts = [
       new Post({filepath: path.join(dir, '2011-1.md')}),
