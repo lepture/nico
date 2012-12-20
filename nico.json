@@ -3,10 +3,10 @@
   "output": "_site",
   "theme": "./_themes/one",
   "permalink": "{{directory}}/{{filename}}",
-  "sitename": "nico",
+  "sitename": "Nico",
   "github": "https://github.com/lepture/nico",
   "google": "UA-21475122-1",
-  "footer": "nico was created by lepture, concept based on liquidluck. brought to you under the BSD license.",
+  "footer": "Nico was created by lepture, concept based on liquidluck. brought to you under the BSD license.",
   "navigation": [
     {"link": "en/index.html", "title": "English"},
     {"link": "zh/index.html", "title": "中文文档"}

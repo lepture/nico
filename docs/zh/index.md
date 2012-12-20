@@ -2,7 +2,7 @@
 
 -----------
 
-nico 是基于 nodejs 的静态站点生成工具。所以在安装 nico 之前，你需要安装 node。通常来说，你应该已经安装好了 node，不过这里还是重复一下。
+Nico 是基于 nodejs 的静态站点生成工具。所以在安装 nico 之前，你需要安装 node。通常来说，你应该已经安装好了 node，不过这里还是重复一下。
 
 你可以在 [nodejs.org](http://nodejs.org/) 下载安装包安装，也可以通过包管理器（比如在 Mac 上用 homebrew，同时推荐在 Mac 上用 homebrew）。
 
@@ -53,7 +53,7 @@ $ npm install nico -g
 
 ## 主题
 
-nico 没有提供内置的主题，在可见的未来也不会内置主题，但是我已经为你写好了一个主题  [one](https://github.com/lepture/nico-one)，在你还不会自己写主题时，你可以暂时使用 one 做为你的主题。另外说明一下，你所访问的这个站点就是用的 one。
+Nico 没有提供内置的主题，在可见的未来也不会内置主题，但是我已经为你写好了一个主题  [one](https://github.com/lepture/nico-one)，在你还不会自己写主题时，你可以暂时使用 one 做为你的主题。另外说明一下，你所访问的这个站点就是用的 one。
 
 我们先下载这个主题：
 
