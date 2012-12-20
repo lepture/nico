@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.1.0">
+    <meta name="generator" content="nico 0.1.1">
     <meta name="theme" content="one 0.1">
-    <title>nico 主题</title>
+    <title>Nico 主题</title>
     <link rel="stylesheet" href="../static/one.css" />
     <link rel="stylesheet" href="../static/syntax.css" />
     <script type="text/javascript">
@@ -32,7 +32,7 @@
     </div>
     <div class="document">
 <div class="hentry">
-  <h1 class="entry-title">nico 主题</h1>
+  <h1 class="entry-title">Nico 主题</h1>
   <div class="entry-content"><p>想要开发自己的主题？其实很简单。大多数时候，例子会更有帮助，所以去看 <a href="https://github.com/lepture/nico-one">one</a> 吧。</p>
 <h2 id="%E7%BB%93%E6%9E%84">结构</h2>
 <p>一个主题包含三个部分：主题的信息，模板，静态文件。它的文件目录结构如下：</p>
@@ -49,15 +49,14 @@
         ...
 </pre>
 <h2 id="%E6%A8%A1%E6%9D%BF">模板</h2>
-<p>nico 使用 swig 做为模板引擎，所以你需要了解一下 swig 的语法。如果你有用过 Django 或者 Jinja，你已经大致了解语法了。更多内容请访问 <a href="http://paularmstrong.github.com/swig/">swig</a>。</p>
+<p>Nico 使用 swig 做为模板引擎，所以你需要了解一下 swig 的语法。如果你有用过 Django 或者 Jinja，你已经大致了解语法了。更多内容请访问 <a href="http://paularmstrong.github.com/swig/">swig</a>。</p>
 
 <p>不同的 writer 需要不用的模板，比如 PostWriter 需要 post.html，ArchiveWriter 需要 archive.html。一个完备的主题应该包含：</p>
 
 <pre>post.html             - PostWriter
 page.html             - PageWriter
-archive.html          - ArchiveWriter, YearWriter ...
+archive.html          - ArchiveWriter, YearWriter, DirectoryWriter ...
 feed.html             - FeedWriter
-tagcloud.html         - TagcloudWriter
 </pre>
 
 <p>当然，如果你的主题只供自己使用，只需要提供自己所需的模板就可以了。</p>

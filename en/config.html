@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="generator" content="nico 0.1.1">
     <meta name="theme" content="one 0.1">
-    <title>Nico 设置</title>
+    <title>Nico Configuration</title>
     <link rel="stylesheet" href="../static/one.css" />
     <link rel="stylesheet" href="../static/syntax.css" />
     <script type="text/javascript">
@@ -32,10 +32,10 @@
     </div>
     <div class="document">
 <div class="hentry">
-  <h1 class="entry-title">Nico 设置</h1>
-  <div class="entry-content"><p>Nico 支持两种格式的配置文件：javascript 和 json。使用 json 格式的配置文件更标准，使用 javascript 格式的配置文件更灵活。</p>
+  <h1 class="entry-title">Nico Configuration</h1>
+  <div class="entry-content"><p>Nico supports two formats of configuration, Javascript and JSON. JSON is standard, but Javascript is more flexible.</p>
 <h2 id="basic">Basic</h2>
-<p>Nico 所需要的设置并不多，基本的设置如下：</p>
+<p>The required fields of nico:</p>
 
 <pre>{
     &quot;source&quot;: &quot;content&quot;,
@@ -50,12 +50,12 @@
 }
 </pre>
 
-<p>如果使用 javascript 做格式的话：</p>
+<p>In Javascript format:</p>
 <div class="highlight"><pre><code class="javascript">exports.source = <span class="string">"content"</span>
 exports.output = <span class="string">"_site"</span>
 exports.permalink = <span class="string">"{{filename}}.html"</span>
 
-<span class="comment">// 你可以使用 nodejs 的库哦</span>
+<span class="comment">// you can use node library</span>
 <span class="keyword">var</span> path = require(<span class="string">'path'</span>)
 exports.theme = path.join(__dirname, <span class="string">'one'</span>)
 
@@ -66,12 +66,12 @@ exports.writers = [
     <span class="string">'nico.FileWriter'</span>
 ]
 </code></pre></div>
-<p>如上所示的配置中， source, output, permalink, theme 都可以在命令行里重新指定，具体可查看：</p>
+<p>You can set source, output, permalink, theme in the terminal interface, get more help:</p>
 
 <pre>$ nico build -h
 </pre>
 <h2 id="permalink">Permalink</h2>
-<p>permalink 是指你期望的链接格式，下面举一些常用的例子：</p>
+<p>Set the permalink style you want. Here are some tips:</p>
 
 <pre>{{filename}}
 {{filename}}.html
@@ -83,9 +83,14 @@ exports.writers = [
 {{pubdate.year}}&#47;{{filename}}.html
 </pre>
 <h2 id="writer">Writer</h2>
-<p>Writer 是用来将内容写入 output 的，比如 PostWriter 用来生成文章页面，FileWriter 将文件从 source 中复制到 output 中。</p>
+<p>Writer is the tool for writing html into your output directory. For example:</p>
 
-<p>内置的 Writer：</p>
+<ul>
+<li>PostWriter will write the post html</li>
+<li>FileWriter will copy files from source to output</li>
+</ul>
+
+<p>Built-in writers:</p>
 
 <ul>
 <li>nico.PostWriter</li>
@@ -95,11 +100,7 @@ exports.writers = [
 <li>nico.ArchiveWriter</li>
 <li>nico.FeedWriter</li>
 </ul>
-<h2 id="more">More</h2>
-<p>在配置文件里，除了必要的一些信息外，还可以提供额外的信息。这些额外的信息有些可以给 writer 用，有些可以给主题使用。</p>
-
-<p>所有的配置信息都可以在模板里访问到，比如 <code>{{config.source}}</code>。</p>
-</div>
+<h2 id="more">More</h2></div>
 </div>
 </div>
     <div class="footer">

@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.1.0">
+    <meta name="generator" content="nico 0.1.1">
     <meta name="theme" content="one 0.1">
-    <title>Markdown Syntax</title>
+    <title>Nico Syntax</title>
     <link rel="stylesheet" href="../static/one.css" />
     <link rel="stylesheet" href="../static/syntax.css" />
     <script type="text/javascript">
@@ -32,9 +32,47 @@
     </div>
     <div class="document">
 <div class="hentry">
-  <h1 class="entry-title">Markdown Syntax</h1>
-  <blockquote class="entry-description"><p>If you are not familiar with Markdown,  you should spend 15 minutes and go over the excellent <a href="http://daringfireball.net/projects/markdown/syntax">Markdown Syntax Guide</a> at Daring Fireball. Here is a brief.</p></blockquote>
-  <div class="entry-content"><h2 id="markdown-basic-syntax">Markdown Basic Syntax</h2><h3 id="strong-and-emphasize">Strong and Emphasize</h3>
+  <h1 class="entry-title">Nico Syntax</h1>
+  <div class="entry-content"><p>The nico markup is borrowed from <a href="https://github.com/lepture/liquidluck">liquidluck</a>, it&#39;s simple and elegant, even without nico, it can render pretty well.</p>
+<h2 id="article-syntax">Article Syntax</h2>
+<p>Here is a simple example:</p>
+
+<pre># title
+
+- pubdate: 2012-12-12 12:00
+- tags: nico, javascript
+
+This is a simple description, it&#39;s not required.
+
+----------------
+
+entry content is below ----, it supports markdown syntax.
+</pre>
+
+<p>An article contains four part, which are title, meta, description and content. Title and content are required, others are not.</p>
+<h3 id="meta-data">Meta Data</h3>
+<p>Meta data is important, it makes article meaningful. Take <code>pubdate</code> as an example, an article with <code>pubdate</code> is <strong>POST</strong>, otherwise, it&#39;s <strong>PAGE</strong>. A post is rendered by PostWriter, and page is render by PageWriter.</p>
+
+<p>Built-in supported meta data:</p>
+
+<ul>
+<li>pubdate: the time when the article is published</li>
+<li>tags: just tags, it will turn into Array</li>
+<li>status: status of an article, default is public, other choices are secret and draft</li>
+<li>template: the template that will render the article, post use post.html as default, page use page.html</li>
+</ul>
+
+<p>You can access meta data in theme templates with something like <code>{{post.pubdate}}</code>.</p>
+
+<p>Want define more meta data? It&#39;s easy:</p>
+
+<pre>- topic: nico
+</pre>
+
+<p>But you need to get the meta data in theme templates with <code>{{post.meta.topic}}</code>.</p>
+<h2 id="markdown-basic-syntax">Markdown Basic Syntax</h2>
+<p>If you are not familiar with Markdown,  you should spend 15 minutes and go over the excellent <a href="http://daringfireball.net/projects/markdown/syntax">Markdown Syntax Guide</a> at Daring Fireball. Here is a brief.</p>
+<h3 id="strong-and-emphasize">Strong and Emphasize</h3>
 <pre>*emphasize*    **strong**
 _emphasize_    __strong__
 </pre>
