@@ -139,7 +139,7 @@ function serving(prog) {
 
     _lastChanged = new Date();
     setInterval(function() {
-      if (isChanged(config.source, config.ignore)) {
+      if (isChanged(config.source, config.ignore) || isChanged(config.theme)) {
         if ((new Date() - _lastChanged) > 1800) {
           _lastChanged = new Date();
           building(prog);
