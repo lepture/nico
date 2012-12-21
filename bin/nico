@@ -59,11 +59,11 @@ var subcmd = program.args[0];
 if (subcmd === 'build') {
   builder.parse(args);
   logging.config(builder);
-  build(builder);
+  building(builder);
 } else if (subcmd === 'server') {
   server.parse(args);
   logging.config(server);
-  watch(server);
+  serving(server);
 } else {
   help();
 }
@@ -83,23 +83,24 @@ function help() {
   process.exit();
 }
 
-var storage;
-function build(prog) {
+var storage, config;
+function building(prog) {
   logging.start('building site');
   var startTime = new Date();
 
   logging.start('loading configuration');
   storage = cli.getConfig(prog);
-  storage.swigConfig = cli.getSwigConfig(storage.config);
+  config = storage.config;
+  storage.swigConfig = cli.getSwigConfig(config);
   logging.end('configuration done');
 
   logging.start('loading posts');
-  logging.debug('source directory: %s', storage.config.source);
+  logging.debug('source directory: %s', config.source);
   cli.callReader(storage);
   logging.end('posts loaded');
 
   logging.start('generating site');
-  logging.debug('output directory: %s', storage.config.output);
+  logging.debug('output directory: %s', config.output);
   cli.callWriters(storage);
   logging.end('site is updated');
 
@@ -108,11 +109,12 @@ function build(prog) {
 }
 
 var _lastChanged, io, port;
-function watch(prog) {
-  build(prog);
+function serving(prog) {
+  building(prog);
 
-  logging.start('start watching');
+  logging.start('start serving');
   storage = cli.getConfig(prog);
+  config = storage.config;
   port = prog.port || 8000;
   var app = require('http').createServer(handler);
 
@@ -137,10 +139,10 @@ function watch(prog) {
 
     _lastChanged = new Date();
     setInterval(function() {
-      if (isChanged(storage.config.source, storage.config.ignore)) {
+      if (isChanged(config.source, config.ignore)) {
         if ((new Date() - _lastChanged) > 1800) {
           _lastChanged = new Date();
-          build(prog);
+          building(prog);
           server.emit('fileModified', {message: 'nico'});
         }
       }
@@ -185,7 +187,7 @@ function handler(req, res) {
   };
 
   if (!mimetypes.hasOwnProperty(ext)) {
-    if (fs.existsSync(path.join(storage.config.output, file + '.html'))) {
+    if (fs.existsSync(path.join(config.output, file + '.html'))) {
       ext = 'html';
       file = file + '.html';
     }
@@ -203,7 +205,7 @@ function handler(req, res) {
     '</script></head>'
   ].join('');
   fs.readFile(
-    path.join(storage.config.output, file), encode,
+    path.join(config.output, file), encode,
     function(err, data) {
       if (err) {
         res.writeHead(404);
