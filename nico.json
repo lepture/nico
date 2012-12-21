@@ -5,7 +5,7 @@
   "permalink": "{{directory}}/{{filename}}",
   "sitename": "Nico",
   "github": "https://github.com/lepture/nico",
-  "google": "UA-21475122-1",
+  "google": "UA-21475122-5",
   "footer": "Nico was created by lepture, concept based on liquidluck. brought to you under the BSD license.",
   "navigation": [
     {"link": "en/index.html", "title": "English"},
