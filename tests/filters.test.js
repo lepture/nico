@@ -1,4 +1,4 @@
-var require = require('./testutils').require;
+var require = require('./testutils');
 var filters = require('../lib/filters');
 
 describe('content_url', function() {

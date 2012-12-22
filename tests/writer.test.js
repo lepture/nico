@@ -3,9 +3,7 @@ var path = require('path');
 var should = require('should');
 var swig = require('jinja');
 var _ = require('underscore');
-var require = require('./testutils').require;
-var utils = require('../lib/utils');
-utils.logging.config('error');
+var require = require('./testutils');
 var Post = require('../lib/reader').Post;
 var writer = require('../lib/writer');
 

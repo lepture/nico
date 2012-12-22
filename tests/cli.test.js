@@ -1,7 +1,7 @@
-var require = require('./testutils').require;
+var path = require('path');
+var require = require('./testutils');
 var cli = require('../lib/cli');
 var utils = require('../lib/utils');
-var path = require('path');
 
 var cliConfig = {
   swigConfig: {
