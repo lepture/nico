@@ -2,10 +2,10 @@
 
 var fs = require('fs');
 require('colorful').colorful();
+var logging = require('colorful').logging;
 var cli = require('../lib/cli');
 var utils = require('../lib/utils');
 var pathlib = require('../lib/utils/path');
-var logging = utils.logging;
 
 var program = require('commander');
 program.usage('[command] [options]');
