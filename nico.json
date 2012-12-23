@@ -12,8 +12,8 @@
     {"link": "zh/index.html", "title": "中文文档"}
   ],
   "writers": [
-    "./lib/writer.PageWriter",
-    "./lib/writer.FileWriter",
-    "./lib/writer.StaticWriter"
+    "./lib/writers.PageWriter",
+    "./lib/writers.FileWriter",
+    "./lib/writers.StaticWriter"
   ]
 }
