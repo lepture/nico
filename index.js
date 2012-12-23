@@ -2,10 +2,10 @@ var reader = require('./lib/reader');
 exports.Post = reader.Post;
 exports.MarkdownParser = reader.MarkdownParser;
 
-var writer = require('./lib/writer');
-for (var key in writer) {
-  exports[key] = writer[key];
-}
+var writers = require('./lib/writers');
+Object.keys(writers).forEach(function(key) {
+  exports[key] = writers[key];
+});
 
 
 exports.filters = require('./lib/filters');

@@ -5,7 +5,7 @@ var swig = require('jinja');
 var _ = require('underscore');
 var require = require('./testutils');
 var Post = require('../lib/reader').Post;
-var writer = require('../lib/writer');
+var writer = require('../lib/writers/core');
 
 var storage = {
   swigConfig: {
