@@ -137,13 +137,16 @@
         line-height: 18px;
         font-style: normal;
       }
-      tt {
+      code, tt {
         padding: 0px 3px;
         background: #fff;
         border: 1px solid #ddd;
         zoom: 1;
       }
-      code {
+      code.api {
+        background: none;
+        padding: auto;
+        border: 0 none;
         margin-left: 20px;
       }
       pre {
@@ -202,5 +205,16 @@
       </p>
       {{post.html}}
     </div>
+    <script type="text/javascript">
+      (function() {
+        if (document.querySelectorAll) {
+          var codes = document.querySelectorAll('.header + code')
+          for (var i = 0; i < codes.length; i++) {
+            var code = codes[i];
+            code.className = 'api';
+          }
+        }
+      })();
+    </script>
   </body>
 </html>
