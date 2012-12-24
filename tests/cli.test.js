@@ -23,9 +23,10 @@ describe('callReader', function() {
       }
     });
     var resource = storage.resource;
-    resource.publicPosts.length.should.not.equal(0);
-    resource.secretPosts.length.should.not.equal(0);
-    resource.pages.length.should.not.equal(0);
+    resource.publicPosts.should.not.have.length(0);
+    resource.secretPosts.should.not.have.length(0);
+    resource.pages.should.not.have.length(0);
+    resource.writerPosts.should.have.length(1);
   });
 });
 
