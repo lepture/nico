@@ -214,9 +214,7 @@ function handler(req, res) {
       }
       res.writeHead(200);
       if (encode == 'utf-8') {
-        data = data.replace('http://www.google-analytics.com/ga.js', '');
-        data = data.replace('https://ssl.google-analytics.com/ga.js', '');
-        data = data.replace('.google-analytics.com/ga.js', '');
+        data = data.replace('ga.src', '// ga.src');
         if (io) {
           data = data.replace('</head>', code);
         }
