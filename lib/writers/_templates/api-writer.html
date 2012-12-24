@@ -8,6 +8,19 @@
     <link rel="canonical" href="{{post.meta.canonical}}" />
     {%- endif %}
     <title>{{post.title}}</title>
+    {%- if config.google %}
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '{{config.google}}']);
+      _gaq.push(['_trackPageview']);
+      _gaq.push(['_trackPageLoadTime']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    {%- endif %}
     <style>
       body {
         font-size: 14px;
