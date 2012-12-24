@@ -26,7 +26,7 @@ describe('callReader', function() {
     resource.publicPosts.should.not.have.length(0);
     resource.secretPosts.should.not.have.length(0);
     resource.pages.should.not.have.length(0);
-    resource.writerPosts.should.have.length(1);
+    resource.writerPosts.should.not.have.length(0);
   });
 });
 
