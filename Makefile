@@ -34,8 +34,7 @@ server:
 	@bin/nico server -C nico.json -v --watch
 
 publish: clean documentation coverage
-	@scripts/ghp-import.py _site
-	@git push origin gh-pages
+	@scripts/ghp-import.py _site -p
 
 clean:
 	@rm -fr tests/_site
