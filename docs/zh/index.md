@@ -63,11 +63,36 @@ $ git clone git://github.com/lepture/nico-one.git
 
 关于如何制作自己的主题，请参考 [主题篇](./theme)。
 
+
+## 配置
+
+你需要一份配置文件来让 nico 正常工作。在当前目录下新建一个 ``nico.json`` 文件：
+
+```
+{
+    "source": "content",
+    "output": "_site",
+    "theme": "nico-one",
+    "permalink": "{{directory}}/{{filename}}.html",
+    "writers": [
+        "nico.PostWriter",
+        "nico.FileWriter",
+        "nico.StaticWriter"
+    ]
+}
+```
+
+这时我们再在终端里执行：
+
+更多关于配置文件的信息，请参考 [配置篇](./config)。
+
+
 ## 写作
 
 我们来试着写一篇文章，假设你的目录结构如下：
 
 ```
+nico.json
 content/
   hello-world.md
 nico-one
@@ -91,7 +116,7 @@ Hello World, Hello Nico.
 在终端里运行：
 
 ```
-$ nico build --source=content --output=_site --theme=nico-one
+$ nico build
 ```
 
 这时可以看到在当前目录下生成了一个 ``_site`` 文件夹，里面有一篇 ``hello-world.html`` 的文章。
@@ -105,34 +130,6 @@ $ nico server -h
 ```
 
 了解更多文章格式的内容，请参考 [写作篇](./syntax)。
-
-## 配置
-
-上面生成出的内容远远不够用，这个时候你需要一份配置文件来让 nico 正常工作。在当前目录下新建一个 ``nico.json`` 文件：
-
-```
-{
-    "source": "content",
-    "output": "_site",
-    "theme": "nico-one",
-    "permalink": "{{directory}}/{{filename}}.html",
-    "writers": [
-        "nico.PostWriter",
-        "nico.FileWriter",
-        "nico.StaticWriter"
-    ]
-}
-```
-
-这时我们再在终端里执行：
-
-```
-$ nico build
-```
-
-你可以用浏览器打开生成出来的 ``_site/hello-world.html`` 看看生成后的效果。
-
-更多关于配置文件的信息，请参考 [配置篇](./config)。
 
 
 ## 开发者文档

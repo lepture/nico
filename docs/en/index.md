@@ -10,7 +10,7 @@ You can download the package on [nodejs.org](http://nodejs.org) or through a pac
 
 We will need node-gyp to compile c module, and it will trouble Windows Users. If you are on a Windows, please check <https://github.com/TooTallNate/node-gyp>, and install the missing requirements.
 
-After the installation, maybe you have to deal with the environment variables. Linux & Mac user just editor your shell rc file (.bashrc or .zshrc):
+After the installation, maybe you have to deal with the environment variables. Linux & Mac user just edit your shell rc file (.bashrc or .zshrc):
 
 ```
 export NODE_PATH="/usr/local/share/npm/lib/node_modules"
@@ -52,11 +52,35 @@ Let's grab the theme:
 
 You can learn more in the [Theme](./theme) section.
 
+
+## Configure
+
+Nico can't work well without a configuration. Let's create a `nico.json`:
+
+
+```
+{
+    "source": "content",
+    "output": "_site",
+    "theme": "nico-one",
+    "permalink": "{{directory}}/{{filename}}.html",
+    "writers": [
+        "nico.PostWriter",
+        "nico.FileWriter",
+        "nico.StaticWriter"
+    ]
+}
+```
+
+Learn more about configuration at the [Config](./config) section.
+
+
 ## Writing
 
 It's the time for us to write something:
 
 ```
+nico.json
 content/
   hello-world.md
 nico-one
@@ -80,7 +104,7 @@ Hello World, Hello Nico.
 Run the command in the terminal:
 
 ```
-$ nico build --source=content --output=_site --theme=nico-one
+$ nico build
 ```
 
 It will create a folder `_site` in the current working directory, and there will be an article `hello-world.html`.
@@ -94,36 +118,6 @@ $ nico server -h
 ```
 
 Learn more about syntax in the [Syntax](./syntax) section.
-
-
-## Configure
-
-Nico can't work well without a configuration. Let's create a `nico.json`:
-
-```
-{
-    "source": "content",
-    "output": "_site",
-    "theme": "nico-one",
-    "permalink": "{{directory}}/{{filename}}.html",
-    "writers": [
-        "nico.PostWriter",
-        "nico.FileWriter",
-        "nico.StaticWriter"
-    ]
-}
-```
-
-And now, we can run the command:
-
-```
-$ nico build
-```
-
-Open `_site/hello-world.html` with your browser, see what's happening.
-
-Learn more about configuration at the [Config](./config) section.
-
 
 
 ## Developer Guide
