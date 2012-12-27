@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.1.2">
+    <meta name="generator" content="nico 0.1.4">
     <meta name="theme" content="one 0.1">
     <title>Documentation of Nico</title>
     <link rel="stylesheet" href="../static/one.css" />
@@ -40,7 +40,7 @@
 
 <p>We will need node-gyp to compile c module, and it will trouble Windows Users. If you are on a Windows, please check <a href="https://github.com/TooTallNate/node-gyp">https://github.com/TooTallNate/node-gyp</a>, and install the missing requirements.</p>
 
-<p>After the installation, maybe you have to deal with the environment variables. Linux &amp; Mac user just editor your shell rc file (.bashrc or .zshrc):</p>
+<p>After the installation, maybe you have to deal with the environment variables. Linux &amp; Mac user just edit your shell rc file (.bashrc or .zshrc):</p>
 
 <pre>export NODE_PATH=&quot;&#47;usr&#47;local&#47;share&#47;npm&#47;lib&#47;node_modules&quot;
 export PATH=&quot;$PATH:&#47;usr&#47;local&#47;share&#47;npm&#47;bin&quot;
@@ -73,10 +73,28 @@ export PATH=&quot;$PATH:&#47;usr&#47;local&#47;share&#47;npm&#47;bin&quot;
 </pre>
 
 <p>You can learn more in the <a href="./theme">Theme</a> section.</p>
+<h2 id="configure">Configure</h2>
+<p>Nico can&#39;t work well without a configuration. Let&#39;s create a <code>nico.json</code>:</p>
+
+<pre>{
+    &quot;source&quot;: &quot;content&quot;,
+    &quot;output&quot;: &quot;_site&quot;,
+    &quot;theme&quot;: &quot;nico-one&quot;,
+    &quot;permalink&quot;: &quot;{{directory}}&#47;{{filename}}.html&quot;,
+    &quot;writers&quot;: [
+        &quot;nico.PostWriter&quot;,
+        &quot;nico.FileWriter&quot;,
+        &quot;nico.StaticWriter&quot;
+    ]
+}
+</pre>
+
+<p>Learn more about configuration at the <a href="./config">Config</a> section.</p>
 <h2 id="writing">Writing</h2>
 <p>It&#39;s the time for us to write something:</p>
 
-<pre>content&#47;
+<pre>nico.json
+content&#47;
   hello-world.md
 nico-one
   templates&#47;
@@ -97,7 +115,7 @@ Hello World, Hello Nico.
 
 <p>Run the command in the terminal:</p>
 
-<pre>$ nico build --source=content --output=_site --theme=nico-one
+<pre>$ nico build
 </pre>
 
 <p>It will create a folder <code>_site</code> in the current working directory, and there will be an article <code>hello-world.html</code>.</p>
@@ -110,30 +128,6 @@ $ nico server -h
 </pre>
 
 <p>Learn more about syntax in the <a href="./syntax">Syntax</a> section.</p>
-<h2 id="configure">Configure</h2>
-<p>Nico can&#39;t work well without a configuration. Let&#39;s create a <code>nico.json</code>:</p>
-
-<pre>{
-    &quot;source&quot;: &quot;content&quot;,
-    &quot;output&quot;: &quot;_site&quot;,
-    &quot;theme&quot;: &quot;nico-one&quot;,
-    &quot;permalink&quot;: &quot;{{directory}}&#47;{{filename}}.html&quot;,
-    &quot;writers&quot;: [
-        &quot;nico.PostWriter&quot;,
-        &quot;nico.FileWriter&quot;,
-        &quot;nico.StaticWriter&quot;
-    ]
-}
-</pre>
-
-<p>And now, we can run the command:</p>
-
-<pre>$ nico build
-</pre>
-
-<p>Open <code>_site/hello-world.html</code> with your browser, see what&#39;s happening.</p>
-
-<p>Learn more about configuration at the <a href="./config">Config</a> section.</p>
 <h2 id="developer-guide">Developer Guide</h2>
 <p>Actually the code of nico is easy to understand.</p>
 <h2 id="bug-report">Bug Report</h2>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.1.2">
+    <meta name="generator" content="nico 0.1.4">
     <meta name="theme" content="one 0.1">
     <title>nico 中文文档</title>
     <link rel="stylesheet" href="../static/one.css" />
@@ -86,10 +86,30 @@
 </pre>
 
 <p>关于如何制作自己的主题，请参考 <a href="./theme">主题篇</a>。</p>
+<h2 id="%E9%85%8D%E7%BD%AE">配置</h2>
+<p>你需要一份配置文件来让 nico 正常工作。在当前目录下新建一个 <code>nico.json</code> 文件：</p>
+
+<pre>{
+    &quot;source&quot;: &quot;content&quot;,
+    &quot;output&quot;: &quot;_site&quot;,
+    &quot;theme&quot;: &quot;nico-one&quot;,
+    &quot;permalink&quot;: &quot;{{directory}}&#47;{{filename}}.html&quot;,
+    &quot;writers&quot;: [
+        &quot;nico.PostWriter&quot;,
+        &quot;nico.FileWriter&quot;,
+        &quot;nico.StaticWriter&quot;
+    ]
+}
+</pre>
+
+<p>这时我们再在终端里执行：</p>
+
+<p>更多关于配置文件的信息，请参考 <a href="./config">配置篇</a>。</p>
 <h2 id="%E5%86%99%E4%BD%9C">写作</h2>
 <p>我们来试着写一篇文章，假设你的目录结构如下：</p>
 
-<pre>content&#47;
+<pre>nico.json
+content&#47;
   hello-world.md
 nico-one
   templates&#47;
@@ -110,7 +130,7 @@ Hello World, Hello Nico.
 
 <p>在终端里运行：</p>
 
-<pre>$ nico build --source=content --output=_site --theme=nico-one
+<pre>$ nico build
 </pre>
 
 <p>这时可以看到在当前目录下生成了一个 <code>_site</code> 文件夹，里面有一篇 <code>hello-world.html</code> 的文章。</p>
@@ -123,30 +143,6 @@ $ nico server -h
 </pre>
 
 <p>了解更多文章格式的内容，请参考 <a href="./syntax">写作篇</a>。</p>
-<h2 id="%E9%85%8D%E7%BD%AE">配置</h2>
-<p>上面生成出的内容远远不够用，这个时候你需要一份配置文件来让 nico 正常工作。在当前目录下新建一个 <code>nico.json</code> 文件：</p>
-
-<pre>{
-    &quot;source&quot;: &quot;content&quot;,
-    &quot;output&quot;: &quot;_site&quot;,
-    &quot;theme&quot;: &quot;nico-one&quot;,
-    &quot;permalink&quot;: &quot;{{directory}}&#47;{{filename}}.html&quot;,
-    &quot;writers&quot;: [
-        &quot;nico.PostWriter&quot;,
-        &quot;nico.FileWriter&quot;,
-        &quot;nico.StaticWriter&quot;
-    ]
-}
-</pre>
-
-<p>这时我们再在终端里执行：</p>
-
-<pre>$ nico build
-</pre>
-
-<p>你可以用浏览器打开生成出来的 <code>_site/hello-world.html</code> 看看生成后的效果。</p>
-
-<p>更多关于配置文件的信息，请参考 <a href="./config">配置篇</a>。</p>
 <h2 id="%E5%BC%80%E5%8F%91%E8%80%85%E6%96%87%E6%A1%A3">开发者文档</h2>
 <p>你是开发者，你对 nico 这个程序感兴趣，想要为 nico 做点贡献，请先阅读 <a href="https://github.com/lepture/nico/blob/master/CONTRIBUTING.md">Contributing Guide</a>。</p>
 
