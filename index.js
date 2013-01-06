@@ -11,4 +11,4 @@ Object.keys(writers).forEach(function(key) {
 exports.filters = require('./lib/filters');
 exports.utils = require('./lib/utils');
 exports.cli = require('./lib/cli');
-exports.underscore = require('underscore');
+exports.logging = require('colorful').logging;
