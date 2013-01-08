@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Style Guide</title>
+    <style type="text/css">
+      .container {
+        font: 13px/1.4 Helvetica, arial, sans-serif;
+        color: #333;
+        width: 920px;
+        margin: 0 auto;
+        padding: 48px 0;
+        zoom: 1;
+      }
+      .container:after {
+        display: block;
+        clear: both;
+        content: ' ';
+      }
+      .menu-container {
+        float: left;
+        width: 200px;
+        padding: 3px;
+        background: #efefef;
+        border-radius: 2px;
+      }
+      .menu {
+        margin: 0;
+        padding: 0;
+        background: #fafafb;
+        border-radius: 2px;
+        border: 1px solid #d8d8d8;
+        list-style: none;
+      }
+      .menu li {
+        margin: 0;
+        padding: 0;
+        border-top: 1px solid white;
+        border-bottom: 1px solid #eee;
+      }
+      .menu li:first-child {
+        border-top: none;
+      }
+      .menu a {
+        display: block;
+        text-decoration: none;
+        color: #4183c4;
+        padding: 8px 10px 8px 8px;
+        text-shadow: 0 1px 0 white;
+        border-left: 2px solid #fafafb;
+      }
+      .menu .active a {
+        background: white;
+        border-left: 2px solid #d26911;
+        font-weight: bold;
+        color: #222;
+        cursor: default;
+        box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.1);
+      }
+      .styleguide {
+        float: right;
+        width: 700px;
+      }
+      .section {
+        border: 1px solid #ddd;
+        border-top-color: #333;
+        margin-bottom: 30px;
+      }
+      .section-title {
+        margin: 0;
+        padding: 4px 10px;
+        color: white;
+        font-size: 12px;
+        text-transform: uppercase;
+        background: #333;
+      }
+      .section-body {
+        padding: 1px 10px;
+        background: #f1f1f1;
+        border-bottom: 1px solid #ddd;
+      }
+      .example {
+        position: relative;
+        padding: 20px;
+        border-top: 1px solid #eee;
+      }
+      .example-name {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #999;
+        background: #f9f9f9;
+        font-size: 11px;
+        padding: 5px 15px;
+        border-left: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+      }
+      .section-html {
+        padding: 15px;
+        background: #edf6f8;
+        border-top: 1px solid #dde7ea;
+        overflow: auto;
+      }
+      .highlight pre {
+        color: #666;
+        font-family: Consolas, "Liberation Mono", Courier, monospace;
+      }
+      .highlight .tag {
+        color: #268bd2;
+      }
+      .highlight .attribute {
+        color: #b58900;
+      }
+      .highlight .value {
+        color: #2aa198;
+      }
+      {{ guide.css }}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="menu-container">
+        <ol class="menu">
+          {%- for item in styleguides %}
+          {%- if item.name == guide.name %}
+          <li class="active"><a href="{{content_url(item.destination)}}">{{item.name|title}}</a></li>
+          {%- else %}
+          <li><a href="{{content_url(item.destination)}}">{{item.name|title}}</a></li>
+          {%- endif %}
+          {%- endfor %}
+        </ol>
+      </div>
+      <div class="styleguide">
+        {%- for section in guide.sections %}
+        <div class="section">
+          <h3 class="section-title">
+            <span class="section-name">{{section.name}}</span>
+            <span class="section-title">{{section.title}}</span>
+          </h3>
+          <div class="section-body">
+            {{section.description|markdown}}
+            <ul class="modifier">
+              {%- for modifier in section.modifiers %}
+              <li><strong>{{modifier.name}}</strong> - {{modifier.description}}</li>
+              {%- endfor %}
+            </ul>
+          </div>
+          {%- for example in section.examples %}
+          <div class="example">
+            {%- if example.name %}
+            <span class="example-name">{{example.name}}</span>
+            {%- endif %}
+            {{example.code}}
+          </div>
+          {%- endfor %}
+          <div class="section-html">
+            {{section.html|highlight('html')}}
+          </div>
+        </div>
+        {%- endfor %}
+      </div>
+    </div>
+  </body>
+</html>
