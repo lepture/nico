@@ -1,5 +1,19 @@
+var should = require('should');
+var moment = require('moment');
 var require = require('./testutils');
 var filters = require('../lib/filters');
+
+describe('filters', function() {
+  it('can render markdown', function() {
+    var markdown = filters.filters.markdown;
+    markdown('# header').should.include('<h1>header</h1>');
+  });
+  it('can render xmldatetime', function() {
+    var xmldatetime = filters.filters.xmldatetime;
+    xmldatetime('abc').should.equal('abc');
+    xmldatetime(moment('2012-12-25')).should.include('2012-12-25T00:00:00');
+  });
+});
 
 describe('content_url', function() {
   var content_url;
