@@ -20,6 +20,14 @@ $ npm install nico -g
 Get more information or help on the [project homepage](http://lab.lepture.com/nico/).
 
 
+## Canary Channel
+
+This is the channel for experiment, get nico in canary channel with:
+
+```
+$ npm install nico@canary -g
+```
+
 ## Contributing
 
 Please do contributing, but before this, have a look at [Contributing Guide](https://github.com/lepture/nico/blob/master/CONTRIBUTING.md).
