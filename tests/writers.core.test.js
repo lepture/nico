@@ -133,6 +133,26 @@ describe('YearWriter', function() {
 });
 
 
+describe('TagWriter', function() {
+  it('can render sorted tagged posts', function() {
+    var dir = path.join(__dirname, 'data', 'tag');
+    storage.resource.publicPosts = [
+      new Post({filepath: path.join(dir, 'post-1.md')}),
+      new Post({filepath: path.join(dir, 'post-2.md')}),
+      new Post({filepath: path.join(dir, 'post-3.md')})
+    ];
+    var p = new writer.TagWriter(storage);
+    p.start();
+    p.end();
+    var text = fs.readFileSync(
+      path.join(__dirname, '_site', 'tag', 'life', 'index.html'), 'utf-8'
+    );
+    var tags = _.filter(text.split('\n'), function(o) { return o; });
+    tags.should.eql(['Life', 'Life and Work']);
+  });
+});
+
+
 describe('StaticWriter', function() {
   it('should copy static files', function() {
     storage.config.theme = path.join(__dirname, 'themes', 'theme2');
