@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.1.4">
+    <meta name="generator" content="nico 0.2.1">
     <meta name="theme" content="one 0.1">
     <title>Nico Configuration</title>
     <link rel="stylesheet" href="../static/one.css" />
@@ -93,12 +93,15 @@ exports.writers = [
 <p>Built-in writers:</p>
 
 <ul>
-<li>nico.PostWriter</li>
-<li>nico.FileWriter</li>
-<li>nico.StaticWriter</li>
-<li>nico.YearWriter</li>
-<li>nico.ArchiveWriter</li>
-<li>nico.FeedWriter</li>
+<li>nico.PostWriter      - generate a post</li>
+<li>nico.PageWriter      - generate a page</li>
+<li>nico.FileWriter      - copy non-post files</li>
+<li>nico.StaticWriter    - copy static files in theme</li>
+<li>nico.ArchiveWriter   - generate archive</li>
+<li>nico.YearWriter      - generate archive by years</li>
+<li>nico.TagWriter       - generate archive by tags</li>
+<li>nico.DirectoryWriter - generate archive by direcotories</li>
+<li>nico.FeedWriter      - generate feed</li>
 </ul>
 <h2 id="more">More</h2></div>
 </div>

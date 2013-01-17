@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.1.4">
+    <meta name="generator" content="nico 0.2.1">
     <meta name="theme" content="one 0.1">
     <title>Nico 设置</title>
     <link rel="stylesheet" href="../static/one.css" />
@@ -88,12 +88,15 @@ exports.writers = [
 <p>内置的 Writer：</p>
 
 <ul>
-<li>nico.PostWriter</li>
-<li>nico.FileWriter</li>
-<li>nico.StaticWriter</li>
-<li>nico.YearWriter</li>
-<li>nico.ArchiveWriter</li>
-<li>nico.FeedWriter</li>
+<li>nico.PostWriter      - 生成有发布时间的文章</li>
+<li>nico.PageWriter      - 生成无发布时间的页面</li>
+<li>nico.FileWriter      - 复制非文章类文件</li>
+<li>nico.StaticWriter    - 复制主题的静态文件</li>
+<li>nico.ArchiveWriter   - 生成归档页面</li>
+<li>nico.YearWriter      - 生成年份归档页面</li>
+<li>nico.TagWriter       - 生成 tag 归档页面</li>
+<li>nico.DirectoryWriter - 生成目录归档页面</li>
+<li>nico.FeedWriter      - 生成 feed</li>
 </ul>
 <h2 id="more">More</h2>
 <p>在配置文件里，除了必要的一些信息外，还可以提供额外的信息。这些额外的信息有些可以给 writer 用，有些可以给主题使用。</p>
