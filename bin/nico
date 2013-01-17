@@ -192,6 +192,8 @@ function handler(req, res) {
       file = file + '.html';
     }
   }
+  file = decodeURIComponent(file);
+
   res.setHeader("Content-Type", mimetypes[ext]);
 
   var encode;
