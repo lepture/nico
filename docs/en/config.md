@@ -72,12 +72,15 @@ Writer is the tool for writing html into your output directory. For example:
 
 Built-in writers:
 
-- nico.PostWriter
-- nico.FileWriter
-- nico.StaticWriter
-- nico.YearWriter
-- nico.ArchiveWriter
-- nico.FeedWriter
+- nico.PostWriter      - generate a post
+- nico.PageWriter      - generate a page
+- nico.FileWriter      - copy non-post files
+- nico.StaticWriter    - copy static files in theme
+- nico.ArchiveWriter   - generate archive
+- nico.YearWriter      - generate archive by years
+- nico.TagWriter       - generate archive by tags
+- nico.DirectoryWriter - generate archive by direcotories
+- nico.FeedWriter      - generate feed
 
 
 ## More

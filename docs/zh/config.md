@@ -69,12 +69,15 @@ Writer 是用来将内容写入 output 的，比如 PostWriter 用来生成文�
 
 内置的 Writer：
 
-- nico.PostWriter
-- nico.FileWriter
-- nico.StaticWriter
-- nico.YearWriter
-- nico.ArchiveWriter
-- nico.FeedWriter
+- nico.PostWriter      - 生成有发布时间的文章
+- nico.PageWriter      - 生成无发布时间的页面
+- nico.FileWriter      - 复制非文章类文件
+- nico.StaticWriter    - 复制主题的静态文件
+- nico.ArchiveWriter   - 生成归档页面
+- nico.YearWriter      - 生成年份归档页面
+- nico.TagWriter       - 生成 tag 归档页面
+- nico.DirectoryWriter - 生成目录归档页面
+- nico.FeedWriter      - 生成 feed
 
 
 ## More
