@@ -99,5 +99,11 @@ describe('pagination_url', function() {
       config: {permalink: '{{year}}/{{filename}}'}
     });
     func(1).should.equal('./1');
+
+    func = filters.contextfunctions.pagination_url({
+      writer: {filepath: 'page/2.html'},
+      config: {permalink: '{{year}}/{{filename}}'}
+    });
+    func(1).should.equal('./1');
   });
 });

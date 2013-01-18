@@ -4,16 +4,16 @@ var should = require('should');
 var underscore = require('underscore');
 var require = require('./testutils');
 var utils = require('../lib/utils');
-var urilab = require('../lib/utils/uri');
-var pathlib = require('../lib/utils/path');
-var Pagination = require('../lib/utils/extra').Pagination;
+var urilab = require('../lib/utils/urilab');
+var pathlib = require('../lib/utils/pathlib');
+var Pagination = require('../lib/utils').Pagination;
 
 
 describe('uri encode', function() {
   it('should be hello-world', function() {
     urilab.encode('Hello World').should.equal('hello-world');
     urilab.encode('H!el?lo-Wo$%rld').should.equal('h-el-lo-wo-rld');
-    urilab.encode('`%he()llo<world>').should.equal('he-llo-world');
+    urilab.encode('`%he()llo<world>').should.equal('he-llo');
   });
   it('can encode unicode', function() {
     var text = '¡å hello 中文';
