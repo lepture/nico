@@ -84,3 +84,20 @@ describe('static_url', function() {
     static_url('css/a.css').should.equal('../static/css/a.css');
   });
 });
+
+describe('pagination_url', function() {
+  it('should be ./page/1.html', function() {
+    var func = filters.contextfunctions.pagination_url({
+      writer: {filepath: '2012/index.html'},
+      config: {permalink: '{{year}}/{{filename}}.html'}
+    });
+    func(1).should.equal('./page/1.html');
+  });
+  it('should be ./1', function() {
+    var func = filters.contextfunctions.pagination_url({
+      writer: {filepath: '2012/page/2.html'},
+      config: {permalink: '{{year}}/{{filename}}'}
+    });
+    func(1).should.equal('./1');
+  });
+});
