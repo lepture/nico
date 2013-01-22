@@ -4,26 +4,26 @@ var should = require('should');
 var underscore = require('underscore');
 var require = require('./testutils');
 var utils = require('../lib/utils');
-var urilab = require('../lib/utils/urilab');
+var urilib = require('../lib/utils/urilib');
 var pathlib = require('../lib/utils/pathlib');
 var Pagination = require('../lib/utils').Pagination;
 
 
 describe('uri encode', function() {
   it('should be hello-world', function() {
-    urilab.encode('Hello World').should.equal('hello-world');
-    urilab.encode('H!el?lo-Wo$%rld').should.equal('h-el-lo-wo-rld');
-    urilab.encode('`%he()llo<world>').should.equal('he-llo');
+    urilib.encode('Hello World').should.equal('hello-world');
+    urilib.encode('H!el?lo-Wo$%rld').should.equal('h-el-lo-wo-rld');
+    urilib.encode('`%he()llo<world>').should.equal('he-llo');
   });
   it('can encode unicode', function() {
     var text = '¡å hello 中文';
-    urilab.encode(text).should.equal('%C2%A1%C3%A5-hello-%E4%B8%AD%E6%96%87');
+    urilib.encode(text).should.equal('%C2%A1%C3%A5-hello-%E4%B8%AD%E6%96%87');
   });
   it('can encode html', function() {
     var text = '<a>hello</a>';
-    urilab.encode(text).should.equal('hello');
+    urilib.encode(text).should.equal('hello');
     text = '<a>hello</a><b>world</b>';
-    urilab.encode(text).should.equal('helloworld');
+    urilib.encode(text).should.equal('helloworld');
   });
 });
 
