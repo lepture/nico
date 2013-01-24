@@ -202,8 +202,8 @@ function handler(req, res) {
   }
   var code = [
     '<script src="/socket.io/socket.io.js"></script><script>',
-    'var socket = io.connect("http://127.0.0.1:' + (server.port || 8000),
-    '"); socket.on("reload", function() { location.reload() });',
+    'var socket = io.connect("/");',
+    'socket.on("reload", function() { location.reload() });',
     '</script></head>'
   ].join('');
   fs.readFile(
