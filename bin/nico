@@ -183,6 +183,7 @@ function handler(req, res) {
     png: 'image/png',
     jpg: 'image/jpeg',
     git: 'image/gif',
+    svg: 'image/svg+xml',
     woff: 'application/x-font-woff'
   };
 
