@@ -211,6 +211,12 @@ function handler(req, res) {
     path.join(config.output, file), encode,
     function(err, data) {
       if (err) {
+        if (fs.existsSync(path.join(config.output, file, 'index.html'))) {
+          res.writeHead(302, {
+            'Location': req.url + '/'
+          });
+          return res.end();
+        }
         res.writeHead(404);
         logging.warn('request: [404] %s', req.url);
         return res.end('Not Found');
