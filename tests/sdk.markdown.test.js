@@ -1,0 +1,43 @@
+var md = require('./_require')('../lib/sdk/markdown');
+
+var text = [
+  '# h1 1',
+  '',
+  'hello world',
+  '',
+  '````html',
+  '<div>html</div>',
+  '````',
+  '',
+  '# h1 2',
+  '',
+  '## h2',
+  '',
+  '```iframe',
+  'iframe content',
+  '```',
+  ''
+].join('\n');
+
+describe('markdown.render', function() {
+  it('should have injected code', function() {
+    md.render(text).should.include('nico-insert-code');
+  });
+  it('should have iframe code', function() {
+    md.render(text).should.include('allowtransparency');
+  });
+});
+
+describe('markdown.toc', function() {
+  it('can get toc', function() {
+    md.toc(text).should.have.length(3);
+    md.toc(text, 1).should.have.length(2);
+  });
+});
+
+describe('markdown.iframes', function() {
+  it('can get iframes', function() {
+    var iframes = md.iframes(text);
+    iframes.should.have.ownProperty('iframe-1');
+  });
+});
