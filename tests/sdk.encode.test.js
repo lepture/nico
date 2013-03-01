@@ -1,4 +1,5 @@
-var encode = require('./_require')('../lib/sdk/encode');
+require('should');
+var encode = require('..').sdk.encode;
 
 describe('encode.uri', function() {
   it('should be hello-world', function() {

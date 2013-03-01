@@ -1,4 +1,5 @@
-var md = require('./_require')('../lib/sdk/markdown');
+require('should');
+var md = require('..').sdk.markdown;
 
 var text = [
   '# h1 1',

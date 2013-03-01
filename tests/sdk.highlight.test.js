@@ -1,6 +1,6 @@
 var path = require('path');
 var should = require('should');
-var hl = require('./_require')('../lib/sdk/highlight.js');
+var hl = require('..').sdk.highlight;
 
 describe('highlight.language', function() {
   it('should be the same name', function() {
