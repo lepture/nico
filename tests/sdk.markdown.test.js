@@ -34,6 +34,16 @@ describe('markdown.toc', function() {
     md.toc(text).should.have.length(3);
     md.toc(text, 1).should.have.length(2);
   });
+  it('have no toc', function() {
+    var code = [
+      '```css',
+      '#id {',
+      'color: red;',
+      '}',
+      '```'
+    ].join('\n');
+    md.toc(code).should.have.length(0);
+  });
 });
 
 describe('markdown.iframes', function() {
