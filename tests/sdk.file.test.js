@@ -35,7 +35,7 @@ describe('file', function() {
     datafiles.should.include(__dirname + '/data/year/2012-1.md');
   });
   it('can read json', function() {
-    var data = file.readJSON(__dirname + '/../package.json')
+    var data = file.readJSON(__dirname + '/../package.json');
     data.should.have.ownProperty('name');
   });
 });
