@@ -26,4 +26,8 @@ describe('file', function() {
     var data = post.read(__dirname + '/data/unicode-post.md');
     data.toc.should.include('<ul>');
   });
+
+  it('can load posts', function() {
+    post.load(__dirname + '/data');
+  });
 });
