@@ -2,12 +2,28 @@ require('should');
 var option = require('..').sdk.option;
 var post = require('..').sdk.post;
 
-describe('file', function() {
+describe('post', function() {
   beforeEach(function() {
     option.set('cachedir', __dirname + '/_site/.build');
   });
   afterEach(function() {
     option.clean();
+  });
+
+  it('can get permalink', function() {
+    var ret = post.permalink({hello: 'hello'}, '{{hello}}');
+    ret.should.equal('hello');
+    ret = post.permalink(
+      {foo: 'foo', bar: {baz: 'baz'}},
+      '{{hello}}'
+    );
+    ret.should.equal('');
+
+    ret = post.permalink(
+      {foo: 'foo', bar: {baz: 'baz'}},
+      '{{bar.baz}}/{{foo}}'
+    );
+    ret.should.equal('baz/foo');
   });
 
   it('can read', function() {
