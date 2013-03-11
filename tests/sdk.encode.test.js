@@ -9,7 +9,7 @@ describe('encode.uri', function() {
   });
   it('can encode unicode', function() {
     var text = '¡å hello 中文';
-    encode.uri(text).should.equal('%C2%A1%C3%A5-hello-%E4%B8%AD%E6%96%87');
+    encode.uri(text).should.equal('¡å-hello-中文');
   });
   it('can encode html', function() {
     var text = '<a>hello</a>';
