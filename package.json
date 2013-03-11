@@ -13,7 +13,7 @@
     "colorful": ">=1.2.0",
     "highlight.js": ">=7.3.0",
     "moment": ">=1.7.2",
-    "jinja": ">=0.13.4",
+    "swig": "~0.13.5",
     "underscore": ">=1.4.3",
     "commander": ">=1.1.1"
   },
