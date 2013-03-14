@@ -3,15 +3,15 @@ var option = require('..').sdk.option;
 
 describe('option', function() {
   it('can get default values', function() {
-    option.get('cachedir').should.equal('.build');
+    option.get('cachedir').should.equal('.cache');
   });
   it('can set values', function() {
     option.set('cachedir', 'cache');
     option.get('cachedir').should.equal('cache');
     option.clean();
-    option.get('cachedir').should.equal('.build');
+    option.get('cachedir').should.equal('.cache');
 
-    option.option('cachedir').should.equal('.build');
+    option.option('cachedir').should.equal('.cache');
     option.option('cachedir', 'cache');
     option.get('cachedir').should.equal('cache');
   });

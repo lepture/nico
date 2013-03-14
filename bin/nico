@@ -5,6 +5,7 @@ var fs = require('fs');
 var os = require('os');
 var commander = require('commander');
 var color = require('colorful').color;
+var spawn = require('win-spawn');
 
 if (!process.env.NODE_PATH) {
   console.log();
@@ -79,7 +80,6 @@ if (subcmd === 'help') {
   }
 
   var bin = executable(helpcmd);
-  var spawn = require('win-spawn');
   if (bin) {
     spawn(bin, ['--help'], {stdio: 'inherit', customFds: [0, 1, 2]});
   }

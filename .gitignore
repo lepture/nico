@@ -20,4 +20,5 @@ lib-cov/
 .buildpath
 .settings
 .yml
+.cache
 _site
