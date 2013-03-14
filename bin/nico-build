@@ -1,0 +1,223 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+require('colorful').colorful();
+var logging = require('colorful').logging;
+var cli = require('../lib/cli');
+var utils = require('../lib/utils');
+var pathlib = require('../lib/utils/pathlib');
+
+var commander = require('commander');
+
+program.
+  command('server').
+  description('create a http server');
+
+program.
+  command('help [<command>]').
+  description('show help information').
+  action(help);
+
+var builder = new program.Command();
+builder._name = 'nico build';
+builder.usage('[options]');
+builder.
+  option('-C --config <config>', 'the config file [nico.json]').
+  option('-I --source <source>', 'the content directory [content]').
+  option('-O --output <output>', 'the output directory [_site]').
+  option('--theme <theme>', 'the theme path').
+  option('--permalink <permalink>', 'permalink style of your site').
+  option('-v --verbose', 'show more logging').
+  option('-q --quiet', 'show less logging');
+
+var server = new program.Command();
+server._name = 'nico server';
+server.usage('[options]');
+server.
+  option('-C --config <config>', 'the config file [nico.json]').
+  option('-I --source <source>', 'the content directory [content]').
+  option('-O --output <output>', 'the output directory [_site]').
+  option('--theme <theme>', 'the theme path').
+  option('--permalink <permalink>', 'permalink style of your site').
+  option('--port <port>', 'the http server port [8000]').
+  option('--watch', 'if file changed, reload the site').
+  option('-v --verbose', 'show more logging').
+  option('-q --quiet', 'show less logging');
+
+
+
+args = process.argv.slice(1);
+program.parse(process.argv);
+
+var subcmd = program.args[0];
+if (subcmd === 'build') {
+  builder.parse(args);
+  logging.config(builder);
+  building(builder);
+} else if (subcmd === 'server') {
+  server.parse(args);
+  logging.config(server);
+  serving(server);
+} else {
+  help();
+}
+
+function help() {
+  var subcmd = program.args[0];
+  if (subcmd === 'build') {
+    process.stdout.write(builder.helpInformation());
+    builder.emit('--help');
+  } else if (subcmd === 'server') {
+    process.stdout.write(server.helpInformation());
+    server.emit('--help');
+  } else {
+    process.stdout.write(program.helpInformation());
+    program.emit('--help');
+  }
+  process.exit();
+}
+
+var storage, config;
+function building(prog) {
+  logging.start('building site');
+  var startTime = new Date();
+
+  logging.start('loading configuration');
+  storage = cli.getConfig(prog);
+  config = storage.config;
+  storage.swigConfig = cli.getSwigConfig(config);
+  logging.end('configuration done');
+
+  logging.start('loading posts');
+  logging.debug('source directory: %s', config.source);
+  cli.callReader(storage);
+  logging.end('posts loaded');
+
+  logging.start('generating site');
+  logging.debug('output directory: %s', config.output);
+  cli.callWriters(storage);
+  logging.end('site is updated');
+
+  var timeCost = (new Date() - startTime) / 1000;
+  logging.end('building finished in %d seconds', timeCost);
+}
+
+var _lastChanged, io, port;
+function serving(prog) {
+  building(prog);
+
+  logging.start('start serving');
+  storage = cli.getConfig(prog);
+  config = storage.config;
+  port = prog.port || 8000;
+  var app = require('http').createServer(handler);
+
+  if (prog.watch) {
+    try {
+      io = require('socket.io').listen(app, {log: false});
+    } catch(e) {
+      logging.info('npm install socket.io to enable livereload');
+    }
+    var reload = function(socket) {
+      prog.on('fileModified', function(message) {
+        socket.emit('reload', {message: message});
+      });
+    };
+
+    if (io) {
+      io.sockets.on('connection', function(socket) {
+        socket.emit('hello', {message: 'nico'});
+        reload(socket);
+      });
+    }
+
+    _lastChanged = new Date();
+    setInterval(function() {
+      if (isChanged(config.source, config.ignore) || isChanged(config.theme)) {
+        if ((new Date() - _lastChanged) > 1800) {
+          _lastChanged = new Date();
+          building(prog);
+          server.emit('fileModified', {message: 'nico'});
+        }
+      }
+    }, 800);
+  }
+  logging.info('start http server: http://127.0.0.1:%s', port);
+  app.listen(port);
+}
+
+var _cache = {};
+function isChanged(source, ignore) {
+  var files = pathlib.walkdirIgnore(source, ignore);
+  var _changed = false;
+  files.forEach(function(item) {
+    var stat = fs.statSync(item);
+    if ((item in _cache) && (_cache[item] - stat.mtime)) {
+      logging.debug('changed: %s', item);
+      _changed = true;
+    }
+    _cache[item] = stat.mtime;
+  });
+  return _changed;
+}
+
+var path = require('path');
+var url = require('url');
+function handler(req, res) {
+  var file = url.parse(req.url).pathname.slice(1);
+  if (!file || file.slice(-1) == '/') {
+    file = path.join(file, 'index.html');
+  }
+  var ext = path.extname(file).slice(1);
+  var mimetypes = {
+    html: 'text/html',
+    css: 'text/css',
+    xml: 'text/xml',
+    js: 'text/javascript',
+    png: 'image/png',
+    jpg: 'image/jpeg',
+    git: 'image/gif',
+    svg: 'image/svg+xml',
+    woff: 'application/x-font-woff'
+  };
+
+  if (!mimetypes.hasOwnProperty(ext)) {
+    if (fs.existsSync(path.join(config.output, file + '.html'))) {
+      ext = 'html';
+      file = file + '.html';
+    }
+  }
+  file = decodeURIComponent(file);
+
+  res.setHeader("Content-Type", mimetypes[ext]);
+
+  var encode;
+  if (ext === 'html') {
+    encode = 'utf-8';
+  }
+  var code = [
+    '<script src="/socket.io/socket.io.js"></script><script>',
+    'var socket = io.connect("/");',
+    'socket.on("reload", function() { location.reload() });',
+    '</script></head>'
+  ].join('');
+  fs.readFile(
+    path.join(config.output, file), encode,
+    function(err, data) {
+      if (err) {
+        res.writeHead(404);
+        logging.warn('request: [404] %s', req.url);
+        return res.end('Not Found');
+      }
+      res.writeHead(200);
+      if (encode == 'utf-8') {
+        data = data.replace('ga.src', '// ga.src');
+        if (io) {
+          data = data.replace('</head>', code);
+        }
+      }
+      logging.info('request: [200] %s', req.url);
+      res.end(data);
+    }
+  );
+}

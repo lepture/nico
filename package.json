@@ -9,12 +9,12 @@
     "static", "site", "jekyll", "generator"
   ],
   "dependencies": {
-    "arale": "*",
     "colorful": ">=1.2.0",
     "highlight.js": ">=7.3.0",
     "moment": ">=1.7.2",
     "swig": "~0.13.5",
     "underscore": ">=1.4.3",
+    "win-spawn": "*",
     "commander": ">=1.1.1"
   },
   "repository": {
