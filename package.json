@@ -25,6 +25,7 @@
     "url": "https://github.com/lepture/nico/issues"
   },
   "devDependencies": {
+    "jade": "*",
     "jshint": "*",
     "mocha": "*",
     "should": "*"
