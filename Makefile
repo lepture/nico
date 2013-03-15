@@ -9,7 +9,7 @@ reporter = spec
 opts =
 test:
 	@rm -fr tests/_site
-	@node_modules/.bin/mocha --reporter ${reporter} ${opts} ${specs}
+	@NICO_QUIET=1 node_modules/.bin/mocha --reporter ${reporter} ${opts} ${specs}
 
 
 jsfiles := $(shell find . -name '*.js' ! -path "*node_modules/*" ! -path "*_themes/*" ! -path "*docs/*" ! -path "*_site/*")
