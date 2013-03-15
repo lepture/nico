@@ -55,8 +55,9 @@ commander
 commander.on('--help', function() {
   console.log(color.cyan('  Commands:'));
   console.log();
-  console.log('    build    build your site');
-  console.log('    help     show this menu');
+  console.log('    build          build your site');
+  console.log('    server         start a server');
+  console.log('    help           show this menu');
   console.log();
 });
 
