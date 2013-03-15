@@ -6,37 +6,6 @@ Nico 是基于 nodejs 的静态站点生成工具。所以在安装 nico 之前�
 
 你可以在 [nodejs.org](http://nodejs.org/) 下载安装包安装，也可以通过包管理器（比如在 Mac 上用 homebrew，同时推荐在 Mac 上用 homebrew）。
 
-Windows XP/Vista/7 还需要安装：
-
-- Python [2.7.3](http://www.python.org/download/releases/2.7.3#download)
-- Microsoft Visual Studio C++ 2010 ([Express version](http://go.microsoft.com/?linkid=9709949))
-- 如果你是 64 位的Windows 7，还需要安装 [Windows 7 64-bit SDK](http://www.microsoft.com/en-us/download/details.aspx?id=8279)
-
-Windows 8 还需要安装：
-
-- Python [2.7.3](http://www.python.org/download/releases/2.7.3#download)
-- Microsoft Visual Studio C++ 2012 for Windows Desktop [Express version](http://go.microsoft.com/?linkid=9816758)
-
-参考 <https://github.com/TooTallNate/node-gyp>
-
-安装完成后也许还需要设置环境变量 NODE_PATH，Linux & Mac 用户在自己的 shell 配置文件(.bash_profile | .bashrc | .zshrc)里设置，如
-
-```
-export NODE_PATH="/usr/local/share/npm/lib/node_modules"
-```
-
-具体的地址可能不是如上所示，请根据实际情况自行处理。另外也许还需要设置 PATH：
-
-```
-export PATH="$PATH:/usr/local/share/npm/bin"
-```
-
-Windows 用户也需要设置环境变量 NODE_PATH（如不知道在哪里设置，请自行[搜索](https://www.google.com/search?q=windows+%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F)），一般来说设置为：
-
-```
-NODE_PATH = C:\Users\{{username}}\AppData\Roaming\npm\node_modules
-```
-
 
 ## 安装
 
@@ -58,7 +27,7 @@ Nico 没有提供内置的主题，在可见的未来也不会内置主题，但
 我们先下载这个主题：
 
 ```
-$ git clone git://github.com/lepture/nico-one.git
+$ git clone git://github.com/lepture/nico-one.git _themes/one
 ```
 
 关于如何制作自己的主题，请参考 [主题篇](./theme)。
@@ -72,7 +41,7 @@ $ git clone git://github.com/lepture/nico-one.git
 {
     "source": "content",
     "output": "_site",
-    "theme": "nico-one",
+    "theme": "_themes/one",
     "permalink": "{{directory}}/{{filename}}.html",
     "writers": [
         "nico.PostWriter",
@@ -81,8 +50,6 @@ $ git clone git://github.com/lepture/nico-one.git
     ]
 }
 ```
-
-这时我们再在终端里执行：
 
 更多关于配置文件的信息，请参考 [配置篇](./config)。
 
@@ -95,10 +62,11 @@ $ git clone git://github.com/lepture/nico-one.git
 nico.json
 content/
   hello-world.md
-nico-one
-  templates/
-  static/
-  ...
+_themes/
+  one/
+    templates/
+    static/
+    ...
 ```
 
 我们来编写 `content/hello-world.md`：

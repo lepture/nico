@@ -36,6 +36,21 @@ feed.html             - FeedWriter
 
 当然，如果你的主题只供自己使用，只需要提供自己所需的模板就可以了。
 
+
+### Jade
+
+将模板引擎换为 Jade:
+
+```
+// nico.json
+{
+    "engine": "jade"
+}
+```
+
+你需要额外安装 Jade，并保正 Jade 能被 require。
+
+
 ## 变量
 
 - 全局变量：在所有模板中都可以访问的变量，

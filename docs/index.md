@@ -9,11 +9,6 @@ Ever want to build a static site? Don't fancy Python, Ruby or any other language
 Nico is written in javascript, using what you are familiar with makes you happy. You are able to change things, you are able to make a difference.
 
 
-## How it Looks
-
-![nico](./nico-look.png)
-
-
 ## Documentation
 
 Documentation is available in these languages:
@@ -27,7 +22,6 @@ Documentation is available in these languages:
 The concept is borrowed from [liquidluck](http://lab.lepture.com/liquidluck/) with a little improvement. It should works like liquidluck, and it really did. I eat my own dog food, this site is built by nico.
 
 The code of nico is well tested, and you can add more test case for this project.
-Have a lookt at the [test coverage](./coverage) and find out the missing test case.
 
 
 ## Nico Users

@@ -8,22 +8,6 @@ Nico is built on nodejs, which means you have to install nodejs. I believe you h
 
 You can download the package on [nodejs.org](http://nodejs.org) or through a package manager like apt-get and homebrew.
 
-We will need node-gyp to compile c module, and it will trouble Windows Users. If you are on a Windows, please check <https://github.com/TooTallNate/node-gyp>, and install the missing requirements.
-
-After the installation, maybe you have to deal with the environment variables. Linux & Mac user just edit your shell rc file (.bashrc or .zshrc):
-
-```
-export NODE_PATH="/usr/local/share/npm/lib/node_modules"
-export PATH="$PATH:/usr/local/share/npm/bin"
-```
-
-The path may be wrong, correct it according to your own environment.
-
-And Windows User should add `NODE_PATH` to your computer environment, maybe it's:
-
-```
-NODE_PATH = C:\Users\{{username}}\AppData\Roaming\npm\node_modules
-```
 
 ## Installation
 
@@ -48,7 +32,7 @@ Nico didn't provide a default theme, and it will not provide a default theme in 
 
 Let's grab the theme:
 
-    $ git clone git://github.com/lepture/nico-one.git
+    $ git clone git://github.com/lepture/nico-one.git _themes/one
 
 You can learn more in the [Theme](./theme) section.
 
@@ -62,7 +46,7 @@ Nico can't work well without a configuration. Let's create a `nico.json`:
 {
     "source": "content",
     "output": "_site",
-    "theme": "nico-one",
+    "theme": "_themes/one",
     "permalink": "{{directory}}/{{filename}}.html",
     "writers": [
         "nico.PostWriter",
@@ -83,10 +67,11 @@ It's the time for us to write something:
 nico.json
 content/
   hello-world.md
-nico-one
-  templates/
-  static/
-  ...
+_themes/
+  one/
+    templates/
+    static/
+    ...
 ```
 
 And we will edit `content/hello-world.md`:

@@ -25,7 +25,7 @@ theme-name/
 
 ## Templates
 
-Swig is the template engine used by nico, if you want to create your own theme, you need some acknowledge of swig. However, if you know Django and Jinja, it will help. Get more information at [swig](http://paularmstrong.github.com/swig/).
+Swig is the default engine used by nico, if you want to create your own theme, you need some acknowledge of swig. However, if you know Django and Jinja, it will help. Get more information at [swig](http://paularmstrong.github.com/swig/).
 
 Every writer need a template, they may share a same template:
 
@@ -34,6 +34,29 @@ post.html             - PostWriter
 page.html             - PageWriter
 archive.html          - ArchiveWriter, YearWriter, DirectoryWriter ...
 feed.html             - FeedWriter
+```
+
+### Jade
+
+Change template engine to jade:
+
+```
+// nico.json
+{
+    "engine": "jade"
+}
+```
+
+Make sure `jade` can be required. If you have set a `NODE_PATH` and jade is installed global, it can be required. You can also install jade in the current directory.
+
+Try jade:
+
+```
+$ node
+```
+
+```
+> require('jade')
 ```
 
 ## Variables
@@ -64,11 +87,8 @@ Global variable. This describe the theme information. It contains every informat
 
 Global variable. Every information in the config file.
 
-### resource
-
-Global variable. It's hard to explain.
-
 ### post
+
 
 ### pagination
 

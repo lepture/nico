@@ -34,10 +34,9 @@ exports.permalink = "{{filename}}.html"
 var path = require('path')
 exports.theme = path.join(__dirname, 'one')
 
-var nico = require('nico')
 exports.writers = [
-    nico.PostWriter,
-    nico.StaticWriter,
+    'nico.PostWriter',
+    'nico.StaticWriter',
     'nico.FileWriter'
 ]
 ```
