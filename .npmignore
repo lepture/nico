@@ -23,3 +23,5 @@ lib-cov/
 .gitmodules
 _site
 _themes
+scripts
+.cache
