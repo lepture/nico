@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
-var path = require('path');
 var commander = require('commander');
 
 commander.
@@ -18,25 +16,4 @@ commander.parse(process.argv);
 
 var nico = require('..');
 nico.sdk.log.config(commander);
-var file = nico.sdk.file;
-
-var options = {};
-var config;
-if (commander.config) {
-  config = path.resolve(commander.config);
-  if (!file.exists(config)) {
-    nico.sdk.log.error('config', commander.config + ' file not found');
-    process.exit(2);
-  }
-} else if (file.exists('nico.json')) {
-  config = path.resolve('nico.json');
-} else if (file.exists('nico.js')) {
-  config = path.resolve('nico.js');
-}
-if (config) {
-  options = require(config);
-}
-['source', 'output', 'permalink', 'theme'].forEach(function(key) {
-  if (commander[key]) options[key] = commander[key];
-});
-nico.build(options);
+nico.build(commander);

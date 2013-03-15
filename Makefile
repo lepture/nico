@@ -28,7 +28,7 @@ coverage:
 	@echo
 
 documentation:
-	@bin/nico build -C nico.json -q
+	@bin/nico build -C nico.json
 
 server:
 	@bin/nico server -C nico.json -v --watch
