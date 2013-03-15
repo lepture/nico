@@ -6,12 +6,12 @@ var BaseWriter = require('../lib/writers/base');
 describe('BaseWriter', function() {
   var writer = new BaseWriter();
 
-  it('can start', function() {
-    writer.start();
+  it('can load', function() {
+    writer.load();
   });
 
-  it('can stop', function() {
-    writer.stop();
+  it('can process', function() {
+    writer.process();
   });
 
   it('can render', function() {
