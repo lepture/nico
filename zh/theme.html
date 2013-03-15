@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.2.1">
+    <meta name="generator" content="nico 0.3.0a1">
     <meta name="theme" content="one 0.1">
     <title>Nico 主题</title>
     <link rel="stylesheet" href="../static/one.css" />
@@ -26,7 +26,7 @@
         <a class="home" href="../">Nico</a>
         <div class="menu">
           <a href="../en/">English</a>
-          <a href="../zh/">中文文档</a>
+          <a href="./">中文文档</a>
         </div>
       </div>
     </div>
@@ -34,77 +34,55 @@
 <div class="hentry">
   <h1 class="entry-title">Nico 主题</h1>
   <div class="entry-content"><p>想要开发自己的主题？其实很简单。大多数时候，例子会更有帮助，所以去看 <a href="https://github.com/lepture/nico-one">one</a> 吧。</p>
-<h2 id="%E7%BB%93%E6%9E%84">结构</h2>
-<p>一个主题包含三个部分：主题的信息，模板，静态文件。它的文件目录结构如下：</p>
-
-<pre>theme-name&#47;
+<h2 id="结构">结构</h2><p>一个主题包含三个部分：主题的信息，模板，静态文件。它的文件目录结构如下：</p>
+<pre>theme-name/
     theme.js             - 主题的信息，其实可以没有
-    templates&#47;           - 模板
+    templates/           - 模板
         post.html
         page.html
         ...
-    static&#47;              - 静态文件
+    static/              - 静态文件
         app.css
         jquery.js
-        ...
-</pre>
-<h2 id="%E6%A8%A1%E6%9D%BF">模板</h2>
-<p>Nico 使用 swig 做为模板引擎，所以你需要了解一下 swig 的语法。如果你有用过 Django 或者 Jinja，你已经大致了解语法了。更多内容请访问 <a href="http://paularmstrong.github.com/swig/">swig</a>。</p>
-
+        ...</pre><h2 id="模板">模板</h2><p>Nico 使用 swig 做为模板引擎，所以你需要了解一下 swig 的语法。如果你有用过 Django 或者 Jinja，你已经大致了解语法了。更多内容请访问 <a href="http://paularmstrong.github.com/swig/">swig</a>。</p>
 <p>不同的 writer 需要不用的模板，比如 PostWriter 需要 post.html，ArchiveWriter 需要 archive.html。一个完备的主题应该包含：</p>
-
 <pre>post.html             - PostWriter
 page.html             - PageWriter
 archive.html          - ArchiveWriter, YearWriter, DirectoryWriter ...
-feed.html             - FeedWriter
-</pre>
-
-<p>当然，如果你的主题只供自己使用，只需要提供自己所需的模板就可以了。</p>
-<h2 id="%E5%8F%98%E9%87%8F">变量</h2>
-<ul>
+feed.html             - FeedWriter</pre><p>当然，如果你的主题只供自己使用，只需要提供自己所需的模板就可以了。</p>
+<h3 id="jade">Jade</h3><p>将模板引擎换为 Jade:</p>
+<pre>// nico.json
+{
+    &quot;engine&quot;: &quot;jade&quot;
+}</pre><p>你需要额外安装 Jade，并保正 Jade 能被 require。</p>
+<h2 id="变量">变量</h2><ul>
 <li>全局变量：在所有模板中都可以访问的变量，</li>
 <li>模板变量：只有在特定的模板中才有的变量，</li>
 </ul>
-<h3 id="system">system</h3>
-<p>全局变量，这个是系统变量：</p>
-
+<h3 id="system">system</h3><p>全局变量，这个是系统变量：</p>
 <pre>{
     &quot;name&quot;: &quot;nico&quot;,
     &quot;version&quot;: &quot;0.1.0&quot;,
-    &quot;homepage&quot;: &quot;http:&#47;&#47;lab.lepture.com&#47;nico&#47;&quot;
-}
-</pre>
-
-<p>事实上，这个变量包含了所有 <a href="https://github.com/lepture/nico/blob/master/package.json">nico/package.json</a> 的信息。</p>
-<h3 id="theme">theme</h3>
-<p>全局变量，由主题提供，也就是说是由 <code>theme.js</code> 暴露出来的变量。</p>
-<h3 id="config">config</h3>
-<p>全局变量，这个是用户的配置信息，所有的配置信息都可以通过 config 获取。</p>
-<h3 id="resource">resource</h3>
-<p>全局变量，用户总共有哪些资源。</p>
-<h3 id="post">post</h3>
-<p>模板变量，有 PostWriter 与 PageWriter 渲染的模板有该变量。</p>
-<h3 id="pagination">pagination</h3>
-<p>模板变量，对文章有批量操作的 writer 会有该变量，比如 ArchiveWriter。</p>
-<h2 id="%E6%96%B9%E6%B3%95">方法</h2>
-<p>方法是一些函数，你可以通过配置来新增一些方法。</p>
-
+    &quot;homepage&quot;: &quot;http://lab.lepture.com/nico/&quot;
+}</pre><p>事实上，这个变量包含了所有 <a href="https://github.com/lepture/nico/blob/master/package.json">nico/package.json</a> 的信息。</p>
+<h3 id="theme">theme</h3><p>全局变量，由主题提供，也就是说是由 <code>theme.js</code> 暴露出来的变量。</p>
+<h3 id="config">config</h3><p>全局变量，这个是用户的配置信息，所有的配置信息都可以通过 config 获取。</p>
+<h3 id="resource">resource</h3><p>全局变量，用户总共有哪些资源。</p>
+<h3 id="post">post</h3><p>模板变量，有 PostWriter 与 PageWriter 渲染的模板有该变量。</p>
+<h3 id="pagination">pagination</h3><p>模板变量，对文章有批量操作的 writer 会有该变量，比如 ArchiveWriter。</p>
+<h2 id="方法">方法</h2><p>方法是一些函数，你可以通过配置来新增一些方法。</p>
 <p>内置的方法有：</p>
-<h3 id="permalink-url">permalink_url</h3>
-<p>根据用户配置的 permalink style 来生成文章的链接。比如 <code>{{permalink_url(post)}}</code>。</p>
-<h3 id="content-url">content_url</h3>
-<p>用来生成某地址的相对链接，比如当前所在页为 <code>a/b.html</code>，在该页面里的 <code>{{content_url(&#39;index.html&#39;)}}</code> 将生成 <code>../</code>。</p>
-<h3 id="static-url">static_url</h3>
-<p>同 content_url ，用来生成静态文件的链接。如当前页为 <code>a/b.html</code>，那么 <code>{{static_url(&#39;css/a.css&#39;)}}</code> 将生成  <code>../static/css/a.css</code>。</p>
-<h2 id="filter">filter</h2>
-<p>你需要了解 filter 是什么，请先阅读 swig 的文档。代码上来讲，filter 也是一类方法。</p>
-
+<h3 id="permalink-url">permalink_url</h3><p>根据用户配置的 permalink style 来生成文章的链接。比如 <code>{{permalink_url(post)}}</code>。</p>
+<h3 id="content-url">content_url</h3><p>用来生成某地址的相对链接，比如当前所在页为 <code>a/b.html</code>，在该页面里的 <code>{{content_url(&#39;index.html&#39;)}}</code> 将生成 <code>../</code>。</p>
+<h3 id="static-url">static_url</h3><p>同 content_url ，用来生成静态文件的链接。如当前页为 <code>a/b.html</code>，那么 <code>{{static_url(&#39;css/a.css&#39;)}}</code> 将生成  <code>../static/css/a.css</code>。</p>
+<h2 id="filter">filter</h2><p>你需要了解 filter 是什么，请先阅读 swig 的文档。代码上来讲，filter 也是一类方法。</p>
 <p>你可以通过配置来新增一些 filter。</p>
 </div>
 </div>
 </div>
     <div class="footer">
       <p>Nico was created by lepture, concept based on liquidluck. brought to you under the BSD license.</p>
+      <p class="copyright">powered by <a href="http://lab.lepture.com/nico/">nico</a> 0.3.0a1</p>
     </div>
     <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="../static/one.js"></script>
     <div class="github"><a class="github-link" href="https://github.com/lepture/nico">Fork me on GitHub</a></div>

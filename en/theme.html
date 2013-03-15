@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.2.1">
+    <meta name="generator" content="nico 0.3.0a1">
     <meta name="theme" content="one 0.1">
     <title>Nico Theme</title>
     <link rel="stylesheet" href="../static/one.css" />
@@ -25,7 +25,7 @@
       <div class="container">
         <a class="home" href="../">Nico</a>
         <div class="menu">
-          <a href="../en/">English</a>
+          <a href="./">English</a>
           <a href="../zh/">中文文档</a>
         </div>
       </div>
@@ -34,65 +34,49 @@
 <div class="hentry">
   <h1 class="entry-title">Nico Theme</h1>
   <div class="entry-content"><p>It&#39;s not that difficult to create a theme, an example tells more, head over to <a href="https://github.com/lepture/nico-one">one</a>, and learn how to write a theme.</p>
-<h2 id="structure">Structure</h2>
-<p>A theme contains three parts: theme information, templates and static. The structure:</p>
-
-<pre>theme-name&#47;
+<h2 id="structure">Structure</h2><p>A theme contains three parts: theme information, templates and static. The structure:</p>
+<pre>theme-name/
     theme.js                 - theme information
-    templates&#47;
+    templates/
         post.html
         page.html
         ...
-    static&#47;
+    static/
         app.css
         jquery.js
-        ...
-</pre>
-<h2 id="templates">Templates</h2>
-<p>Swig is the template engine used by nico, if you want to create your own theme, you need some acknowledge of swig. However, if you know Django and Jinja, it will help. Get more information at <a href="http://paularmstrong.github.com/swig/">swig</a>.</p>
-
+        ...</pre><h2 id="templates">Templates</h2><p>Swig is the default engine used by nico, if you want to create your own theme, you need some acknowledge of swig. However, if you know Django and Jinja, it will help. Get more information at <a href="http://paularmstrong.github.com/swig/">swig</a>.</p>
 <p>Every writer need a template, they may share a same template:</p>
-
 <pre>post.html             - PostWriter
 page.html             - PageWriter
 archive.html          - ArchiveWriter, YearWriter, DirectoryWriter ...
-feed.html             - FeedWriter
-</pre>
-<h2 id="variables">Variables</h2>
-<ul>
+feed.html             - FeedWriter</pre><h3 id="jade">Jade</h3><p>Change template engine to jade:</p>
+<pre>// nico.json
+{
+    &quot;engine&quot;: &quot;jade&quot;
+}</pre><p>Make sure <code>jade</code> can be required. If you have set a <code>NODE_PATH</code> and jade is installed global, it can be required. You can also install jade in the current directory.</p>
+<p>Try jade:</p>
+<pre>$ node</pre><pre>&gt; require(&#39;jade&#39;)</pre><h2 id="variables">Variables</h2><ul>
 <li>Global variable: you can access global variable in every template</li>
 <li>Template variable: you can only access template variable in the specified template</li>
 </ul>
-<h3 id="system">system</h3>
-<p>Global variable. This describe the system information of nico.</p>
-
+<h3 id="system">system</h3><p>Global variable. This describe the system information of nico.</p>
 <pre>{
     &quot;name&quot;: &quot;nico&quot;,
     &quot;version&quot;: &quot;0.1.0&quot;,
-    &quot;homepage&quot;: &quot;http:&#47;&#47;lab.lepture.com&#47;nico&#47;&quot;
-}
-</pre>
-
-<p>Actually, it contains every field in <a href="https://github.com/lepture/nico/blob/master/package.json">nico/package.json</a>.</p>
-<h3 id="theme">theme</h3>
-<p>Global variable. This describe the theme information. It contains every information in <code>theme.js</code>.</p>
-<h3 id="config">config</h3>
-<p>Global variable. Every information in the config file.</p>
-<h3 id="resource">resource</h3>
-<p>Global variable. It&#39;s hard to explain.</p>
-<h3 id="post">post</h3><h3 id="pagination">pagination</h3><h2 id="functions">Functions</h2>
-<p>Built-in functions:</p>
-<h3 id="permalink-url">permalink_url</h3>
-<p><code>{{permalink_url(post)}}</code></p>
-<h3 id="content-url">content_url</h3>
-<p><code>{{content_url(&#39;index.html&#39;)}}</code></p>
-<h3 id="static-url">static_url</h3>
-<p><code>{{static_url(&#39;css/a.css&#39;)}}</code></p>
+    &quot;homepage&quot;: &quot;http://lab.lepture.com/nico/&quot;
+}</pre><p>Actually, it contains every field in <a href="https://github.com/lepture/nico/blob/master/package.json">nico/package.json</a>.</p>
+<h3 id="theme">theme</h3><p>Global variable. This describe the theme information. It contains every information in <code>theme.js</code>.</p>
+<h3 id="config">config</h3><p>Global variable. Every information in the config file.</p>
+<h3 id="post">post</h3><h3 id="pagination">pagination</h3><h2 id="functions">Functions</h2><p>Built-in functions:</p>
+<h3 id="permalink-url">permalink_url</h3><p><code>{{permalink_url(post)}}</code></p>
+<h3 id="content-url">content_url</h3><p><code>{{content_url(&#39;index.html&#39;)}}</code></p>
+<h3 id="static-url">static_url</h3><p><code>{{static_url(&#39;css/a.css&#39;)}}</code></p>
 <h2 id="filter">filter</h2></div>
 </div>
 </div>
     <div class="footer">
       <p>Nico was created by lepture, concept based on liquidluck. brought to you under the BSD license.</p>
+      <p class="copyright">powered by <a href="http://lab.lepture.com/nico/">nico</a> 0.3.0a1</p>
     </div>
     <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="../static/one.js"></script>
     <div class="github"><a class="github-link" href="https://github.com/lepture/nico">Fork me on GitHub</a></div>

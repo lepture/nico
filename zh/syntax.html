@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.2.1">
+    <meta name="generator" content="nico 0.3.0a1">
     <meta name="theme" content="one 0.1">
     <title>Nico 语法</title>
     <link rel="stylesheet" href="../static/one.css" />
@@ -26,7 +26,7 @@
         <a class="home" href="../">Nico</a>
         <div class="menu">
           <a href="../en/">English</a>
-          <a href="../zh/">中文文档</a>
+          <a href="./">中文文档</a>
         </div>
       </div>
     </div>
@@ -34,9 +34,7 @@
 <div class="hentry">
   <h1 class="entry-title">Nico 语法</h1>
   <div class="entry-content"><p>Nico 的语法简洁优雅，继承自 <a href="https://github.com/lepture/liquidluck">liquidluck</a>。充分利用 Markdown 的语法，保证即使离开文档生成工具，该文章依然能优雅的渲染。</p>
-<h2 id="%E6%96%87%E7%AB%A0%E6%A0%BC%E5%BC%8F">文章格式</h2>
-<p>先看一个例子，我们将以下面的例子讲解文章格式：</p>
-
+<h2 id="文章格式">文章格式</h2><p>先看一个例子，我们将以下面的例子讲解文章格式：</p>
 <pre># 标题
 
 - pubdate: 2012-12-12 12:00
@@ -46,146 +44,68 @@
 
 ----------------
 
-中划线以下是文章正文。支持 Markdown 基本语法与扩展语法。
-</pre>
-
-<p>上面的例子里说明了一篇文章的四个要素：标题、元信息、简介和正文。其中标题与正文是必须要有的，元信息的不同会导致文章的属性不同。</p>
-<h3 id="%E5%85%83%E4%BF%A1%E6%81%AF">元信息</h3>
-<p>文章的元信息将会影响文章的属性，比如 <code>pubdate</code>，如果没有这个元信息，这篇文章将会被当作 page 而不是 post 处理。page 的文章是由 PageWriter 生成的，post 的文章是由 PostWriter 生成的。</p>
-
+中划线以下是文章正文。支持 Markdown 基本语法与扩展语法。</pre><p>上面的例子里说明了一篇文章的四个要素：标题、元信息、简介和正文。其中标题与正文是必须要有的，元信息的不同会导致文章的属性不同。</p>
+<h3 id="元信息">元信息</h3><p>文章的元信息将会影响文章的属性，比如 <code>pubdate</code>，如果没有这个元信息，这篇文章将会被当作 page 而不是 post 处理。page 的文章是由 PageWriter 生成的，post 的文章是由 PostWriter 生成的。</p>
 <p>下面列举内置支持的元信息：</p>
-
 <ul>
 <li>pubdate: 文章的发布时间。（主题编写请注意：将会被转化为 moment 对象）</li>
 <li>tags: 文章标签。（将会被转化为 Array）</li>
 <li>status: 文章的状态（public, secret, draft，默认为 public）</li>
 <li>template: 文章用什么模板来渲染，post 类文章默认为 post.html，page 类文章默认为 page.html</li>
 </ul>
-
 <p>上面内置支持的元信息，在主题编写中，可直接访问，如 <code>{{post.pubdate}}</code>。除了内置支持的元信息，你还可以自己扩展，比如：</p>
-
-<pre>- topic: nico
-</pre>
-
-<p>这时，在主题中必须使用 <code>{{post.meta.topic}}</code> 才能获得该信息。</p>
-<h2 id="markdown-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95">Markdown 基本语法</h2>
-<p>如果你对 Markdown 还不太了解的话，你应该先花几分钟看看 <a href="http://daringfireball.net/projects/markdown/syntax">Markdown Syntax Guide</a>。也可以看下面的语法简介。</p>
-<h3 id="strong-and-emphasize">Strong and Emphasize</h3>
-<pre>*emphasize*    **strong**
-_emphasize_    __strong__
-</pre>
-<h3 id="links-and-email">Links and Email</h3>
-<p>Inline links:</p>
-
-<pre>[link text](http:&#47;&#47;url.com&#47; &quot;title&quot;)
-[link text](http:&#47;&#47;url.com&#47;)
-&lt;http:&#47;&#47;url.com&gt;
-</pre>
-
-<p>Reference-style links:</p>
-
+<pre>- topic: nico</pre><p>这时，在主题中必须使用 <code>{{post.meta.topic}}</code> 才能获得该信息。</p>
+<h2 id="markdown-基本语法">Markdown 基本语法</h2><p>如果你对 Markdown 还不太了解的话，你应该先花几分钟看看 <a href="http://daringfireball.net/projects/markdown/syntax">Markdown Syntax Guide</a>。也可以看下面的语法简介。</p>
+<h3 id="strong-and-emphasize">Strong and Emphasize</h3><pre>*emphasize*    **strong**
+_emphasize_    __strong__</pre><h3 id="links-and-email">Links and Email</h3><p>Inline links:</p>
+<pre>[link text](http://url.com/ &quot;title&quot;)
+[link text](http://url.com/)
+&lt;http://url.com&gt;</pre><p>Reference-style links:</p>
 <pre>[link text][id]
 
-[id]: http:&#47;&#47;url.com &quot;title&quot;
-</pre>
-
-<p>Email:</p>
-
-<pre>&lt;example@email.com&gt;
-</pre>
-<h3 id="images">Images</h3>
-<p>Inline images:</p>
-
-<pre>![alt text](http:&#47;&#47;path&#47;to&#47;img.jpg &quot;title&quot;)
-![alt text](http:&#47;&#47;path&#47;to&#47;img.jpg)
-</pre>
-
-<p>Reference-style links:</p>
-
+[id]: http://url.com &quot;title&quot;</pre><p>Email:</p>
+<pre>&lt;example@email.com&gt;</pre><h3 id="images">Images</h3><p>Inline images:</p>
+<pre>![alt text](http://path/to/img.jpg &quot;title&quot;)
+![alt text](http://path/to/img.jpg)</pre><p>Reference-style links:</p>
 <pre>![alt text][id]
 
-[id]: http:&#47;&#47;path&#47;to&#47;img.jpg &quot;title&quot;
-</pre>
-<h3 id="headers">Headers</h3>
-<pre># h1
+[id]: http://path/to/img.jpg &quot;title&quot;</pre><h3 id="headers">Headers</h3><pre># h1
 ## h2
 ### h3
-…
-</pre>
-
-<pre># h1 #
+…</pre><pre># h1 #
 ## h2 ##
-…
-</pre>
-<h3 id="lists">Lists</h3>
-<p>Ordered list:</p>
-
+…</pre><h3 id="lists">Lists</h3><p>Ordered list:</p>
 <pre>1. foo
-2. bar
-</pre>
-
-<p>Unordered list:</p>
-
+2. bar</pre><p>Unordered list:</p>
 <pre>* foo
-* bar
-</pre>
-
-<pre>- foo
-- bar
-</pre>
-<h3 id="blockquotes">Blockquotes</h3>
-<pre>&gt; blockquote
+* bar</pre><pre>- foo
+- bar</pre><h3 id="blockquotes">Blockquotes</h3><pre>&gt; blockquote
 &gt; &gt; nested blockquote
-&gt; ### h3 in blockquote
-</pre>
-<h3 id="inline-code">Inline Code</h3>
-<pre>`code` span
-</pre>
-<h3 id="block-code">Block Code</h3>
-<p>Indent at least 4 spaces or 1 tab.</p>
-
+&gt; ### h3 in blockquote</pre><h3 id="inline-code">Inline Code</h3><pre>`code` span</pre><h3 id="block-code">Block Code</h3><p>Indent at least 4 spaces or 1 tab.</p>
 <pre>This is a normal paragraph
 
-    this is code block
-</pre>
-<h2 id="markdown-%E6%89%A9%E5%B1%95%E8%AF%AD%E6%B3%95">Markdown 扩展语法</h2><h3 id="fenced-code">Fenced Code</h3>
-<pre>```
+    this is code block</pre><h2 id="markdown-扩展语法">Markdown 扩展语法</h2><h3 id="fenced-code">Fenced Code</h3><pre>```
 this is a code block
-```
-</pre>
-<h3 id="fenced-code-with-highlight">Fenced Code with Highlight</h3>
-<pre>```javascript
+```</pre><h3 id="fenced-code-with-highlight">Fenced Code with Highlight</h3><pre>```javascript
 var foo = &quot;bar&quot;;
-```
-</pre>
-<h3 id="highlight-code-with-inserted-code">Highlight Code with Inserted Code</h3>
-<pre>````javascript
+```</pre><h3 id="highlight-code-with-inserted-code">Highlight Code with Inserted Code</h3><pre>````javascript
 var foo = &quot;bar&quot;;
-````
-</pre>
-<h3 id="just-insert-code">Just insert code</h3>
-<pre>`````javascript
+````</pre><h3 id="just-insert-code">Just insert code</h3><pre>`````javascript
 var foo = &quot;bar&quot;;
-`````
-</pre>
-<h3 id="iframe-support">Iframe support</h3>
-<p>Iframe will be render by the template <code>iframe.html</code></p>
-
+`````</pre><h3 id="iframe-support">Iframe support</h3><p>Iframe will be render by the template <code>iframe.html</code></p>
 <pre>````iframe
 This will be an iframe
 ````
 
 ````iframe:400
 This iframe with 400px height
-````
-</pre>
-
-<p>充分利用扩展语法，你可以直接使用 Markdown 来写 DEMO，例如 <a href="http://aralejs.org">arale</a> 就是使用 Markdown 来生成 DEMO 的。</p>
+````</pre><p>充分利用扩展语法，你可以直接使用 Markdown 来写 DEMO，例如 <a href="http://aralejs.org">arale</a> 就是使用 Markdown 来生成 DEMO 的。</p>
 </div>
 </div>
 </div>
     <div class="footer">
       <p>Nico was created by lepture, concept based on liquidluck. brought to you under the BSD license.</p>
+      <p class="copyright">powered by <a href="http://lab.lepture.com/nico/">nico</a> 0.3.0a1</p>
     </div>
     <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="../static/one.js"></script>
     <div class="github"><a class="github-link" href="https://github.com/lepture/nico">Fork me on GitHub</a></div>
