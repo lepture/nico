@@ -9,6 +9,7 @@ commander.
   option('--theme <theme>', 'the theme path').
   option('--permalink <permalink>', 'permalink style of your site').
   option('--no-color', 'disable color output').
+  option('-f --force', 'force build without cache').
   option('-v --verbose', 'show more logging').
   option('-q --quiet', 'show less logging');
 
