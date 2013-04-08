@@ -1,12 +1,15 @@
 {
   "name": "nico",
-  "version": "0.3.0a3",
+  "version": "0.3.0a4",
   "preferGlobal": "true",
   "description": "Nico is a front-end friendly static site generator",
   "author": "Hsiaoming Yang <lepture@me.com>",
   "homepage": "http://lab.lepture.com/nico/",
   "keywords": [
-    "static", "site", "jekyll", "generator"
+    "static",
+    "site",
+    "jekyll",
+    "generator"
   ],
   "dependencies": {
     "colorful": "~2.0.3",
