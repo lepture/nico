@@ -14,9 +14,9 @@ var text = [
   '',
   '## h2',
   '',
-  '```iframe',
+  '````iframe:100',
   'iframe content',
-  '```',
+  '````',
   ''
 ].join('\n');
 
