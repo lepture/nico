@@ -25,9 +25,9 @@ if (!process.env.NODE_PATH) {
     } else {
       console.log('    export NODE_PATH=' + nodepath);
     }
+    console.log();
+    process.exit();
   }
-  console.log();
-  process.exit();
 }
 
 
