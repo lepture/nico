@@ -6,7 +6,7 @@ commander.
   option('-C --config <config>', 'the config file [nico.json]').
   option('-I --source <source>', 'the content directory [content]').
   option('-O --output <output>', 'the output directory [_site]').
-  option('--cache <cache>', 'the cache directory [.site]').
+  option('--cache <cache>', 'the cache directory [.cache]').
   option('--port <port>', 'the server port').
   option('--theme <theme>', 'the theme path').
   option('--permalink <permalink>', 'permalink style of your site').
