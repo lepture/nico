@@ -59,14 +59,14 @@ describe('content_url', function() {
       writer: {filepath: 'index.html'},
       config: {permalink: '{{year}}/{{filename}}.html'}
     });
-    content_url('index.html').should.equal('');
+    content_url('index.html').should.equal('./');
     content_url('foo/index.html').should.equal('foo/');
 
     content_url = filters.contextfunctions.content_url({
       writer: {filepath: 'index.html'},
       config: {permalink: '{{year}}/{{filename}}/'}
     });
-    content_url('index.html').should.equal('');
+    content_url('index.html').should.equal('./');
     content_url('foo/index.html').should.equal('foo/');
   });
 });
