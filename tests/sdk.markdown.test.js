@@ -10,6 +10,10 @@ var text = [
   '<div>html</div>',
   '````',
   '',
+  '<script>',
+  'seajs.use("foo")',
+  '</script>',
+  '',
   '# h1 2',
   '',
   '## h2',
@@ -49,6 +53,6 @@ describe('markdown.toc', function() {
 describe('markdown.iframes', function() {
   it('can get iframes', function() {
     var iframes = md.iframes(text);
-    iframes.should.have.ownProperty('iframe-1');
+    iframes.should.have.ownProperty('iframe--1');
   });
 });
