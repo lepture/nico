@@ -17,9 +17,10 @@ commander.
 
 commander.parse(process.argv);
 
-var nico = require('..');
-nico.sdk.log.config(commander);
+var log = require('../lib/sdk/log');
+log.config(commander);
 
 console.log();
 commander.port = commander.port || 8000;
-nico.server(commander);
+var server = require('../lib/server');
+server(commander);

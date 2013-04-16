@@ -16,8 +16,10 @@ commander.
 
 commander.parse(process.argv);
 
-var nico = require('..');
-nico.sdk.log.config(commander);
+var log = require('../lib/sdk/log');
+log.config(commander);
 console.log();
-nico.build(commander);
+
+var build = require('../lib/build');
+build(commander);
 console.log();
