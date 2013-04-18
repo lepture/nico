@@ -15,7 +15,7 @@
     "colorful": "~2.0.3",
     "highlight.js": "~7.3.0",
     "swig": "~0.13.5",
-    "lodash": "~1.2.0",
+    "underscore": "~1.4.4",
     "rimraf": "~2.1.4",
     "win-spawn": "~1.1.1",
     "commander": "~1.1.1"

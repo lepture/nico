@@ -26,9 +26,9 @@ describe('file', function() {
   it('should be should', function() {
     file.require(should).should.equal(should);
   });
-  it('should require lodash', function() {
-    var _ = require('lodash');
-    file.require('lodash').VERSION.should.equal(_.VERSION);
+  it('should require underscore', function() {
+    var _ = require('underscore');
+    file.require('underscore').VERSION.should.equal(_.VERSION);
   });
   it('can list files', function() {
     var datafiles = file.list(__dirname + '/data');
