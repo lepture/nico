@@ -3,12 +3,12 @@
 var commander = require('commander');
 
 commander.
-  option('-C --config <config>', 'the config file [nico.json]').
-  option('-I --source <source>', 'the content directory [content]').
-  option('-O --output <output>', 'the output directory [_site]').
-  option('--cache <cache>', 'the cache directory [.cache]').
-  option('--theme <theme>', 'the theme path').
-  option('--permalink <permalink>', 'permalink style of your site').
+  option('-C --config [file]', 'the config file, default: nico.json').
+  option('-I --source [dir]', 'the content directory, default: content').
+  option('-O --output [dir]', 'the output directory, default: _site').
+  option('--cache [dir]', 'the cache directory, default: .cache').
+  option('--theme [theme]', 'the theme path').
+  option('--permalink [permalink]', 'permalink style of your site').
   option('--no-color', 'disable color output').
   option('-f --force', 'force build without cache').
   option('-v --verbose', 'show more logging').
