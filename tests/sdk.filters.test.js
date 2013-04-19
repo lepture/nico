@@ -40,6 +40,7 @@ describe('content_url', function() {
     content_url('./hello').should.equal('../hello.html');
     content_url('hello').should.equal('../hello.html');
     content_url('hello.html').should.equal('../hello.html');
+    content_url('').should.equal('../');
   });
 
   it('query permalink {{year}}/{{filename}}/', function() {
