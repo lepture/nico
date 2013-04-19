@@ -1,6 +1,6 @@
 {
   "name": "nico",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "preferGlobal": "true",
   "description": "Nico is a front-end friendly static site generator",
   "author": "Hsiaoming Yang <lepture@me.com>",
