@@ -33,7 +33,7 @@ documentation:
 server:
 	@bin/nico server -C nico.json -v --watch
 
-publish: clean documentation coverage
+publish: clean documentation
 	@scripts/ghp-import.py _site -p
 
 clean:
