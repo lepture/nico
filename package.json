@@ -12,7 +12,7 @@
     "generator"
   ],
   "dependencies": {
-    "colorful": "~2.0.3",
+    "colorful": "~2.1.0",
     "highlight.js": "~7.3.0",
     "swig": "~0.13.5",
     "underscore": "~1.4.4",
