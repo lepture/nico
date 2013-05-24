@@ -58,21 +58,19 @@ describe('post', function() {
     p1.pages.should.eql(5);
     p1.total.should.eql(100);
     p1.perpage.should.eql(20);
-    p1.has_prev.should.eql(true);
-    p1.prev_num.should.eql(2);
-    p1.has_next.should.eql(false);
-    should.not.exist(p1.next_num);
+    p1.has_prev.should.eql(false);
+    p1.next_num.should.eql(2);
+    p1.has_next.should.eql(true);
 
     var p2 = post.paginate(2, items);
     p2.has_prev.should.eql(true);
-    p2.prev_num.should.eql(3);
+    p2.next_num.should.eql(3);
     p2.has_next.should.eql(true);
-    p2.next_num.should.eql(1);
+    p2.prev_num.should.eql(1);
 
     var p5 = post.paginate(5, items);
-    p5.has_prev.should.eql(false);
-    should.not.exist(p5.prev_num);
-    p5.has_next.should.eql(true);
-    p5.next_num.should.eql(4);
+    p5.has_prev.should.eql(true);
+    p5.has_next.should.eql(false);
+    p5.prev_num.should.eql(4);
   });
 });
