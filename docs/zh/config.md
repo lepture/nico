@@ -87,6 +87,42 @@ Writer 是用来将内容写入 output 的，比如 PostWriter 用来生成文�
 cachedir: '.cache'
 ```
 
+## post_template
+
+Reset the post template name, default is `post`.
+
+## page_template
+
+Reset the page template name, default is `page`.
+
+## archive_template
+
+Reset the archive template name, default is `archive`.
+
+## archive_output
+
+Reset the archive output, default is `index.html`.
+
+## directory_template
+
+Reset the directory template name, default is `archive`.
+
+## year_template
+
+Reset the year template name, default is `archive`.
+
+## tag_template
+
+Reset the tag template name, default is `archive`.
+
+## feed_template
+
+Reset the feed template name, default is `feed`.
+
+## feed_output
+
+Reset the feed output, default is `feed.xml`.
+
 
 ## More
 
