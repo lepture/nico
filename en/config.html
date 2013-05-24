@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.3.0a1">
+    <meta name="generator" content="nico 0.3.1">
     <meta name="theme" content="one 0.1">
     <title>Nico Configuration</title>
     <link rel="stylesheet" href="../static/one.css" />
@@ -34,18 +34,21 @@
 <div class="hentry">
   <h1 class="entry-title">Nico Configuration</h1>
   <div class="entry-content"><p>Nico supports two formats of configuration, Javascript and JSON. JSON is standard, but Javascript is more flexible.</p>
-<h2 id="basic">Basic</h2><p>The required fields of nico:</p>
+<h2 id="basic">Basic</h2>
+<p>The required fields of nico:</p>
 <pre>{
     &quot;source&quot;: &quot;content&quot;,
     &quot;output&quot;: &quot;_site&quot;,
     &quot;permalink&quot;: &quot;{{filename}}.html&quot;,
-    &quot;theme&quot;: &quot;_themes/one&quot;,
+    &quot;theme&quot;: &quot;_themes&#47;one&quot;,
     &quot;writers&quot;: [
         &quot;nico.PostWriter&quot;,
         &quot;nico.StaticWriter&quot;,
         &quot;nico.FileWriter&quot;
     ]
-}</pre><p>In Javascript format:</p>
+}
+</pre>
+<p>In Javascript format:</p>
 <div class="highlight"><pre><code class="javascript">exports.source = <span class="string">"content"</span>
 exports.output = <span class="string">"_site"</span>
 exports.permalink = <span class="string">"{{filename}}.html"</span>
@@ -58,21 +61,30 @@ exports.writers = [
     <span class="string">'nico.PostWriter'</span>,
     <span class="string">'nico.StaticWriter'</span>,
     <span class="string">'nico.FileWriter'</span>
-]</code></pre></div><p>You can set source, output, permalink, theme in the terminal interface, get more help:</p>
-<pre>$ nico build -h</pre><h2 id="permalink">Permalink</h2><p>Set the permalink style you want. Here are some tips:</p>
+]
+</code></pre></div>
+<p>You can set source, output, permalink, theme in the terminal interface, get more help:</p>
+<pre>$ nico build -h
+</pre><h2 id="permalink">Permalink</h2>
+<p>Set the permalink style you want. Here are some tips:</p>
 <pre>{{filename}}
 {{filename}}.html
 
-{{directory}}/{{filename}}
-{{directory}}/{{filename}}.html
+{{directory}}&#47;{{filename}}
+{{directory}}&#47;{{filename}}.html
 
-{{pubdate.year}}/{{filename}}
-{{pubdate.year}}/{{filename}}.html</pre><h2 id="writer">Writer</h2><p>Writer is the tool for writing html into your output directory. For example:</p>
+{{pubdate.year}}&#47;{{filename}}
+{{pubdate.year}}&#47;{{filename}}.html
+</pre><h2 id="writer">Writer</h2>
+<p>Writer is the tool for writing html into your output directory. For example:</p>
+
 <ul>
 <li>PostWriter will write the post html</li>
 <li>FileWriter will copy files from source to output</li>
 </ul>
+
 <p>Built-in writers:</p>
+
 <ul>
 <li>nico.PostWriter      - generate a post</li>
 <li>nico.PageWriter      - generate a page</li>
@@ -84,12 +96,15 @@ exports.writers = [
 <li>nico.DirectoryWriter - generate archive by direcotories</li>
 <li>nico.FeedWriter      - generate feed</li>
 </ul>
-<h2 id="more">More</h2></div>
+<h2 id="cache">Cache</h2>
+<p>For large projects, you would like a cache for fast building. Set a <code>cachedir</code> in your config file:</p>
+<pre>cachedir: &#39;.cache&#39;
+</pre></div>
 </div>
 </div>
     <div class="footer">
       <p>Nico was created by lepture, concept based on liquidluck. brought to you under the BSD license.</p>
-      <p class="copyright">powered by <a href="http://lab.lepture.com/nico/">nico</a> 0.3.0a1</p>
+      <p class="copyright">powered by <a href="http://lab.lepture.com/nico/">nico</a> 0.3.1</p>
     </div>
     <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="../static/one.js"></script>
     <div class="github"><a class="github-link" href="https://github.com/lepture/nico">Fork me on GitHub</a></div>

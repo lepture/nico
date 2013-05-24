@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.3.0a1">
+    <meta name="generator" content="nico 0.3.1">
     <meta name="theme" content="one 0.1">
     <title>Nico Theme</title>
     <link rel="stylesheet" href="../static/one.css" />
@@ -34,49 +34,124 @@
 <div class="hentry">
   <h1 class="entry-title">Nico Theme</h1>
   <div class="entry-content"><p>It&#39;s not that difficult to create a theme, an example tells more, head over to <a href="https://github.com/lepture/nico-one">one</a>, and learn how to write a theme.</p>
-<h2 id="structure">Structure</h2><p>A theme contains three parts: theme information, templates and static. The structure:</p>
-<pre>theme-name/
+<h2 id="structure">Structure</h2>
+<p>A theme contains three parts: theme information, templates and static. The structure:</p>
+<pre>theme-name&#47;
     theme.js                 - theme information
-    templates/
+    templates&#47;
         post.html
         page.html
         ...
-    static/
+    static&#47;
         app.css
         jquery.js
-        ...</pre><h2 id="templates">Templates</h2><p>Swig is the default engine used by nico, if you want to create your own theme, you need some acknowledge of swig. However, if you know Django and Jinja, it will help. Get more information at <a href="http://paularmstrong.github.com/swig/">swig</a>.</p>
+        ...
+</pre><h2 id="templates">Templates</h2>
+<p>Swig is the default engine used by nico, if you want to create your own theme, you need some acknowledge of swig. However, if you know Django and Jinja, it will help. Get more information at <a href="http://paularmstrong.github.com/swig/">swig</a>.</p>
+
 <p>Every writer need a template, they may share a same template:</p>
 <pre>post.html             - PostWriter
 page.html             - PageWriter
 archive.html          - ArchiveWriter, YearWriter, DirectoryWriter ...
-feed.html             - FeedWriter</pre><h3 id="jade">Jade</h3><p>Change template engine to jade:</p>
-<pre>// nico.json
+feed.html             - FeedWriter
+</pre><h3 id="jade">Jade</h3>
+<p>Change template engine to jade:</p>
+<pre>&#47;&#47; nico.json
 {
     &quot;engine&quot;: &quot;jade&quot;
-}</pre><p>Make sure <code>jade</code> can be required. If you have set a <code>NODE_PATH</code> and jade is installed global, it can be required. You can also install jade in the current directory.</p>
+}
+</pre>
+<p>Make sure <code>jade</code> can be required. If you have set a <code>NODE_PATH</code> and jade is installed global, it can be required. You can also install jade in the current directory.</p>
+
 <p>Try jade:</p>
-<pre>$ node</pre><pre>&gt; require(&#39;jade&#39;)</pre><h2 id="variables">Variables</h2><ul>
+<pre>$ node
+</pre><pre>&gt; require(&#39;jade&#39;)
+</pre><h2 id="variables">Variables</h2>
+<ul>
 <li>Global variable: you can access global variable in every template</li>
 <li>Template variable: you can only access template variable in the specified template</li>
 </ul>
-<h3 id="system">system</h3><p>Global variable. This describe the system information of nico.</p>
+<h3 id="system">system</h3>
+<p>Global variable. This describe the system information of nico.</p>
 <pre>{
     &quot;name&quot;: &quot;nico&quot;,
     &quot;version&quot;: &quot;0.1.0&quot;,
-    &quot;homepage&quot;: &quot;http://lab.lepture.com/nico/&quot;
-}</pre><p>Actually, it contains every field in <a href="https://github.com/lepture/nico/blob/master/package.json">nico/package.json</a>.</p>
-<h3 id="theme">theme</h3><p>Global variable. This describe the theme information. It contains every information in <code>theme.js</code>.</p>
-<h3 id="config">config</h3><p>Global variable. Every information in the config file.</p>
-<h3 id="post">post</h3><h3 id="pagination">pagination</h3><h2 id="functions">Functions</h2><p>Built-in functions:</p>
-<h3 id="permalink-url">permalink_url</h3><p><code>{{permalink_url(post)}}</code></p>
-<h3 id="content-url">content_url</h3><p><code>{{content_url(&#39;index.html&#39;)}}</code></p>
-<h3 id="static-url">static_url</h3><p><code>{{static_url(&#39;css/a.css&#39;)}}</code></p>
-<h2 id="filter">filter</h2></div>
+    &quot;homepage&quot;: &quot;http:&#47;&#47;lab.lepture.com&#47;nico&#47;&quot;
+}
+</pre>
+<p>Actually, it contains every field in <a href="https://github.com/lepture/nico/blob/master/package.json">nico/package.json</a>.</p>
+<h3 id="theme">theme</h3>
+<p>Global variable. This describe the theme information. It contains every information in <code>theme.js</code>.</p>
+<h3 id="config">config</h3>
+<p>Global variable. Every information in the config file (<code>nico.json</code>).</p>
+<h3 id="resource">resource</h3>
+<p>Global variable. The resource we have. It contains:</p>
+
+<ul>
+<li>resource.posts: all posts we have. (use <code>read</code> filter to get the full post)</li>
+<li>resource.pages: all pages we have. (use <code>read</code> filter to get the full page)</li>
+</ul>
+<h3 id="post">post</h3>
+<p>Template variable. Available in <code>post.html</code>, and <code>page.html</code>.</p>
+
+<p>A post is an object with these information:</p>
+
+<ul>
+<li>post.title: title of the post</li>
+<li>post.meta: meta information you defined</li>
+<li>post.pubdate: (available for <code>post.html</code>), the publish date</li>
+<li>post.tags: tags of the post</li>
+<li>post.html: rendered html of the post</li>
+<li>post.directory: directory of the post</li>
+<li>post.status: status of the post. (public, draft, secret, etc..)</li>
+<li>post.toc: tabe of content of the post</li>
+</ul>
+
+<p>You can get every raw data from <code>post.meta</code> that you defined.</p>
+<h3 id="pagination">pagination</h3>
+<p>Template Variable. Available in <code>archive.html</code>.</p>
+
+<ul>
+<li>pagination.page: current page of the pagination</li>
+<li>pagination.pages: total pages the pagination has</li>
+<li>pagination.perpage: count of post that perpage has</li>
+<li>pagination.total_items: all the items</li>
+<li>pagination.total: total count of the pagination</li>
+<li>pagination.items: items for current page</li>
+<li>pagination.has_prev: has a previous page?</li>
+<li>pagination.prev_num: previous page number</li>
+<li>pagination.has_next: has a next page?</li>
+<li>pagination.next_num: next page number</li>
+<li>pagination.iter_pages: iter pages of the pagination</li>
+</ul>
+
+<p><strong>NOTICE</strong></p>
+
+<p>The item in <code>pagination.items</code> is not a full post, you should use <code>read</code> filter to get the rendered html.</p>
+<h2 id="functions">Functions</h2>
+<p>Built-in functions:</p>
+<h3 id="permalink-url">permalink_url</h3>
+<p><code>{{permalink_url(post)}}</code></p>
+<h3 id="content-url">content_url</h3>
+<p><code>{{content_url(&#39;index.html&#39;)}}</code></p>
+<h3 id="static-url">static_url</h3>
+<p><code>{{static_url(&#39;css/a.css&#39;)}}</code></p>
+<h2 id="filter">filter</h2>
+<p>The built in filters of nico:</p>
+<h3 id="xmldatetime">xmldatetime</h3>
+<p>Generate a <code>ISOString</code> of the Date.</p>
+<h3 id="markdown">markdown</h3>
+<p>Render the raw text to html with markdown.</p>
+<h3 id="highlight">highlight</h3>
+<p>Highlight a code block with specified language.</p>
+<h3 id="read">read</h3>
+<p>Read is designed for <code>pagination.items</code>, to fulfill the post.</p>
+</div>
 </div>
 </div>
     <div class="footer">
       <p>Nico was created by lepture, concept based on liquidluck. brought to you under the BSD license.</p>
-      <p class="copyright">powered by <a href="http://lab.lepture.com/nico/">nico</a> 0.3.0a1</p>
+      <p class="copyright">powered by <a href="http://lab.lepture.com/nico/">nico</a> 0.3.1</p>
     </div>
     <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="../static/one.js"></script>
     <div class="github"><a class="github-link" href="https://github.com/lepture/nico">Fork me on GitHub</a></div>

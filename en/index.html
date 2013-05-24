@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.3.0a1">
+    <meta name="generator" content="nico 0.3.1">
     <meta name="theme" content="one 0.1">
     <title>Documentation of Nico</title>
     <link rel="stylesheet" href="../static/one.css" />
@@ -34,56 +34,81 @@
 <div class="hentry">
   <h1 class="entry-title">Documentation of Nico</h1>
   <div class="entry-content"><p>Nico is built on nodejs, which means you have to install nodejs. I believe you have installed nodejs, but I&#39;d like to repeat this part.</p>
+
 <p>You can download the package on <a href="http://nodejs.org">nodejs.org</a> or through a package manager like apt-get and homebrew.</p>
-<h2 id="installation">Installation</h2><p>Install nico is simple with npm:</p>
-<pre>$ npm install nico -g</pre><p>Please install it with <code>-g</code> option, otherwise you can&#39;t use it in command line.</p>
+<h2 id="installation">Installation</h2>
+<p>Install nico is simple with npm:</p>
+<pre>$ npm install nico -g
+</pre>
+<p>Please install it with <code>-g</code> option, otherwise you can&#39;t use it in command line.</p>
+
 <p>If you want a live reload feature, you have to install socket.io by yourself:</p>
-<pre>$ npm install socket.io -g</pre><h2 id="theme">Theme</h2><p>Nico didn&#39;t provide a default theme, and it will not provide a default theme in the foreseen future. But I wrote a theme for you, which is <a href="https://github.com/lepture/nico-one">one</a>. You can learn how to write your own theme with one.</p>
+<pre>$ npm install socket.io -g
+</pre><h2 id="theme">Theme</h2>
+<p>Nico didn&#39;t provide a default theme, and it will not provide a default theme in the foreseen future. But I wrote a theme for you, which is <a href="https://github.com/lepture/nico-one">one</a>. You can learn how to write your own theme with one.</p>
+
 <p>Let&#39;s grab the theme:</p>
-<pre>$ git clone git://github.com/lepture/nico-one.git _themes/one</pre><p>You can learn more in the <a href="./theme">Theme</a> section.</p>
-<h2 id="configure">Configure</h2><p>Nico can&#39;t work well without a configuration. Let&#39;s create a <code>nico.json</code>:</p>
+<pre>$ git clone git:&#47;&#47;github.com&#47;lepture&#47;nico-one.git _themes&#47;one
+</pre>
+<p>You can learn more in the <a href="./theme">Theme</a> section.</p>
+<h2 id="configure">Configure</h2>
+<p>Nico can&#39;t work well without a configuration. Let&#39;s create a <code>nico.json</code>:</p>
 <pre>{
     &quot;source&quot;: &quot;content&quot;,
     &quot;output&quot;: &quot;_site&quot;,
-    &quot;theme&quot;: &quot;_themes/one&quot;,
-    &quot;permalink&quot;: &quot;{{directory}}/{{filename}}.html&quot;,
+    &quot;theme&quot;: &quot;_themes&#47;one&quot;,
+    &quot;permalink&quot;: &quot;{{directory}}&#47;{{filename}}.html&quot;,
     &quot;writers&quot;: [
         &quot;nico.PostWriter&quot;,
         &quot;nico.FileWriter&quot;,
         &quot;nico.StaticWriter&quot;
     ]
-}</pre><p>Learn more about configuration at the <a href="./config">Config</a> section.</p>
-<h2 id="writing">Writing</h2><p>It&#39;s the time for us to write something:</p>
+}
+</pre>
+<p>Learn more about configuration at the <a href="./config">Config</a> section.</p>
+<h2 id="writing">Writing</h2>
+<p>It&#39;s the time for us to write something:</p>
 <pre>nico.json
-content/
+content&#47;
   hello-world.md
-_themes/
-  one/
-    templates/
-    static/
-    ...</pre><p>And we will edit <code>content/hello-world.md</code>:</p>
+_themes&#47;
+  one&#47;
+    templates&#47;
+    static&#47;
+    ...
+</pre>
+<p>And we will edit <code>content/hello-world.md</code>:</p>
 <pre># Hello Nico
 
 - pubdate: 2012-12-12
 
 ------
 
-Hello World, Hello Nico.</pre><p>Run the command in the terminal:</p>
-<pre>$ nico build</pre><p>It will create a folder <code>_site</code> in the current working directory, and there will be an article <code>hello-world.html</code>.</p>
+Hello World, Hello Nico.
+</pre>
+<p>Run the command in the terminal:</p>
+<pre>$ nico build
+</pre>
+<p>It will create a folder <code>_site</code> in the current working directory, and there will be an article <code>hello-world.html</code>.</p>
+
 <p>Learn more about <code>nico</code> in terminal:</p>
 <pre>$ nico -h
 $ nico build -h
-$ nico server -h</pre><p>Learn more about syntax in the <a href="./syntax">Syntax</a> section.</p>
-<h2 id="developer-guide">Developer Guide</h2><p>Actually the code of nico is easy to understand.</p>
-<h2 id="bug-report">Bug Report</h2><p>I keep an issue tracker at <a href="https://github.com/lepture/nico/issues">GitHub</a>,
+$ nico server -h
+</pre>
+<p>Learn more about syntax in the <a href="./syntax">Syntax</a> section.</p>
+<h2 id="developer-guide">Developer Guide</h2>
+<p>Actually the code of nico is easy to understand.</p>
+<h2 id="bug-report">Bug Report</h2>
+<p>I keep an issue tracker at <a href="https://github.com/lepture/nico/issues">GitHub</a>,
 you can report bugs by <a href="https://github.com/lepture/nico/issues/new">openning a new issue</a>.
-If you want any help, please contact <a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#x6c;&#x65;&#x70;&#x74;&#117;&#x72;&#x65;&#64;&#109;&#101;&#x2e;&#99;&#111;&#x6d;">&#x6c;&#x65;&#x70;&#x74;&#117;&#x72;&#x65;&#64;&#109;&#101;&#x2e;&#99;&#111;&#x6d;</a>, English and Chinese are acceptable.</p>
+If you want any help, please contact <a href="mailto:lepture@me.com">lepture@me.com</a>, English and Chinese are acceptable.</p>
 </div>
 </div>
 </div>
     <div class="footer">
       <p>Nico was created by lepture, concept based on liquidluck. brought to you under the BSD license.</p>
-      <p class="copyright">powered by <a href="http://lab.lepture.com/nico/">nico</a> 0.3.0a1</p>
+      <p class="copyright">powered by <a href="http://lab.lepture.com/nico/">nico</a> 0.3.1</p>
     </div>
     <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="../static/one.js"></script>
     <div class="github"><a class="github-link" href="https://github.com/lepture/nico">Fork me on GitHub</a></div>
