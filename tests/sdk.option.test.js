@@ -3,17 +3,18 @@ var option = require('..').sdk.option;
 
 describe('option', function() {
   it('can get default values', function() {
-    option.get('cachedir').should.equal('.cache');
+    option.get('encoding').should.equal('utf8');
   });
   it('can set values', function() {
-    option.set('cachedir', 'cache');
-    option.get('cachedir').should.equal('cache');
+    option.set('encoding', 'unicode');
+    option.get('encoding').should.equal('unicode');
     option.clean();
-    option.get('cachedir').should.equal('.cache');
+    option.get('encoding').should.equal('utf8');
 
-    option.option('cachedir').should.equal('.cache');
-    option.option('cachedir', 'cache');
-    option.get('cachedir').should.equal('cache');
+    option.option('encoding').should.equal('utf8');
+    option.option('encoding', 'unicode');
+    option.get('encoding').should.equal('unicode');
+    option.clean();
   });
   it('will init with some values', function() {
     var o = new option.Option({foo: 'bar'});
