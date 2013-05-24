@@ -85,12 +85,54 @@ Global variable. This describe the theme information. It contains every informat
 
 ### config
 
-Global variable. Every information in the config file.
+Global variable. Every information in the config file (`nico.json`).
+
+
+### resource
+
+Global variable. The resource we have. It contains:
+
+- resource.posts: all posts we have. (use `read` filter to get the full post)
+- resource.pages: all pages we have. (use `read` filter to get the full page)
+
 
 ### post
 
+Template variable. Available in `post.html`, and `page.html`.
+
+A post is an object with these information:
+
+- post.title: title of the post
+- post.meta: meta information you defined
+- post.pubdate: (available for `post.html`), the publish date
+- post.tags: tags of the post
+- post.html: rendered html of the post
+- post.directory: directory of the post
+- post.status: status of the post. (public, draft, secret, etc..)
+- post.toc: tabe of content of the post
+
+You can get every raw data from `post.meta` that you defined.
 
 ### pagination
+
+Template Variable. Available in `archive.html`.
+
+- pagination.page: current page of the pagination
+- pagination.pages: total pages the pagination has
+- pagination.perpage: count of post that perpage has
+- pagination.total_items: all the items
+- pagination.total: total count of the pagination
+- pagination.items: items for current page
+- pagination.has_prev: has a previous page?
+- pagination.prev_num: previous page number
+- pagination.has_next: has a next page?
+- pagination.next_num: next page number
+- pagination.iter_pages: iter pages of the pagination
+
+
+**NOTICE**
+
+The item in `pagination.items` is not a full post, you should use `read` filter to get the rendered html.
 
 
 ## Functions
@@ -113,3 +155,20 @@ Built-in functions:
 
 ## filter
 
+The built in filters of nico:
+
+### xmldatetime
+
+Generate a `ISOString` of the Date.
+
+### markdown
+
+Render the raw text to html with markdown.
+
+### highlight
+
+Highlight a code block with specified language.
+
+### read
+
+Read is designed for `pagination.items`, to fulfill the post.

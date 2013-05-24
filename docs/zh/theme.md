@@ -82,13 +82,47 @@ feed.html             - FeedWriter
 
 全局变量，用户总共有哪些资源。
 
+- resource.posts: 所有的文章 (使用 `read` filter 来获取完整的文章)
+- resource.pages: 所有的页面
+
+
 ### post
 
 模板变量，有 PostWriter 与 PageWriter 渲染的模板有该变量。
 
+- post.title: 文章的标题
+- post.meta: 文章的所有元数据
+- post.pubdate: 文章的发布时间(only available in `post.html`)
+- post.tags: 文章的标签
+- post.html: 渲染好的 html
+- post.directory: 文章文件所在的目录
+- post.status: 文章的状态
+- post.toc: tabe of content of the post
+
+You can get every raw data from `post.meta` that you defined.
+
+
 ### pagination
 
 模板变量，对文章有批量操作的 writer 会有该变量，比如 ArchiveWriter。
+
+- pagination.page: current page of the pagination
+- pagination.pages: total pages the pagination has
+- pagination.perpage: count of post that perpage has
+- pagination.total_items: all the items
+- pagination.total: total count of the pagination
+- pagination.items: items for current page
+- pagination.has_prev: has a previous page?
+- pagination.prev_num: previous page number
+- pagination.has_next: has a next page?
+- pagination.next_num: next page number
+- pagination.iter_pages: iter pages of the pagination
+
+
+**NOTICE**
+
+The item in `pagination.items` is not a full post, you should use `read` filter to get the rendered html.
+
 
 ## 方法
 
@@ -114,3 +148,21 @@ feed.html             - FeedWriter
 你需要了解 filter 是什么，请先阅读 swig 的文档。代码上来讲，filter 也是一类方法。
 
 你可以通过配置来新增一些 filter。
+
+The built in filters of nico:
+
+### xmldatetime
+
+Generate a `ISOString` of the Date.
+
+### markdown
+
+Render the raw text to html with markdown.
+
+### highlight
+
+Highlight a code block with specified language.
+
+### read
+
+Read is designed for `pagination.items`, to fulfill the post.
