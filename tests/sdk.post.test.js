@@ -1,4 +1,4 @@
-require('should');
+var should = require('should');
 var option = require('..').sdk.option;
 var post = require('..').sdk.post;
 
@@ -45,5 +45,34 @@ describe('post', function() {
 
   it('can load posts', function() {
     post.load(__dirname + '/data');
+  });
+
+  var items = [];
+  for (var i = 0; i < 100; i++) {
+    items.push({
+      filepath: 'tests/data/page.md'
+    });
+  }
+  it('can paginate', function() {
+    var p1 = post.paginate(1, items);
+    p1.pages.should.eql(5);
+    p1.total.should.eql(100);
+    p1.perpage.should.eql(20);
+    p1.has_prev.should.eql(true);
+    p1.prev_num.should.eql(2);
+    p1.has_next.should.eql(false);
+    should.not.exist(p1.next_num);
+
+    var p2 = post.paginate(2, items);
+    p2.has_prev.should.eql(true);
+    p2.prev_num.should.eql(3);
+    p2.has_next.should.eql(true);
+    p2.next_num.should.eql(1);
+
+    var p5 = post.paginate(5, items);
+    p5.has_prev.should.eql(false);
+    should.not.exist(p5.prev_num);
+    p5.has_next.should.eql(true);
+    p5.next_num.should.eql(4);
   });
 });
