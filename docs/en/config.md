@@ -82,4 +82,10 @@ Built-in writers:
 - nico.FeedWriter      - generate feed
 
 
-## More
+## Cache
+
+For large projects, you would like a cache for fast building. Set a `cachedir` in your config file:
+
+```
+cachedir: '.cache'
+```
