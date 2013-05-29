@@ -1,8 +1,5 @@
 all:
 	@npm install -d
-	@cp scripts/githooks/* .git/hooks/
-	@chmod -R +x .git/hooks/
-
 
 specs := $(shell find ./tests -name '*.test.js' ! -path "*node_modules/*")
 reporter = spec
@@ -18,9 +15,8 @@ lint:
 
 out = _site/coverage.html
 coverage:
-	@scripts/detect-jscoverage.sh
 	@rm -fr lib-cov
-	@jscoverage lib lib-cov
+	@node_modules/.bin/jscoverage lib lib-cov
 	@NICO_COVERAGE=1 $(MAKE) test reporter=html-cov > ${out}
 	@echo
 	@rm -fr lib-cov
