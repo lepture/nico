@@ -23,8 +23,11 @@ coverage:
 	@echo "Built Report to ${out}"
 	@echo
 
-documentation:
+docs:
 	@bin/nico build -C nico.json
+
+api:
+	@node_modules/.bin/jsdoc -d _site/api -r lib
 
 server:
 	@bin/nico server -C nico.json -v --watch
@@ -36,4 +39,4 @@ clean:
 	@rm -fr tests/_site
 	@rm -fr _site
 
-.PHONY: all build test lint coverage
+.PHONY: all build test lint coverage docs api
