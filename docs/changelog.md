@@ -5,6 +5,13 @@
 Changelog of the nico projects. The changelog starts with `0.4.0`.
 
 
+## Version 0.4.2
+
+Release on **Jun 27, 2013**
+
+1. `theme.js` can export an function
+
+
 ## Version 0.4.1
 
 Release on **May 29, 2013**
