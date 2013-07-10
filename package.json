@@ -31,7 +31,10 @@
     "jade": "*",
     "jshint": "*",
     "mocha": "*",
-    "should": "*"
+    "should": "*",
+    "uglify-js": "*",
+    "clean-css": "*",
+    "html-minifier": "*"
   },
   "bin": {
     "nico": "bin/nico"
