@@ -125,3 +125,31 @@ Reset the feed template name, default is `feed`.
 ## feed_output
 
 Reset the feed output, default is `feed.xml`.
+
+## process_write
+
+This is a function for processing file write action. Define in your config
+file: nico.js
+
+```js
+exports.process_write = function(content, filename) {
+    if (/\.html$/.test(filename)) {
+        return compressHTML(content);
+    }
+    return content;
+}
+```
+
+## process_copy
+
+This is a function for procssing file copy action. Define in your config
+file: nico.js
+
+```js
+exports.process_copy = function(buf, filename) {
+    if (/\.css$/.test(filename)) {
+        return compressCSS(buf.toString());
+    }
+    return buf;
+}
+```
