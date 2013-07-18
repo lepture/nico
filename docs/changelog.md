@@ -5,6 +5,13 @@
 Changelog of the nico projects. The changelog starts with `0.4.0`.
 
 
+## Version 0.4.3
+
+Release on **Jul 18, 2013**
+
+1. Add process_write and process_copy hooks
+2. Bugfixes
+
 ## Version 0.4.2
 
 Release on **Jun 27, 2013**
