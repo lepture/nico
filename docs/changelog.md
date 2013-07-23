@@ -13,6 +13,7 @@ Release on **Jul 23, 2013**
 2. Fix `xmldatetime` filter
 3. Add `sortby` filter
 4. Update dependencies
+5. Bugfixes
 
 ## Version 0.4.3
 
