@@ -1,9 +1,9 @@
 {
   "name": "nico",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "preferGlobal": "true",
   "description": "Nico is a front-end friendly static site generator",
-  "author": "Hsiaoming Yang <lepture@me.com>",
+  "author": "Hsiaoming Yang <me@lepture.com>",
   "homepage": "http://lab.lepture.com/nico/",
   "keywords": [
     "static",
@@ -14,10 +14,10 @@
   "dependencies": {
     "colorful": "~2.1.0",
     "highlight.js": "~7.3.0",
-    "swig": "~0.13.5",
-    "underscore": "~1.4.4",
-    "rimraf": "~2.1.4",
-    "win-spawn": "~1.1.1",
+    "swig": "~0.14.0",
+    "underscore": "~1.5.1",
+    "rimraf": "~2.2.2",
+    "win-spawn": "~1.1.2",
     "commander": "~1.1.1"
   },
   "repository": {
