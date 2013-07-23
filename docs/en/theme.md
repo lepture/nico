@@ -172,3 +172,14 @@ Highlight a code block with specified language.
 ### read
 
 Read is designed for `pagination.items`, to fulfill the post.
+
+### sortby
+
+Sort items by a key. For example:
+
+```
+{{ items|sortby('pubdate') }}
+
+// reverse sort
+{{ items|sortby('-pubdate') }}
+```

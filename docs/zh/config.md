@@ -87,6 +87,10 @@ Writer 是用来将内容写入 output 的，比如 PostWriter 用来生成文�
 cachedir: '.cache'
 ```
 
+## perpage
+
+Reset number of post on perpage, default is 20.
+
 ## post_template
 
 Reset the post template name, default is `post`.

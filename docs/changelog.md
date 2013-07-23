@@ -5,6 +5,15 @@
 Changelog of the nico projects. The changelog starts with `0.4.0`.
 
 
+## Version 0.4.4
+
+Release on **Jul 23, 2013**
+
+1. `permalink_url` works on page
+2. Fix `xmldatetime` filter
+3. Add `sortby` filter
+4. Update dependencies
+
 ## Version 0.4.3
 
 Release on **Jul 18, 2013**

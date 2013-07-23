@@ -90,6 +90,10 @@ For large projects, you would like a cache for fast building. Set a `cachedir` i
 cachedir: '.cache'
 ```
 
+## perpage
+
+Reset number of post on perpage, default is 20.
+
 ## post_template
 
 Reset the post template name, default is `post`.
