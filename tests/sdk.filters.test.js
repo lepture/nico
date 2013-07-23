@@ -9,6 +9,28 @@ describe('filters', function() {
   it('can render xmldatetime', function() {
     var xmldatetime = filters.filters.xmldatetime;
     xmldatetime('2012-12-25').should.include('2012-12-25T00:00:00');
+
+    var d = new Date();
+    xmldatetime(d).should.equal(d.toISOString());
+  });
+  it('can sort objects', function() {
+    var items = {
+      'a': {
+        key: 'a'
+      },
+      'c': {
+        key: 'c'
+      },
+      'b': {
+        key: 'b'
+      }
+    };
+    var sortby = filters.filters.sortby;
+    var ret = sortby(items, 'key');
+    ret.should.eql([{key: 'a'}, {key: 'b'}, {key: 'c'}]);
+
+    ret = sortby(items, '-key');
+    ret.should.eql([{key: 'c'}, {key: 'b'}, {key: 'a'}]);
   });
 });
 
