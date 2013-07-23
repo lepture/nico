@@ -7,29 +7,6 @@ var commander = require('commander');
 var color = require('colorful').color;
 var spawn = require('win-spawn');
 
-if (!process.env.NODE_PATH) {
-  console.log();
-  if (process.env.SHELL === '/bin/zsh') {
-    console.log('  Please set environment variable NODE_PATH in ~/.zshrc:');
-  } else if (process.env.SHELL === '/bin/bash') {
-    console.log('  Please set environment variable NODE_PATH in ~/.bashrc:');
-  } else {
-    console.log('  Please set environment variable NODE_PATH:');
-  }
-  console.log();
-
-  var nodepath = __dirname.replace(/(\/|\\)nico(\/|\\)bin$/, '');
-  if (/node_modules$/.test(nodepath) && !fs.existsSync(path.join(nodepath, '.bin'))) {
-    if (os.platform() === 'win32') {
-      console.log('    NODE_PATH=' + nodepath);
-    } else {
-      console.log('    export NODE_PATH=' + nodepath);
-    }
-    console.log();
-  }
-}
-
-
 commander.helpInformation = function() {
   return [
     '',
