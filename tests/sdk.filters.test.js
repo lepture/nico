@@ -16,21 +16,21 @@ describe('filters', function() {
   it('can sort objects', function() {
     var items = {
       'a': {
-        key: 'a'
+        key: 1
       },
       'c': {
-        key: 'c'
+        key: 3
       },
       'b': {
-        key: 'b'
+        key: 2
       }
     };
     var sortby = filters.filters.sortby;
     var ret = sortby(items, 'key');
-    ret.should.eql([{key: 'a'}, {key: 'b'}, {key: 'c'}]);
+    ret.should.eql([{key: 1}, {key: 2}, {key: 3}]);
 
     ret = sortby(items, '-key');
-    ret.should.eql([{key: 'c'}, {key: 'b'}, {key: 'a'}]);
+    ret.should.eql([{key: 3}, {key: 2}, {key: 1}]);
   });
 });
 
