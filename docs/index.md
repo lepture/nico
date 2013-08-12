@@ -32,6 +32,12 @@ Me, of course. And the nice folks of our team are using nico too.
 
 - [arale](http://aralejs.org) project is abusing nico.
 
+<a class="button" href="https://github.com/lepture/nico/wiki">More on Wiki</a>
+
+If you are using nico, please add your site to the wiki.
+
+And one more thing to help you setting up a blog:
+[nico-boilerplate](https://github.com/lepture/nico-boilerplate).
 
 ## Contributing
 

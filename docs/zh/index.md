@@ -30,7 +30,7 @@ Nico 没有提供内置的主题，在可见的未来也不会内置主题，但
 $ git clone git://github.com/lepture/nico-one.git _themes/one
 ```
 
-关于如何制作自己的主题，请参考 [主题篇](./theme)。
+<a class="button" href="./theme">Read More</a>
 
 
 ## 配置
@@ -51,7 +51,7 @@ $ git clone git://github.com/lepture/nico-one.git _themes/one
 }
 ```
 
-更多关于配置文件的信息，请参考 [配置篇](./config)。
+<a class="button" href="./config">Read More</a>
 
 
 ## 写作
@@ -97,7 +97,7 @@ $ nico build -h
 $ nico server -h
 ```
 
-了解更多文章格式的内容，请参考 [写作篇](./syntax)。
+<a class="button" href="./syntax">Read More</a>
 
 
 ## 开发者文档

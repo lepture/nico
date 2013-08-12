@@ -34,7 +34,7 @@ Let's grab the theme:
 
     $ git clone git://github.com/lepture/nico-one.git _themes/one
 
-You can learn more in the [Theme](./theme) section.
+<a class="button" href="./theme">Read More</a>
 
 
 ## Configure
@@ -56,7 +56,7 @@ Nico can't work well without a configuration. Let's create a `nico.json`:
 }
 ```
 
-Learn more about configuration at the [Config](./config) section.
+<a class="button" href="./config">Read More</a>
 
 
 ## Writing
@@ -102,7 +102,7 @@ $ nico build -h
 $ nico server -h
 ```
 
-Learn more about syntax in the [Syntax](./syntax) section.
+<a class="button" href="./syntax">Read More</a>
 
 
 ## Developer Guide
