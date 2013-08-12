@@ -4,6 +4,13 @@
 
 Changelog of the nico projects. The changelog starts with `0.4.0`.
 
+## Version 0.4.5
+
+Release on **Aug 12, 2013**
+
+1. Add `index_url` filter
+2. Fix `content_url` filter to support non string arguments
+
 
 ## Version 0.4.4
 
