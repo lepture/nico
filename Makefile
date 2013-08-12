@@ -32,7 +32,7 @@ api:
 server:
 	@bin/nico server -C nico.json -v --watch
 
-publish: clean documentation
+publish: clean docs
 	@scripts/ghp-import.py _site -p
 
 clean:
