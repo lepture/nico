@@ -114,4 +114,4 @@ Actually the code of nico is easy to understand.
 
 I keep an issue tracker at [GitHub](https://github.com/lepture/nico/issues),
 you can report bugs by [openning a new issue](https://github.com/lepture/nico/issues/new).
-If you want any help, please contact <lepture@me.com>, English and Chinese are acceptable.
+If you want any help, please contact <me@lepture.com>, English and Chinese are acceptable.
