@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.3.1">
-    <meta name="theme" content="one 0.1">
+    <meta name="generator" content="nico 0.4.4">
+    <meta name="theme" content="one 0.2">
     <title>Documentation of Nico</title>
     <link rel="stylesheet" href="../static/one.css" />
+    <link rel="stylesheet" href="../static/yue.css" />
     <link rel="stylesheet" href="../static/syntax.css" />
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -23,14 +24,16 @@
   <body>
     <div class="navigation" role="navigation">
       <div class="container">
-        <a class="home" href="../">Nico</a>
+        <div class="brand">
+          <a class="home" href="../">Nico</a>
+        </div>
         <div class="menu">
           <a href="./">English</a>
           <a href="../zh/">中文文档</a>
         </div>
       </div>
     </div>
-    <div class="document">
+    <div class="document yue">
 <div class="hentry">
   <h1 class="entry-title">Documentation of Nico</h1>
   <div class="entry-content"><p>Nico is built on nodejs, which means you have to install nodejs. I believe you have installed nodejs, but I&#39;d like to repeat this part.</p>
@@ -50,7 +53,7 @@
 <p>Let&#39;s grab the theme:</p>
 <pre>$ git clone git:&#47;&#47;github.com&#47;lepture&#47;nico-one.git _themes&#47;one
 </pre>
-<p>You can learn more in the <a href="./theme">Theme</a> section.</p>
+<p><a class="button" href="./theme">Read More</a></p>
 <h2 id="configure">Configure</h2>
 <p>Nico can&#39;t work well without a configuration. Let&#39;s create a <code>nico.json</code>:</p>
 <pre>{
@@ -65,7 +68,7 @@
     ]
 }
 </pre>
-<p>Learn more about configuration at the <a href="./config">Config</a> section.</p>
+<p><a class="button" href="./config">Read More</a></p>
 <h2 id="writing">Writing</h2>
 <p>It&#39;s the time for us to write something:</p>
 <pre>nico.json
@@ -96,7 +99,7 @@ Hello World, Hello Nico.
 $ nico build -h
 $ nico server -h
 </pre>
-<p>Learn more about syntax in the <a href="./syntax">Syntax</a> section.</p>
+<p><a class="button" href="./syntax">Read More</a></p>
 <h2 id="developer-guide">Developer Guide</h2>
 <p>Actually the code of nico is easy to understand.</p>
 <h2 id="bug-report">Bug Report</h2>
@@ -107,10 +110,9 @@ If you want any help, please contact <a href="mailto:lepture@me.com">lepture@me.
 </div>
 </div>
     <div class="footer">
-      <p>Nico was created by lepture, concept based on liquidluck. brought to you under the BSD license.</p>
-      <p class="copyright">powered by <a href="http://lab.lepture.com/nico/">nico</a> 0.3.1</p>
+ Nico was created by lepture, concept based on liquidluck. brought to you under the BSD license.
+      <p class="copyright">powered by <a href="http://lab.lepture.com/nico/">nico</a> 0.4.4</p>
     </div>
-    <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="../static/one.js"></script>
     <div class="github"><a class="github-link" href="https://github.com/lepture/nico">Fork me on GitHub</a></div>
   </body>
 </html>

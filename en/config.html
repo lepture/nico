@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <meta name="generator" content="nico 0.3.1">
-    <meta name="theme" content="one 0.1">
+    <meta name="generator" content="nico 0.4.4">
+    <meta name="theme" content="one 0.2">
     <title>Nico Configuration</title>
     <link rel="stylesheet" href="../static/one.css" />
+    <link rel="stylesheet" href="../static/yue.css" />
     <link rel="stylesheet" href="../static/syntax.css" />
     <script type="text/javascript">
       var _gaq = _gaq || [];
@@ -23,14 +24,16 @@
   <body>
     <div class="navigation" role="navigation">
       <div class="container">
-        <a class="home" href="../">Nico</a>
+        <div class="brand">
+          <a class="home" href="../">Nico</a>
+        </div>
         <div class="menu">
           <a href="./">English</a>
           <a href="../zh/">中文文档</a>
         </div>
       </div>
     </div>
-    <div class="document">
+    <div class="document yue">
 <div class="hentry">
   <h1 class="entry-title">Nico Configuration</h1>
   <div class="entry-content"><p>Nico supports two formats of configuration, Javascript and JSON. JSON is standard, but Javascript is more flexible.</p>
@@ -99,14 +102,51 @@ exports.writers = [
 <h2 id="cache">Cache</h2>
 <p>For large projects, you would like a cache for fast building. Set a <code>cachedir</code> in your config file:</p>
 <pre>cachedir: &#39;.cache&#39;
-</pre></div>
+</pre><h2 id="perpage">perpage</h2>
+<p>Reset number of post on perpage, default is 20.</p>
+<h2 id="post-template">post_template</h2>
+<p>Reset the post template name, default is <code>post</code>.</p>
+<h2 id="page-template">page_template</h2>
+<p>Reset the page template name, default is <code>page</code>.</p>
+<h2 id="archive-template">archive_template</h2>
+<p>Reset the archive template name, default is <code>archive</code>.</p>
+<h2 id="archive-output">archive_output</h2>
+<p>Reset the archive output, default is <code>index.html</code>.</p>
+<h2 id="directory-template">directory_template</h2>
+<p>Reset the directory template name, default is <code>archive</code>.</p>
+<h2 id="year-template">year_template</h2>
+<p>Reset the year template name, default is <code>archive</code>.</p>
+<h2 id="tag-template">tag_template</h2>
+<p>Reset the tag template name, default is <code>archive</code>.</p>
+<h2 id="feed-template">feed_template</h2>
+<p>Reset the feed template name, default is <code>feed</code>.</p>
+<h2 id="feed-output">feed_output</h2>
+<p>Reset the feed output, default is <code>feed.xml</code>.</p>
+<h2 id="process-write">process_write</h2>
+<p>This is a function for processing file write action. Define in your config
+file: nico.js</p>
+<div class="highlight"><pre><code class="javascript">exports.process_write = <span class="keyword">function</span>(content, filename) {
+    <span class="keyword">if</span> (<span class="regexp">/\.html$/</span>.test(filename)) {
+        <span class="keyword">return</span> compressHTML(content);
+    }
+    <span class="keyword">return</span> content;
+}
+</code></pre></div><h2 id="process-copy">process_copy</h2>
+<p>This is a function for procssing file copy action. Define in your config
+file: nico.js</p>
+<div class="highlight"><pre><code class="javascript">exports.process_copy = <span class="keyword">function</span>(buf, filename) {
+    <span class="keyword">if</span> (<span class="regexp">/\.css$/</span>.test(filename)) {
+        <span class="keyword">return</span> compressCSS(buf.toString());
+    }
+    <span class="keyword">return</span> buf;
+}
+</code></pre></div></div>
 </div>
 </div>
     <div class="footer">
-      <p>Nico was created by lepture, concept based on liquidluck. brought to you under the BSD license.</p>
-      <p class="copyright">powered by <a href="http://lab.lepture.com/nico/">nico</a> 0.3.1</p>
+ Nico was created by lepture, concept based on liquidluck. brought to you under the BSD license.
+      <p class="copyright">powered by <a href="http://lab.lepture.com/nico/">nico</a> 0.4.4</p>
     </div>
-    <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js" data-main="../static/one.js"></script>
     <div class="github"><a class="github-link" href="https://github.com/lepture/nico">Fork me on GitHub</a></div>
   </body>
 </html>
