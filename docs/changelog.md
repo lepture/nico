@@ -4,6 +4,12 @@
 
 Changelog of the nico projects. The changelog starts with `0.4.0`.
 
+## Version 0.4.6
+
+Release on **Aug 15, 2013**
+
+1. A quick fix for FeedWriter
+
 ## Version 0.4.5
 
 Release on **Aug 12, 2013**
