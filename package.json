@@ -17,8 +17,8 @@
     "swig": "~0.14.0",
     "underscore": "~1.5.1",
     "rimraf": "~2.2.2",
-    "win-spawn": "~1.1.2",
-    "commander": "~1.1.1"
+    "win-spawn": "~2.0.0",
+    "commander": "~2.0.0"
   },
   "repository": {
     "type": "git",
