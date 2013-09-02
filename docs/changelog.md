@@ -4,6 +4,13 @@
 
 Changelog of the nico projects. The changelog starts with `0.4.0`.
 
+## Version 0.4.7
+
+Release on **Sep 2, 2013**
+
+1. Cache status and toc properties
+2. Add TagCloudWriter
+
 ## Version 0.4.6
 
 Release on **Aug 15, 2013**
