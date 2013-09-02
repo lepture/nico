@@ -75,6 +75,7 @@ Writer 是用来将内容写入 output 的，比如 PostWriter 用来生成文�
 - nico.ArchiveWriter   - 生成归档页面
 - nico.YearWriter      - 生成年份归档页面
 - nico.TagWriter       - 生成 tag 归档页面
+- nico.TagCloudWriter  - 生成 tag clound 页面
 - nico.DirectoryWriter - 生成目录归档页面
 - nico.FeedWriter      - 生成 feed
 

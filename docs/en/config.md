@@ -78,6 +78,7 @@ Built-in writers:
 - nico.ArchiveWriter   - generate archive
 - nico.YearWriter      - generate archive by years
 - nico.TagWriter       - generate archive by tags
+- nico.TagCloudWriter  - generate tag clound page
 - nico.DirectoryWriter - generate archive by direcotories
 - nico.FeedWriter      - generate feed
 
