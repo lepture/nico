@@ -140,9 +140,19 @@ The item in `pagination.items` is not a full post, you should use `read` filter 
 
 Built-in functions:
 
-### permalink_url
+### permalink_url (alias: relative_url)
+
+Create permalink of a post. This permalink is a relative url.
 
 `{{permalink_url(post)}}`
+
+### absolute_url
+
+`{{absolute_url(post)}}`
+
+An absolute url of the post, you can expand it with site url:
+
+`{{absolute_url(config.siteurl, post)}}`
 
 ### content_url
 

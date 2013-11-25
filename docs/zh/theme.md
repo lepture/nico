@@ -130,9 +130,13 @@ The item in `pagination.items` is not a full post, you should use `read` filter 
 
 内置的方法有：
 
-### permalink_url
+### permalink_url (alias relative_url)
 
 根据用户配置的 permalink style 来生成文章的链接。比如 `{{permalink_url(post)}}`。
+
+### absolute_url
+
+同 permalink_url, 但是生成的文章链接是绝对地址。
 
 ### content_url
 
