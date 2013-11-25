@@ -127,3 +127,11 @@ describe('pagination_url', function() {
     func(1).should.equal('./1');
   });
 });
+
+describe('highlight', function() {
+  it('can highlight code', function() {
+    var code = 'var foo = "bar";';
+    var func = filters.filters.highlight;
+    func(code, 'js').should.include('highlight');
+  });
+});
