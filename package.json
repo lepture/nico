@@ -18,6 +18,7 @@
     "swig": "~0.14.0",
     "underscore": "~1.5.2",
     "rimraf": "~2.2.2",
+    "glob": "~3.2.8",
     "win-spawn": "~2.0.0",
     "commander": "~2.1.0"
   },
