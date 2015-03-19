@@ -40,7 +40,7 @@ describe('post', function() {
 
   it('has toc', function() {
     var data = post.read(__dirname + '/data/unicode-post.md');
-    data.toc.should.include('<ul>');
+    data.toc.should.containEql('<ul>');
   });
 
   it('can load posts', function() {
