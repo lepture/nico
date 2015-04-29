@@ -32,7 +32,7 @@ describe('file', function() {
   });
   it('can list files', function() {
     var datafiles = file.list(__dirname + '/data');
-    datafiles.should.include(__dirname + '/data/year/2012-1.md');
+    datafiles.should.containEql(__dirname + '/data/year/2012-1.md');
   });
   it('can read json', function() {
     var data = file.readJSON(__dirname + '/../package.json');

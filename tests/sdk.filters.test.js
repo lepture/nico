@@ -4,11 +4,11 @@ var filters = require('..').sdk.filters;
 describe('filters', function() {
   it('can render markdown', function() {
     var markdown = filters.filters.markdown;
-    markdown('# header').should.include('header</h1>');
+    markdown('# header').should.containEql('header</h1>');
   });
   it('can render xmldatetime', function() {
     var xmldatetime = filters.filters.xmldatetime;
-    xmldatetime('2012-12-25').should.include('2012-12-25T00:00:00');
+    xmldatetime('2012-12-25').should.containEql('2012-12-25T00:00:00');
 
     var d = new Date();
     xmldatetime(d).should.equal(d.toISOString());
@@ -132,6 +132,6 @@ describe('highlight', function() {
   it('can highlight code', function() {
     var code = 'var foo = "bar";';
     var func = filters.filters.highlight;
-    func(code, 'js').should.include('highlight');
+    func(code, 'js').should.containEql('highlight');
   });
 });

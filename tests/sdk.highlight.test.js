@@ -23,6 +23,6 @@ describe('highlight.render', function() {
   });
 
   it('should render highlight code', function() {
-    hl.render('var a', 'js').should.include('highlight');
+    hl.render('var a', 'js').should.containEql('highlight');
   });
 });

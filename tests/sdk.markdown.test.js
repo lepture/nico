@@ -26,10 +26,10 @@ var text = [
 
 describe('markdown.render', function() {
   it('should have injected code', function() {
-    md.render(text).should.include('nico-insert-code');
+    md.render(text).should.containEql('nico-insert-code');
   });
   it('should have iframe code', function() {
-    md.render(text).should.include('allowtransparency');
+    md.render(text).should.containEql('allowtransparency');
   });
 });
 
