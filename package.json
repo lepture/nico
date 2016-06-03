@@ -13,9 +13,9 @@
   ],
   "dependencies": {
     "colorful": "~2.1.0",
-    "highlight.js": "~7.5.0",
+    "highlight.js": "~9.4.0",
     "markit": "~0.1.0",
-    "swig": "~0.14.0",
+    "swig": "~1.4.2",
     "underscore": "~1.5.2",
     "rimraf": "~2.2.2",
     "glob": "~3.2.8",
