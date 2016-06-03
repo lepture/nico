@@ -31,8 +31,9 @@
   },
   "devDependencies": {
     "jade": "*",
-    "mocha": "*",
     "jscoverage": "*",
+    "jshint": "*",
+    "mocha": "*",
     "should": "*"
   },
   "bin": {
