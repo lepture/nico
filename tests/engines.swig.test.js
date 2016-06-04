@@ -17,17 +17,19 @@ describe('swig works', function() {
   var swigTemp;
   var destination;
 
-  beforeEach(function() {
+  before(function() {
     option.set('outputdir', 'tests/_site');
     option.set('source', 'tests/data');
     option.set('theme', path.join(__dirname, 'themes'));
     swigTemp = path.join(option.get('theme'), 'templates', 'swig.html');
     destination = path.join(option.get('outputdir'), 'index.html');
   });
-  afterEach(function() {
+  after(function() {
     option.set('outputdir', outputdir);
     option.set('source', source);
     option.set('theme', theme);
+
+    fs.writeFileSync(swigTemp, '');
   });
 
   it('can load', function() {
