@@ -30,6 +30,7 @@ describe('post', function() {
     var data = post.read(__dirname + '/data/normal-post.md');
     data.title.should.equal('Post');
     data.tags.should.have.length(2);
+    data.issue.should.equal('1');
 
     // read from index
     post.index(data);
