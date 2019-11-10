@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+console.log("新版");
 
 var path = require('path');
 var fs = require('fs');
